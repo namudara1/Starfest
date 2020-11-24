@@ -44,14 +44,16 @@ require_once('connection.php'); ?>
                             
                            $num3 = $num1 + $num2;
                            $user_id = $record ['id'];
+                           $_SESSION['user_email'] = $ema;
                            $_SESSION['user_id'] = $user_id;
                            $user_type = $record ['type'];
+                           $_SESSION['user_type'] = $user_type;
                            if(isset($_SESSION['user_id']) && $_SESSION['user_id']) {
                            if($user_type == 'sp'){
+                                
                                 header('Location: sp/index.php');
                            }
                            if($user_type == 'eo'){
-                            
                                 header('Location: eo/index.php');
                            }
                            if($user_type == 'ep'){

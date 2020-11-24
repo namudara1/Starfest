@@ -2,12 +2,17 @@
 session_start();
 include ('Upload.php');
 include ('../config/connection.php');
+
 $upload = new Upload();
 
 if(isset($_POST['but_upload'])){
  
   $filename = $_FILES['file']['name'];
-  $target_dir = "uploads/";
+  $size=$_FILES['file']['size'];
+  $target_dir = "uploads/".$_SESSION['user_type']."/".$_SESSION['user_email']."/";
+  if ( !is_dir( $target_dir ) ) {
+    mkdir( $target_dir );       
+  }
   $target_file = $target_dir . basename($_FILES["file"]["name"]);
   $reciever_userid = $_POST['ruserid'];
   $user_id = $_SESSION['user_id'];
@@ -24,8 +29,8 @@ if(isset($_POST['but_upload'])){
      // Insert record
      $sqlInsert = "
                 INSERT INTO document
-                (reciever_userid, sender_userid, file_name, type, status) 
-                VALUES ('".$reciever_userid."', '".$user_id."', '".$filename."', '".$FileType."','1')";
+                (reciever_userid, sender_userid, file_path, file_name, type, file_size, status) 
+                VALUES ('".$reciever_userid."', '".$user_id."', '".$target_dir."', '".$filename."', '".$FileType."','".$size."','1')";
      mysqli_query($con,$sqlInsert);
   
      // Upload file
