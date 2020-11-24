@@ -90,6 +90,9 @@ body{
 .file_item .file_info{
 	justify-content: space-between;
 }
+.file_item .file_info .file_name a{
+  font-weight: bold;
+}
 .file_item .file_progress .progress{
 	width: 100%;
 	height: 4px;
