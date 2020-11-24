@@ -5,9 +5,24 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+  box-sizing: border-box;
+  
 } 
 
+.file_upload {height: auto;
+  min-height: calc(100% - 100px);
+  max-height: calc(100% - 100px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.file_upload::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+.file_upload::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 body{
 	color: #63686e;
 	height: 100%;
@@ -30,18 +45,17 @@ body{
 .right-side {
   box-sizing: unset;
   height: 100%;
-  margin-right: -5px;
+  /* margin-right: -5px; */
 	/* float: right; */
 	padding: 0px 0px 0 50px;
 	overflow: hidden;
 	position: relative;
-	width: 70%;
+	width: auto;
 	/* background: url(../../message/userpics/bg.png); */
 }
 
-.file_upload_list {
-	
-	overflow-y: auto;
+.file_upload_list{
+  padding-right: 10px;
 }
 
 .file_upload_list li .file_item{
@@ -117,9 +131,8 @@ body{
 }
 .choose_file{
 	width: 90%;
-	padding-right: 0px;
 	position: absolute;
-  	bottom: 0;
+  bottom: 0;
 }
 
 .choose_file label{
@@ -128,7 +141,7 @@ body{
 	padding: 15px;
 	width: calc(100% - 20px);
 	margin: 10px;
-	text-align: center;
+	/* text-align: center; */
 	cursor: pointer;
 }
 .choose_file #choose_file{
@@ -337,3 +350,25 @@ img{ max-width:120%;}
     margin: 0 0 0 1px;
     opacity: .5;
   }
+
+/* input type button styles */
+input[type=submit]{
+  float: right;
+  background-color: #2b19c7;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+input[type=file]{
+  
+  background-color: #36c74e;
+  border: none;
+  color: white;
+  /* padding: 10px 26px; */
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}

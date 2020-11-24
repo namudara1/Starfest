@@ -92,5 +92,68 @@
             }
             return $output;
         }
+        //Get all messages of the current chat session and display them
+        public function getUserDocs($from_user_id, $to_user_id) {			
+            $sqlQuery = "
+                SELECT * FROM ".$this->chatTable." 
+                WHERE (sender_userid = '".$from_user_id."' 
+                AND reciever_userid = '".$to_user_id."') 
+                OR (sender_userid = '".$to_user_id."' 
+                AND reciever_userid = '".$from_user_id."') 
+                ORDER BY timestamp ASC";
+            $userChat = $this->getData($sqlQuery);	
+            $doclist = '<ul>';
+            foreach($userChat as $files){
+                $doclist .= '<li>';
+                $doclist .= '<div class="file_item">';
+                $doclist .= '<div class="format">';
+                $doclist .= '<p>'.$files["type"].'</p>';
+                $doclist .= '</div>';
+                $doclist .= '<div class="file_progress">';
+                $doclist .= '<div class="file_info">';
+                $doclist .= '<div class="file_name">';
+                $doclist .= '<a href="uploads/'.$files["file_name"].'" target="_blank" style="text-decoration: none;">'.$files["type"].$files["file_name"].'</a>';
+                $doclist .= '</div>';
+                $doclist .= '<div class="file_size_wrap">';
+                $doclist .= '<div class="file_size">2MB';
+                $doclist .= '</div>';
+                $doclist .= '</div>';
+                $doclist .= '</div>';
+                $doclist .= '<div class="progress">';
+                $doclist .= '<div class="inner_progress" style="width: 100%;"></div>';
+                $doclist .= '</div>';
+                $doclist .= '</div>';
+                $doclist .= '<a href="../paypage/payment.php" style="text-decoration: none;">';
+                $doclist .= '<div class="file_close">Pay</div>';
+                $doclist .= '</a>';
+                $doclist .= '</div>';
+                $doclist .= '</li>';
+            }		
+            $doclist .= '</ul>';
+            return $doclist;
+        }
+        
+        //Show chat session of a user when click on his chat contact
+        public function showUserDocs($from_user_id, $to_user_id) {		
+            $userDetails = $this->getUserDetails($to_user_id);	
+            // get user conversation
+            $doclists = $this->getUserDocs($from_user_id, $to_user_id);	
+            // update chat user read status		
+            $sqlUpdate = "
+                UPDATE ".$this->chatTable." 
+                SET status = '0' 
+                WHERE sender_userid = '".$to_user_id."' AND reciever_userid = '".$from_user_id."' AND status = '1'";
+            mysqli_query($this->dbConnect, $sqlUpdate);		
+            // update users current chat session
+            $sqlUserUpdate = "
+                UPDATE ".$this->chatUsersTable." 
+                SET current_session = '".$to_user_id."' 
+                WHERE userid = '".$from_user_id."'";
+            mysqli_query($this->dbConnect, $sqlUserUpdate);		
+            $data = array(
+                "conversation" => $doclists		
+            );
+            echo json_encode($data);		
+        }	
     }
 ?>
