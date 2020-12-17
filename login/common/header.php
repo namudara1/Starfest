@@ -1,5 +1,6 @@
 <!-- Navbar -->
 <?php
+  $not_count=0;
   $sql_get=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
   if(mysqli_num_rows($sql_get)>0)
     $not_count++;
@@ -56,7 +57,7 @@
           }
           $sql_getmsg=mysqli_query($con,"SELECT * FROM document WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
           if(mysqli_num_rows($sql_getmsg)>0){
-            echo '<a class="w3-bar-item w3-button" href="../../message/index.php">You have '.$doccount.' new documents</a>';
+            echo '<a class="w3-bar-item w3-button" href="../../fileupload/index.php">You have '.$doccount.' new documents</a>';
           }
           if($not_count==0){
             echo '<a class="w3-bar-item w3-button" href="#">No new notifications!</a>';

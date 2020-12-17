@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <?php
-  $not_count=0;
+  $not_count;
   $sql_get=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
   if(mysqli_num_rows($sql_get)>0)
     $not_count++;
@@ -18,7 +18,7 @@
   <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a> -->
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
   <div class="w3-dropdown-hover w3-hide-small w3-right">
-    <a href="../../message/index.php">
+    <a href="../message/index.php">
     <button class="w3-button w3-padding-large" title="My Account">
     <img src="../img/avatar3.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
     </button>
@@ -29,7 +29,7 @@
   </div>
   <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a> -->
   <div class="w3-dropdown-hover w3-hide-small w3-right">
-    <a href="../../message/index.php">
+    <a href="../message/index.php">
     <button class="w3-button w3-padding-large" title="Messages"><i class="fa fa-envelope"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $msgcount; ?></span></button>
     </a>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
@@ -57,7 +57,7 @@
           }
           $sql_getmsg=mysqli_query($con,"SELECT * FROM document WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
           if(mysqli_num_rows($sql_getmsg)>0){
-            echo '<a class="w3-bar-item w3-button" href="../../fileupload/index.php">You have '.$doccount.' new documents</a>';
+            echo '<a class="w3-bar-item w3-button" href="../../message/index.php">You have '.$doccount.' new documents</a>';
           }
           if($not_count==0){
             echo '<a class="w3-bar-item w3-button" href="#">No new notifications!</a>';
