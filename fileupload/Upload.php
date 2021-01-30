@@ -112,8 +112,9 @@
                 $doclist .= '</div>';
                 $doclist .= '<div class="file_progress">';
                 $doclist .= '<div class="file_info">';
-                $doclist .= '<div class="file_name">';
-                $doclist .= '<a href="'.$files["file_path"].$files["file_name"].'" target="_blank" style="text-decoration: none;">'.$files["type"].$files["file_name"].'</a>';
+                $doclist .= '<div class="file_name">File Name: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ';
+                $doclist .= '<a href="'.$files["file_path"].$files["file_name"].'" target="_blank" style="text-decoration: none;">'.$files["file_name"].'</a>';
+                $doclist .= '<div class="file_desc">File Description: &nbsp '.$files["file_desc"].'</div>';
                 $doclist .= '</div>';
                 $doclist .= '<div class="file_size_wrap">';
                 $doclist .= '<div class="file_size">'.number_format($file_sizemb, 2).' MB';

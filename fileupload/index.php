@@ -13,7 +13,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="js/upload.js"></script>
 	</head>
-<body>
+	<body>
 	<?php include('../common/header.php'); ?>	
 	<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']) { ?> 	
 			<div class="chat" >
@@ -29,29 +29,27 @@
 							}
 						?>
 						<div id="contacts">
-							
 							<?php
-							echo '<ul>';
-							$chatUsers = $upload->distinctUsers($_SESSION['user_id']);
-							foreach ($chatUsers as $user) {
-								$activeUser = '';
-								if($user['userid'] == $currentSession) {
-									$activeUser = "active";
+								echo '<ul>';
+								$chatUsers = $upload->distinctUsers($_SESSION['user_id']);
+								foreach ($chatUsers as $user) {
+									$activeUser = '';
+									if($user['userid'] == $currentSession) {
+										$activeUser = "active";
+									}
+									echo '<li id="'.$user['userid'].'" class="contact '.$activeUser.'" data-touserid="'.$user['userid'].'" data-tousername="'.$user['username'].'">';
+									echo '<div class="wrap">';
+									echo '<img src="../message/userpics/user3.jpg" alt="" />';
+									echo '<div class="meta">';
+									echo '<p class="name">'.$user['username'].'<span id="unread_'.$user['userid'].'" class="unread">'.$upload->getUnreadNotifiCount($user['userid'], $_SESSION['user_id']).'</span></p>';
+									echo '</div>';
+									echo '</div>';
+									echo '</li>'; 
 								}
-								echo '<li id="'.$user['userid'].'" class="contact '.$activeUser.'" data-touserid="'.$user['userid'].'" data-tousername="'.$user['username'].'">';
-								echo '<div class="wrap">';
-								echo '<img src="../message/userpics/user3.jpg" alt="" />';
-								echo '<div class="meta">';
-								echo '<p class="name">'.$user['username'].'<span id="unread_'.$user['userid'].'" class="unread">'.$upload->getUnreadNotifiCount($user['userid'], $_SESSION['user_id']).'</span></p>';
-								echo '</div>';
-								echo '</div>';
-								echo '</li>'; 
-							}
-							echo '</ul>';
+								echo '</ul>';
 							?>
 						</div>
 					</div>
-		
 					<div class="right-side">
 						<div class="file_upload" >
 							<div class="file_upload_list" id="file_upload_lists">
@@ -61,17 +59,14 @@
 								<!-- <div class="file_close">X</div> -->
 							</div>
 						</div>
-						<div class="choose_file">
+						<div class="choose_file">	
 							<label for="choose_file">
 								<form method="post" action="upload_action.php" enctype='multipart/form-data'>
-									
-									<input type="file" name='file' class="submit subButton" id="subButton<?php echo $currentSession; ?>">
-									
-									<input type="hidden" name="ruserid" value="<?php echo $currentSession; ?>">
-									<!-- <span>Choose Files</span> -->
-									
-									<input type='submit' value='Submit File Upload' name='but_upload'>
-									
+									<input type="file" name='file' class="submit subButton" id="subButton<?php echo $currentSession; ?>"/>
+									<input type="hidden" name="ruserid" value="<?php echo $newSession; ?>"/>
+									<span>File Description/Purpose</span>
+									<input type="text" name='filedesc'/>
+									<input type='submit' value='Upload File' name='but_upload'/>
 								</form>
 							</label>
 						</div>

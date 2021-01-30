@@ -88,9 +88,13 @@ body{
 	align-items: center;
 }
 .file_item .file_info{
-	justify-content: space-between;
+  justify-content: space-between;
+  font-weight: bold;
 }
 .file_item .file_info .file_name a{
+  font-weight: bold;
+}
+.file_item .file_info .file_desc{
   font-weight: bold;
 }
 .file_item .file_progress .progress{
@@ -145,7 +149,6 @@ body{
 	width: calc(100% - 20px);
 	margin: 10px;
 	/* text-align: center; */
-	cursor: pointer;
 }
 .choose_file #choose_file{
 	outline: none;
@@ -153,12 +156,13 @@ body{
     width: 0;
 }
 .choose_file span{
-	font-size: 14px;
+  padding-left: 35px;
+	font-size: 16px;
 	color: #8178d3;
 }
 
 .choose_file label:hover span{
-	text-decoration: underline;
+	text-decoration: none;
 }
 /* User Styles*/
 img{ max-width:120%;}
@@ -375,3 +379,7 @@ input[type=file]{
   margin: 4px 2px;
   cursor: pointer;
 }
+input[type=text]{
+  padding-left: 0px;
+}
+
