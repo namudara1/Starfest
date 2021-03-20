@@ -1,3 +1,18 @@
+<?php
+
+require 'db_conn1.php';
+
+
+$rowSQL = mysqli_query($conn1,"SELECT MAX(event_id) AS max FROM event" );
+$row = mysqli_fetch_array( $rowSQL );
+$preid = $row['max'];
+
+$currentId=$preid+1;
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,12 +136,14 @@ return;
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row p-t-20">
+                        <div class="form-check-inline">
                             <label class="label label--block">Event Type</label>
                             
                             <br><br>
-                            Private<input type="radio" name="type" id="yesCheck" value="Private" checked >  Public<input type="radio" name="type" id="noCheck" value="public">
+                            <!-- <label class="radio-inline"> -->
+                            Private<input type="radio" name="type" id="yesCheck" value="Private" checked/> Public<input type="radio" name="type" id="noCheck" value="public"/>
                         
+                    
                          <div class="form-row" id="ifYes">
                             <div class="form-row">
                                 <div class="name">Event Category</div>
@@ -136,7 +153,8 @@ return;
                                             <select name="category">
                                                 <option disabled="disabled" selected="selected">Choose option</option>
                                                 <option value="birthday">Birthday</option>
-                                                <option value="wedding">Wedding</option>
+                                                <option value="Sinhala wedding">Sinhala Wedding</option>
+                                                <option value="Tamil wedding">Tamil Wedding</option>
                                                 <option value="seminar">Seminar</option>
                                                 <option value="musical show">Musical Show</option>
                                                 <option value="cooperate event">Cooperate Event</option>
@@ -171,11 +189,31 @@ return;
                                 
                                 </div>
                                 </div> 
+
+
+                                <div class="form-row p-t-20">
+                            <label class="label label--block"><a href="questions.php">Do you want to ask some questions from the event participants</a></label>
+                            
+                            <!-- <br><br>
+                            Yes<input type="radio" name="qselection"  value="yes" checked >  No<input type="radio" name="qselection"  value="no"> -->
+
+
+
+                                <!-- <a href="index2.php?data1=<?php echo $currentId?>> Add ticket prices</a> --> -->
+                                 
+                                <label class="label label--block">
+                                 
+                                 <a href="index2.php?data1=<?php echo $currentId?>"> Add ticket prices</a>
+                                 </label>
+                            
                               
+</div>
+
+
                             </div>
 
                        
-
+                        </div>
                         <div>
                         <br><br><br><br><br><br><br><br><br><br><br><br><br>
                         

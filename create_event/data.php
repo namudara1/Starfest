@@ -12,6 +12,7 @@ $category = filter_input(INPUT_POST, 'category');
 $participant_amt = filter_input(INPUT_POST, 'participant_amt');
 $description = filter_input(INPUT_POST, 'description');
 $eo_id = filter_input(INPUT_POST, 'eo_id');
+$question = filter_input(INPUT_POST, 'qselection');
 $profileImage =$_FILES['pro']['name'];
 
 // echo "<pre>", print_r($_FILES),"</pre>";
@@ -49,9 +50,10 @@ $data1 = mysqli_query($conn,"Select eo_id from event_organizer where id='$id'");
 $row = mysqli_fetch_assoc($data1);
 $eo_idd = $row['eo_id'];
 
+// echo $eo_idd;
 
-$sql = "INSERT INTO event (event_name,category,type,date,time,participant_amt,description, venue,image, eo_id)
-values ('$event_name','$category','$type','$date','$time','$participant_amt','$description','$venue','$profileImage','$eo_idd')";
+$sql = "INSERT INTO event (event_name,category,type,date,time,participant_amt,description, venue,image,question, eo_id)
+values ('$event_name','$category','$type','$date','$time','$participant_amt','$description','$venue','$profileImage','$question','$eo_idd')";
 
 
 
