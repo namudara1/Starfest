@@ -29,24 +29,20 @@ Licence URI: https://www.os-templates.com/template-terms
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
-<title>Surogou</title>
+<title>Starfest</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 
-<style>
-#logo{ 
-	position:fixed; 
-	top:0; 
-	left:0; 
-} 
-</style>
+<link href="layout/styles/work.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link href="layout/styles/mainwork.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
 <body id="top">
-  <div id="logo"> 
-    <img src="logo.jpg" width="50" height="50"> 
-  </div> 
+  
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
@@ -93,7 +89,7 @@ Licence URI: https://www.os-templates.com/template-terms
       
       <li><a href="#">Contact Us</a></li>
       
-      <li><a href="../signup/user_selection/index.php" >Signup</a></li>
+      <li><a href="../signup/sign/index.php" >Signup</a></li>
       <li><a href="../login/index.php">Login</a></li>
       
     </ul>
@@ -103,7 +99,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper bgded overlay" style="background-image:url('img7.jpg');">
+<div class="wrapper bgded overlay" style="background-image:url('img4.jpg');">
   <div id="pageintro" class="hoc clear"> 
     <!-- ################################################################################################ -->
     <article>
@@ -123,10 +119,10 @@ Licence URI: https://www.os-templates.com/template-terms
 
     <!-- ################################################################################################ -->
 
-    
+    <br><br><br>
     <div class="sectiontitle">
-      <h6 class="heading">Public events </h6>
-      <p>Register with events and enjoy your life</p>
+     <b> <h1 class="logoname"><span>PUBLIC EVENTS</span></h1>
+      <p>Register with events and enjoy your life</p></b>
     </div>
 
 
@@ -147,18 +143,19 @@ if($i%3 == 0){
 
 }
 ?> 
-
-<li class="one_third">
-   <figure><a href="#">  <?php echo "<li><img src='../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
-</a>
-     <figcaption>
-       <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
-       <p><?php echo $row["description"]; ?></p>
-     </figcaption>
-   </figure>
- </li>
- 
-
+<div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme-l2">
+          <p class="w3-xlarge"><a href="view.php?id=<?=$row['event_id']; ?>">
+   <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
+       <?php echo "<li><img src='../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
+</a></p>
+        </li>
+        <li class="w3-padding-16"><p><?php echo $row["description"]; ?></p></li>
+        <li><footer><a class="btn" href="view.php?id=<?=$row['event_id']; ?>">Book now</a></footer></li>
+      
+      </ul>
+    </div>
  <?php
 
 
@@ -179,41 +176,58 @@ $i++;
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row4">
-  <footer id="footer" class="hoc clear"> 
-    <!-- ################################################################################################ -->
-    <div class="one_third first">
-      <h1 class="logoname"><span>STAR</span>FEST</h1>
+<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
+  <div class="w3-row">
+    <div class="w3-col m5">
+    <h1 class="logoname"><span>STAR</span>FEST</h1>
       <p class="btmspace-30"> Plan your day with us and register for public events and enjoy your life[<a href="#">&hellip;</a>]</p>
+    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar"></span></div>
+      <h3>Address</h3>
       
+      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Colombo</p>
+      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  +00 2324354657</p>
+      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  STARFEST@DOMAIN.com</p>
     </div>
-    <div class="one_third">
-      <h6 class="heading">Register with public events</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Musical shows</a></li>
-        <li><a href="#">Cooperate events</a></li>
-        <li><a href="#">Seminars</a></li>
-        <li><a href="#">Others</a></li>
-      </ul>
-    </div>
-    <div class="one_third">
-      <h6 class="heading">Contact Us</h6>
-      <p class="nospace btmspace-15"></p>
-      <form method="post" action="contact_db.php">
-        <fieldset>
-          <legend>Newsletter:</legend>
-          <input class="btmspace-15" type="text" value="email" name="email" placeholder="Email">
-          <input class="btmspace-15" type="text" value="message" name="message" placeholder="Message">
-          <button type="submit" value="submit">Submit</button>
-        </fieldset>
+    <div class="w3-col m7">
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
+      
+      <div class="w3-section">      
+        <label>Email</label>
+        <input class="w3-input" type="text" name="email" required>
+      </div>
+      <div class="w3-section">      
+        <label>Message</label>
+        <input class="w3-input" type="text" name="message" required>
+      </div>  
+      <input class="w3-check" type="checkbox" checked name="Like">
+      <label>I Like it!</label>
+      <button type="submit" class="w3-button w3-right w3-theme" value="submit">Send</button>
       </form>
     </div>
-    <!-- ################################################################################################ -->
-  </footer>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <h4>Follow Us</h4>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
+  <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <p> <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"></a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+
 </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->

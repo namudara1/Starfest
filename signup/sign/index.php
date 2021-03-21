@@ -130,6 +130,41 @@ return;
                                 </div>
                             </div>
                         </div>
+
+                        <b> <h3>Select one role:</h3></b>
+                        <div class="card-body">
+                    
+                        <div class="form-row">
+                            <div class="name">Event Organizer</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input type="radio"  name="role" value="eventorganizer"> 
+                                </div>
+                            </div>
+                            
+                        </div>
+                       
+
+                        <div class="form-row">
+                            <div class="name">Event participant</div>
+                            <div class="value"> 
+                                <div class="input-group">
+                                    <input type="radio"  name="role" value="eventparticipant">
+                                </div>
+                            </div>
+                            
+                        </div>
+                       
+                        <div class="form-row">
+                        
+                            <div class="name">Service provider</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input type="radio"  name="role" value="serviceprovider">
+                                </div>
+                            </div>
+</div>
+          
                         <button class="btn btn--radius-2 btn--red" type="submit" >Signup</button>
                         </div> 
                     </form>

@@ -307,7 +307,7 @@ a{color:#F7A804;}
 a:active, a:focus{background:transparent;}/* IE10 + 11 Bugfix - prevents grey background */
 hr, .borderedbox{border-color:#D7D7D7;}
 label span{color:#FF0000; background-color:inherit;}
-input:focus, textarea:focus, *:required:focus{border-color:#56AED4;}
+input:focus, textarea:focus, *:required:focus{border-color:black}
 
 .overlay{color:#FFFFFF; background-color:inherit;}
 .overlay::after{color:inherit; background-color:rgba(0,0,0,.55);}
@@ -326,9 +326,9 @@ input:focus, textarea:focus, *:required:focus{border-color:#56AED4;}
 .row1{color:#474747; background-color:#FFFFFF;}
 .row2{color:#474747; background-color:#F4F4F4;}
 .row3{color:#474747; background-color:#FFFFFF;}
-.row4{color:#474747; background-color:#FFFFFF;}
-.row5, .row5 a{color:#474747; background-color:#FFFFFF;}
-.row5{border-color:rgba(0,0,0,.1);}
+.row4, . a{color:#FFFFFF; background-color:#0E74A5;}
+.row5, .row5 a{color:#ffffff; background-color:wheat;}
+.row5{border-color:rgba(0,0,0,.1); }
 
 .gradient{color:#FFFFFF; background:linear-gradient(to bottom right, #0E74A5, #4FB5F5);}
 

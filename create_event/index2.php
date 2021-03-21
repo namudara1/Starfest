@@ -55,7 +55,7 @@ $_SESSION['firstMessage'] = $message1;
 
                      <input type="text" 
                      name="category" 
-                     placeholder="category" />
+                     placeholder="category      Eg:Gold,Platinum,Silver,Balcony" />
 
                      <input type="text" 
                      name="quantity" 

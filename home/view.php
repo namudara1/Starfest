@@ -22,7 +22,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
-<title>Surogou</title>
+<title>Starfest</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
@@ -125,10 +125,13 @@ echo"<tr>";
 
 
 <td>
+<li class="one_third">
+  <h6></h6>
+</li>
       <li class="one_third">
       <article>
           <!-- <figure><a href="#"><img src='<?php echo $image_src;  ?>' ></a> -->
-          <h6 class="heading" ><?php echo $row["event_name"]; ?></h6>
+          <h6 class="logoname" ><?php echo $row["event_name"]; ?></h6>
           <?php echo "<li><img src='../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
 
            
@@ -145,9 +148,9 @@ echo"<tr>";
             <p>VENUE-<?php echo $row["venue"]; ?> </p>
             <p>CATEGORY-<?php echo $row["category"]; ?> </p>
             <p>PARTICIPANT AMOUNT-<?php echo $row["participant_amt"]; ?> </p>
-            
+            <a class="btn" href="#">Register</a>
           </div>
-        </article>
+          </article> 
       </li>
       
           </td> 
@@ -177,7 +180,8 @@ $i++;
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper row4">
+<div class="wrapper row5">
+  
   <footer id="footer" class="hoc clear"> 
     <!-- ################################################################################################ -->
     <div class="one_third first">
@@ -197,15 +201,16 @@ $i++;
     <div class="one_third">
       <h6 class="heading">Contact Us</h6>
       <p class="nospace btmspace-15"></p>
-      <form method="post" action="#">
+      <form method="post" action="contact_db.php">
         <fieldset>
           <legend>Newsletter:</legend>
-          <input class="btmspace-15" type="text" value="" placeholder="Name">
-          <input class="btmspace-15" type="text" value="" placeholder="Email">
+          <input class="btmspace-15" type="text" value="email" name="email" placeholder="Email">
+          <input class="btmspace-15" type="text" value="message" name="message" placeholder="Message">
           <button type="submit" value="submit">Submit</button>
         </fieldset>
       </form>
     </div>
+
     <!-- ################################################################################################ -->
   </footer>
 </div>
