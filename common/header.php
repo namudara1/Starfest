@@ -62,6 +62,24 @@
           if($not_count==0){
             echo '<a class="w3-bar-item w3-button" href="#">No new notifications!</a>';
           }
+
+          $sql_getEventDate=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+          while ($row = $sql_getEventDate->fetch_assoc())
+          {
+            $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
+            $todate = date('Y-m-d');
+            if($todate == $oneweekbefore)
+              echo '<a class="w3-bar-item w3-button" href="#">You have an upcoming event on'.$row["date"].'</a>';
+          }
+          while ($row = $sql_getEventDate->fetch_assoc())
+          {
+            $todate = date('Y-m-d');
+            foreach($row as $value){
+              if($todate > $value)
+                echo '<a class="w3-bar-item w3-button" href="../../rating/index.php">Rate event</a>';
+            }
+          } 
+
       ?>
     </div>
   </div>

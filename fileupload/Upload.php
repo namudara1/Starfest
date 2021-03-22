@@ -125,9 +125,12 @@
                 $doclist .= '<div class="inner_progress" style="width: 100%;"></div>';
                 $doclist .= '</div>';
                 $doclist .= '</div>';
-                $doclist .= '<a href="../paypage/payment.php" style="text-decoration: none;">';
-                $doclist .= '<div class="file_close">Pay</div>';
-                $doclist .= '</a>';
+                if($files["file_desc"] == "Invoice")
+                {
+                    $doclist .= '<a href="../paypage/payment.php" style="text-decoration: none;">';
+                    $doclist .= '<div class="file_close">Pay</div>';
+                    $doclist .= '</a>';
+                }
                 $doclist .= '</div>';
                 $doclist .= '</li>';
             }		

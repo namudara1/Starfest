@@ -65,7 +65,13 @@
 									<input type="file" name='file' class="submit subButton" id="subButton<?php echo $currentSession; ?>"/>
 									<input type="hidden" name="ruserid" value="<?php echo $newSession; ?>"/>
 									<span>File Description/Purpose</span>
-									<input type="text" name='filedesc'/>
+									<select id="filepurpose" name="filedesc">
+										<option value="Invoice">Invoice</option>
+										<option value="Event Plan">Event Plan</option>
+										<option value="Budget">Budget</option>
+										<option value="Other">Other</option>
+									</select>
+									<!-- <input type="text" name='filedesc'/> -->
 									<input type='submit' value='Upload File' name='but_upload'/>
 								</form>
 							</label>

@@ -32,13 +32,13 @@
     <a href="../../message/index.php">
     <button class="w3-button w3-padding-large" title="Messages"><i class="fa fa-envelope"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $msgcount; ?></span></button>
     </a>
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:180px">
     <?php
-          $sql_getmsg=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
+          $sql_getmsg=mysqli_query($con,"SELECT count(sender_userid),sender_userid FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
           if(mysqli_num_rows($sql_getmsg)>0){
             while($result=mysqli_fetch_assoc($sql_getmsg)){
               // href="../message/index.php?id='.$result['id'].'"
-              echo '<a class="w3-bar-item w3-button" href="../../message/index.php">'.$result['message'].'</a>';
+              echo '<a class="w3-bar-item w3-button" href="../../message/index.php">'.$result['count(sender_userid)'].' new messages from '.$result['sender_userid'].'</a>';
             }
           }
           else{
@@ -51,17 +51,57 @@
     <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>     
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
     <?php
+          echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Messages</div>';
           $sql_getmsg=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
           if(mysqli_num_rows($sql_getmsg)>0){
-            echo '<a class="w3-bar-item w3-button" href="../../message/index.php">You have '.$msgcount.' new messages</a>';
+            echo '<a class="w3-bar-item w3-button" href="../../message/index.php">You have '.$msgcount.' new messages</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
           }
+          else{
+            echo '<a class="w3-bar-item w3-button" href="#">No new messages!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+          }
+          echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Documents</div>';
           $sql_getmsg=mysqli_query($con,"SELECT * FROM document WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
           if(mysqli_num_rows($sql_getmsg)>0){
-            echo '<a class="w3-bar-item w3-button" href="../../fileupload/index.php">You have '.$doccount.' new documents</a>';
+            echo '<a class="w3-bar-item w3-button" href="../../fileupload/index.php">You have '.$doccount.' new documents</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
           }
-          if($not_count==0){
-            echo '<a class="w3-bar-item w3-button" href="#">No new notifications!</a>';
+          else{
+            echo '<a class="w3-bar-item w3-button" href="#">No new documents!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
           }
+          // if($not_count==0){
+          //   echo '<a class="w3-bar-item w3-button" href="#">No new notifications!</a>';
+          // }
+          
+          echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Upcoming Events</div>';
+          $sql_getEventDate=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+          $flag1 = 0;
+          while ($row = $sql_getEventDate->fetch_assoc())
+          {
+            $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
+            $todate = date('Y-m-d');
+            if($todate == $oneweekbefore){
+              $flag1 = 1;
+              echo '<a class="w3-bar-item w3-button" href="#">You have an upcoming event on '.$row["date"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+            }
+          }
+          if($flag1 == 0)
+            echo '<a class="w3-bar-item w3-button" href="#">No new upcoming events!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+          
+
+          echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Rate Events</div>';
+          $sql_getEventDetails=mysqli_query($con,"SELECT event_name,date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+          $flag2 = 0;
+          while ($row = $sql_getEventDetails->fetch_assoc())
+          {
+            $todate = date('Y-m-d');
+            foreach($row as $value){
+              if($todate > $value){
+                $flag2 =1;
+                echo '<a class="w3-bar-item w3-button" href="../../rating/index.php">Rate event '.$row["event_name"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+              }
+            }
+          }
+          if($flag2 == 0)
+            echo '<a class="w3-bar-item w3-button" href="#">No new evets to rate!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
       ?>
     </div>
   </div>
