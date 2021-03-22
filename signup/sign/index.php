@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Starfest Signup Form</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -63,7 +63,7 @@ return;
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Form</h2>
+                    <h2 class="title">Sign Up</h2>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="signup_db.php">
@@ -131,11 +131,19 @@ return;
                             </div>
                         </div>
 
-                        <b> <h3>Select one role:</h3></b>
+                        <b> <h3>Select the role:</h3></b>
                         <div class="card-body">
                     
                         <div class="form-row">
                             <div class="name">Event Organizer</div>
+
+                            <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  This is an alert box.
+</div>
+
+
+
                             <div class="value">
                                 <div class="input-group">
                                     <input type="radio"  name="role" value="eventorganizer"> 
