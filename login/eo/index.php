@@ -260,6 +260,9 @@ button {
           
 
           <?php 
+
+
+if($result!=NULL){
 $i=0;
 
 
@@ -299,7 +302,7 @@ while($row=mysqli_fetch_assoc($result)){
 
        <a href="event/index.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Event details</button></a><br><br>
 
-       <a href="attendees/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Attendees</button></a>
+       <!-- <a href="attendees/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Attendees</button></a> -->
 
 
        <?php 
@@ -333,6 +336,14 @@ $i++;
 
 ?>
 
+<?php
+
+}
+else{
+echo "No events";
+
+}
+?>
         </div>
       </div>
       <br>

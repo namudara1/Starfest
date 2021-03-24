@@ -21,6 +21,50 @@ $message1 = $_SESSION['firstMessage'];
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ticket Prices</title>
     <link rel="stylesheet" href="css1/style.css">
+
+<!-- Required meta tags-->
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+
+
+
+    <script type="text/javascript">
+function CheckColors(val){
+ var element=document.getElementById('category1');
+ if(val=='pick a color'||val=='others')
+   element.style.display='block';
+ else  
+   element.style.display='none';
+}
+
+function goBack(){
+
+window.history.back();
+
+}
+</script>
+
+
+
 </head>
 <body>
 
@@ -30,30 +74,37 @@ $message1 = $_SESSION['firstMessage'];
        <div class="add-section">
           <form action="app/add.php" method="POST" autocomplete="off">
              <?php if(isset($_GET['mess']) && $_GET['mess'] == 'error'){ ?>
-                <input type="text" 
-                     name="ticket_price" 
-                     style="border-color: #ff6666"
-                     placeholder="This field is required" />
+               
+                <select name="category" onchange='CheckColors(this.value);'> 
+    <option>Select the Ticket Category</option>  
+    <option value="gold">Gold</option>
+    <option value="silver">Silver</option>
+    <option value="others">others</option>
+  </select>
+<input type="text" name="category1" id="category1" style='display:none;'/>
 
-                     <input type="text" 
-                     name="category" 
-                     style="border-color: #ff6666"
-                     placeholder="This field is required" />
-
-                     <input type="text" 
-                     name="quantity" 
-                     style="border-color: #ff6666"
-                     placeholder="This field is required" />
-              <button type="submit">Add &nbsp; <span>&#43;</span></button>
-
-             <?php }else{ ?>
               <input type="text" 
                      name="ticket_price" 
                      placeholder="Ticket prices?" />
 
                      <input type="text" 
-                     name="category" 
-                     placeholder="category      Eg:Gold,Platinum,Silver,Balcony" " />
+                     name="quantity" 
+                     placeholder="quantity" />
+              <button type="submit">Add &nbsp; <span>&#43;</span></button>
+
+             <?php }else{ ?>
+              
+                <select name="category" onchange='CheckColors(this.value);'> 
+    <option>Select the Ticket Category</option>  
+    <option value="gold">Gold</option>
+    <option value="silver">Silver</option>
+    <option value="others">others</option>
+  </select>
+<input type="text" name="category1" id="category1" style='display:none;'/>
+
+              <input type="text" 
+                     name="ticket_price" 
+                     placeholder="Ticket prices?" />
 
                      <input type="text" 
                      name="quantity" 
@@ -91,7 +142,17 @@ $message1 = $_SESSION['firstMessage'];
                 </div>
             <?php } ?>
        </div>
+
+
+       <div>
+       <button class="btn btn--radius-2 btn--red" onclick="goBack()" >Back</button>
+       <button class="btn btn--radius-2 btn--red" onclick="goBack()" >Continue</button>
+    
     </div>
+
+    </div>
+
+
 
     <script src="js1/jquery-3.2.1.min.js"></script>
 

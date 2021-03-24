@@ -3,7 +3,7 @@ require_once 'publicevent_db.php';
 // Connect to MySQL
 
 // $sql = "SELECT * FROM event ORDER BY date DESC";
-$sql = "SELECT * FROM event where type='public' and category='seminar'";
+$sql = "SELECT * FROM event where type='public' and category='seminars'";
 
 $result = mysqli_query($conn,$sql) ;
 //$row1 = mysqli_fetch_array($result);
@@ -36,6 +36,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link href="layout/styles/mainwork.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
 </head>
@@ -108,6 +109,7 @@ Public Events
      <p>Register with events and enjoy your life</p>
     </div>
 
+
     <ul class="nospace group overview">
 
    
@@ -123,18 +125,19 @@ if($i%3 == 0){
 
 }
 ?> 
-
-<li class="one_third">
-   <figure><a href="#">  <?php echo "<li><img src='../../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
-</a>
-     <figcaption>
-       <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
-       <p><?php echo $row["description"]; ?></p>
-     </figcaption>
-   </figure>
- </li>
- 
-
+<div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme-l2">
+          <p class="w3-xlarge"><a href="view.php?id=<?=$row['event_id']; ?>">
+   <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
+       <?php echo "<li><img src='../../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
+</a></p>
+        </li>
+        <li class="w3-padding-16"><p><?php echo $row["description"]; ?></p></li>
+        <li><footer><a class="btn" href="view.php?id=<?=$row['event_id']; ?>">Book now</a></footer></li>
+      
+      </ul>
+    </div>
  <?php
 
 
@@ -148,6 +151,7 @@ $i++;
 ?>
 
 </ul>
+
 
 
 

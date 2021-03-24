@@ -74,6 +74,16 @@ return;
 #yesCheck:checked ~ #ifYes {display: block;} 
 #noCheck:checked ~ #ifNo {display: block;}
 </style>
+
+<script type="text/javascript">
+function toggle(obj) {
+          var obj=document.getElementById(obj);
+          if (obj.style.display == "block") obj.style.display = "none";
+          else obj.style.display = "block";
+}
+</script>
+
+
 </head>
 
 <body>
@@ -192,14 +202,26 @@ return;
 
 
                                 <div class="form-row p-t-20">
-                            <label class="label label--block"><a href="questions.php">Do you want to ask some questions from the event participants</a></label>
-                            
+                        
+<!-- 
+                                <a href="javascript: void(0);" onClick="toggle('q1')">
+                                <label class="label label--block">
+                                Do you want to ask some questions from the event participants
+                                </label>
+                                </a>
+                                <div id="q1" style="display:none;">
+                                TEXT WHAT U WILL SEE WHEN CLICKED HERE
+                                </div>
+                     
+                                 -->
+
+
                             <!-- <br><br>
                             Yes<input type="radio" name="qselection"  value="yes" checked >  No<input type="radio" name="qselection"  value="no"> -->
 
 
 
-                                <!-- <a href="index2.php?data1=<?php echo $currentId?>> Add ticket prices</a> --> -->
+                                <!-- <a href="index2.php?data1=<?php echo $currentId?>> Add ticket prices</a> --> 
                                  
                                 <label class="label label--block">
                                  
