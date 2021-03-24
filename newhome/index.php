@@ -89,7 +89,7 @@ Licence URI: https://www.os-templates.com/template-terms
       
       <li><a href="#">Contact Us</a></li>
       
-      <li><a href="../signup/user_selection/index.php" >Signup</a></li>
+      <li><a href="../signup/sign/index.php" >Signup</a></li>
       <li><a href="../login/index.php">Login</a></li>
       <li><a href="../rating/index.php">Rating</a></li>
     </ul>

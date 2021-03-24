@@ -23,16 +23,27 @@ if(isset($_POST['ticket_price'])){
 
     $ticket_price = $_POST['ticket_price'];
     $category = $_POST['category'];
+    $category1 = $_POST['category1'];
     $quantity = $_POST['quantity'];
 
 
     if(empty($ticket_price)){
         header("Location: ../index3.php?mess=error");
     }else {
+
+        if($category!='others'){
+
         $sql = "INSERT INTO public_ticket_price (ticket_price,event_id,quantity,category)
         values ($ticket_price,$a,$quantity,'$category')";
         
-        
+        }
+        else{
+
+
+            $sql = "INSERT INTO public_ticket_price (ticket_price,event_id,quantity,category)
+            values ($ticket_price,$a,$quantity,'$category1')";
+
+        }
         
         if ($conn->query($sql)){
             header("Location: ../index3.php?mess=success"); 
