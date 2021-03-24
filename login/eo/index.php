@@ -21,7 +21,7 @@ $sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date desc ";
 
 
 $result = mysqli_query($conn1,$sql) ;
-//$row1 = mysqli_fetch_array($result);
+// $row1 = mysqli_fetch_array($result);
 
 
 //$image1 = $row1['image'];
@@ -82,11 +82,11 @@ button {
          <?php  
         $sql_getuser=mysqli_query($con,"SELECT * FROM event_organizer WHERE id = '".$_SESSION['user_id']."'");
         if(mysqli_num_rows($sql_getuser)>0){
-          while($result=mysqli_fetch_assoc($sql_getuser)){
-            echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result["firstname"].' '.$result["lastname"].'</p>';
+          while($result1=mysqli_fetch_assoc($sql_getuser)){
+            echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
             echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Event Organizer</p>';
-            echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result["address"].'</p>';
-            echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result["email"].'</p>';
+            echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result1["address"].'</p>';
+            echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result1["email"].'</p>';
           }
         }
         ?>
@@ -262,12 +262,12 @@ button {
           <?php 
 
 
-if($result!=NULL){
+
 $i=0;
 
 
 
-while($row=mysqli_fetch_assoc($result)){
+while ($row=mysqli_fetch_assoc($result)){
 
 
 //if($i%3 == 0){
@@ -336,14 +336,7 @@ $i++;
 
 ?>
 
-<?php
 
-}
-else{
-echo "No events";
-
-}
-?>
         </div>
       </div>
       <br>

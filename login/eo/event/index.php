@@ -271,6 +271,7 @@ else{
                         
 
                             <button class="btn btn--radius-2 btn--red" type="submit" >Edit Event</button>
+                            
                         </div> 
                     </form>
                 </div>
