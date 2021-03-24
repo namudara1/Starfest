@@ -20,7 +20,7 @@ $eo_id1 = $row['eo_id'];
 $sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date desc ";
 
 
-$result = mysqli_query($conn1,$sql) ;
+$result2 = mysqli_query($conn1,$sql) ;
 // $row1 = mysqli_fetch_array($result);
 
 
@@ -267,7 +267,7 @@ $i=0;
 
 
 
-while ($row=mysqli_fetch_assoc($result)){
+while ($row=mysqli_fetch_assoc($result2)){
 
 
 //if($i%3 == 0){
@@ -301,6 +301,8 @@ while ($row=mysqli_fetch_assoc($result)){
        <a href="all_events/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["category"]?>"><button type="button"> Todos</button></a> <br><br>
 
        <a href="event/index.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Event details</button></a><br><br>
+
+       <a href="event/data1.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Remove event</button></a><br><br>
 
        <!-- <a href="attendees/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Attendees</button></a> -->
 
