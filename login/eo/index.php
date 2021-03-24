@@ -21,7 +21,7 @@ $sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date desc ";
 
 
 $result2 = mysqli_query($conn1,$sql) ;
-// $row1 = mysqli_fetch_array($result2);
+// $row1 = mysqli_fetch_array($result);
 
 
 //$image1 = $row1['image'];
@@ -304,6 +304,8 @@ while ($row=mysqli_fetch_assoc($result2)){
        <a href="all_events/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["category"]?>"><button type="button"> Todos</button></a> <br><br>
 
        <a href="event/index.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Event details</button></a><br><br>
+
+       <a href="event/data1.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Remove event</button></a><br><br>
 
        <!-- <a href="attendees/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Attendees</button></a> -->
 
