@@ -79,9 +79,20 @@ button {
          <h4 class="w3-center">My Profile</h4>
          <p class="w3-center"><img src="../../img/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
          <hr>
-         <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> Name</p>
+         <?php  
+        $sql_getuser=mysqli_query($con,"SELECT * FROM event_organizer WHERE id = '".$_SESSION['user_id']."'");
+        if(mysqli_num_rows($sql_getuser)>0){
+          while($result=mysqli_fetch_assoc($sql_getuser)){
+            echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result["firstname"].' '.$result["lastname"].'</p>';
+            echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Event Organizer</p>';
+            echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result["address"].'</p>';
+            echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result["email"].'</p>';
+          }
+        }
+        ?>
+         <!-- <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> Name</p>
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Event Organizer</p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p> -->
          <!-- <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p> -->
         </div>
       </div>
@@ -98,7 +109,7 @@ button {
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div> 
-          <button onclick="myFunction('Demo3')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+          <!-- <button onclick="myFunction('Demo3')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
           <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
          <br>
@@ -121,9 +132,12 @@ button {
              <img src="../../img/snow.jpg" style="width:100%" class="w3-margin-bottom">
            </div>
          </div>
-          </div>
+          </div> -->
           <a href="../../fileupload/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-file fa-fw w3-margin-right"></i>My Files</button>
+        </a>
+        <a href="../../message/index.php" style="text-decoration: none;">
+          <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-whatsapp fa-fw w3-margin-right"></i>Messages</button>
         </a>
         </div>      
       </div>
@@ -186,7 +200,7 @@ button {
             <header class="showcase" style="background:url(../../img/restaurant-3597677_1920.jpg);">
             <h1>Browse Service Providers</h1>
                     <p>Browse for service providers under any service category</p>
-                    <a href="../../spProfile/index.php" class="btn" >Manage Service Providers</a>
+                    <a href="../../service_pro/index.php" class="btn" >Manage Service Providers</a>
             </header>
             </div>
           </div>

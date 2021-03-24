@@ -111,7 +111,7 @@
           
 
           echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Rate Events</div>';
-          $sql_getEventDetails=mysqli_query($con,"SELECT event_name,date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+          $sql_getEventDetails=mysqli_query($con,"SELECT event_name,date,event_id FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
           $flag2 = 0;
           while ($row = $sql_getEventDetails->fetch_assoc())
           {
@@ -119,7 +119,7 @@
             foreach($row as $value){
               if($todate > $value){
                 $flag2 =1;
-                echo '<a class="w3-bar-item w3-button" href="../../rating/index.php">Rate event '.$row["event_name"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+                echo '<a class="w3-bar-item w3-button" href="../../rating/index.php?id='.$row["event_id"].'">Rate event '.$row["event_name"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
               }
             }
           }
