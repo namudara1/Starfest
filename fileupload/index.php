@@ -63,7 +63,7 @@
 							<label for="choose_file">
 								<form method="post" action="upload_action.php" enctype='multipart/form-data'>
 									<input type="file" name='file' class="submit subButton" id="subButton<?php echo $currentSession; ?>"/>
-									<input type="hidden" name="ruserid" value="<?php echo $newSession; ?>"/>
+									<!-- <input type="hidden" name="ruserid" value="<?php //echo $newSession; ?>"/> -->
 									<span>File Description/Purpose</span>
 									<select id="filepurpose" name="filedesc">
 										<option value="Invoice">Invoice</option>
