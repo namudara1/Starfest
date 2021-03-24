@@ -55,6 +55,14 @@ return;
 
 </script> -->
 
+<script type="text/javascript">
+function toggle(obj) {
+          var obj=document.getElementById(obj);
+          if (obj.style.display == "block") obj.style.display = "none";
+          else obj.style.display = "block";
+}
+</script>
+
 </head>
 
 <body>
@@ -158,13 +166,18 @@ return;
                         </div>
                        
                         <div class="form-row">
-                        
-                            <div class="name">Service provider</div>
+                            <a href="javascript: void(0);" onClick="toggle('q1')">
+                            <div class="name">Service provider</div></a>
                             <div class="value">
                                 <div class="input-group">
                                     <input type="radio"  name="role" value="serviceprovider">
                                 </div>
                             </div>
+                                <div id="q1" style="display:none;">
+                                TEXT WHAT U WILL SEE WHEN CLICKED HERE
+                                </div>
+
+
 </div>
           
                         <button class="btn btn--radius-2 btn--red" type="submit" >Signup</button>

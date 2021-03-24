@@ -8,9 +8,7 @@ $telno = filter_input(INPUT_POST, 'telno');
 $password = filter_input(INPUT_POST, 'password');
 $role = filter_input(INPUT_POST, 'role');
 
-if($emailcount==0){
-if (!empty($firstname)){
-if (!empty($password)){
+
 $host = "localhost";
 $dbusername = "root";
 $dbpassword = "";
@@ -21,6 +19,10 @@ $conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
 $data = mysqli_query($conn,"SELECT COUNT(`email`) AS num FROM `user` where email='$email'");
 $row = mysqli_fetch_assoc($data);
 $emailcount = $row['num'];
+
+if($emailcount==0){
+if (!empty($firstname)){
+if (!empty($password)){
 
 
 if (mysqli_connect_error()){
@@ -75,6 +77,7 @@ VALUES ('$firstname','$lastname','$address','$email','$telno','$password','$role
                     if ($conn->query($sql1)){
                        // echo "New record is inserted sucessfully";
                     
+
                         header('location:../../login/index.php'); 
                         }
                         else{
@@ -196,8 +199,15 @@ elseif($role=='eventparticipant'){
                     if ($conn->query($sql1)){
                        // echo "New record is inserted sucessfully";
                     
+                    if($role=='serviceprovider'){
+                        header('location:sp_company.php'); 
+
+                    }
+                    else{
+
                         header('location:../../login/index.php'); 
                         }
+                    }
                         else{
                         echo "Error: ". $sql1 ."
                         ". $conn->error;

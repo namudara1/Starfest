@@ -20,8 +20,8 @@ $eo_id1 = $row['eo_id'];
 $sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date desc ";
 
 
-$result = mysqli_query($conn1,$sql) ;
-//$row1 = mysqli_fetch_array($result);
+$result2 = mysqli_query($conn1,$sql) ;
+// $row1 = mysqli_fetch_array($result);
 
 
 //$image1 = $row1['image'];
@@ -82,11 +82,11 @@ button {
          <?php  
         $sql_getuser=mysqli_query($con,"SELECT * FROM event_organizer WHERE id = '".$_SESSION['user_id']."'");
         if(mysqli_num_rows($sql_getuser)>0){
-          while($result=mysqli_fetch_assoc($sql_getuser)){
-            echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result["firstname"].' '.$result["lastname"].'</p>';
+          while($result1=mysqli_fetch_assoc($sql_getuser)){
+            echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
             echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Event Organizer</p>';
-            echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result["address"].'</p>';
-            echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result["email"].'</p>';
+            echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result1["address"].'</p>';
+            echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result1["email"].'</p>';
           }
         }
         ?>
@@ -105,10 +105,10 @@ button {
           <div id="Demo1" class="w3-hide w3-container">
             <p>Some text..</p>
           </div>-->
-          <button onclick="myFunction('Demo2')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+          <!-- <button onclick="myFunction('Demo2')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
-          </div> 
+          </div>  -->
           <!-- <button onclick="myFunction('Demo3')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
           <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
@@ -138,6 +138,9 @@ button {
         </a>
         <a href="../../message/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-whatsapp fa-fw w3-margin-right"></i>Messages</button>
+        </a>
+        <a href="../../fileupload/index.php" style="text-decoration: none;">
+          <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Reports</button>
         </a>
         </div>      
       </div>
@@ -262,12 +265,12 @@ button {
           <?php 
 
 
-if($result!=NULL){
+
 $i=0;
 
 
 
-while($row=mysqli_fetch_assoc($result)){
+while ($row=mysqli_fetch_assoc($result2)){
 
 
 //if($i%3 == 0){
@@ -301,6 +304,8 @@ while($row=mysqli_fetch_assoc($result)){
        <a href="all_events/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["category"]?>"><button type="button"> Todos</button></a> <br><br>
 
        <a href="event/index.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Event details</button></a><br><br>
+
+       <a href="event/data1.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Remove event</button></a><br><br>
 
        <!-- <a href="attendees/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Attendees</button></a> -->
 
@@ -336,14 +341,7 @@ $i++;
 
 ?>
 
-<?php
 
-}
-else{
-echo "No events";
-
-}
-?>
         </div>
       </div>
       <br>
@@ -369,7 +367,7 @@ echo "No events";
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding"> -->
           
-            <header class="showcase">
+            <!-- <header class="showcase">
 
             <?php echo $row["event_name"]; ?>
 
@@ -377,7 +375,7 @@ echo "No events";
          
             
         
-            </header>
+            </header> -->
             </div>
           </div>
         </div>
@@ -397,8 +395,6 @@ echo "No events";
 <!-- End Page Container -->
 </div>
 <br>
-
-  -->
 <script>
 // Accordion
 function myFunction(id) {
