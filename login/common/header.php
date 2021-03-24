@@ -9,6 +9,26 @@
   if(mysqli_num_rows($sql_get)>0)
     $not_count++;
   $doccount=mysqli_num_rows($sql_get);
+  $sql_get=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+  while ($row = $sql_get->fetch_assoc())
+  {
+    $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
+    $todate = date('Y-m-d');
+    $today_time = strtotime($todate);
+    if(($today_time > $oneweekbefore) && $today_time < strtotime($row["date"])){
+      $not_count++;
+    }
+  }
+  $sql_get=mysqli_query($con,"SELECT event_name,date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+  while ($row = $sql_get->fetch_assoc())
+  {
+    $todate = date('Y-m-d');
+    foreach($row as $value){
+      if($todate > $value){
+        $not_count++;
+      }
+    }
+  }
   $count=$msgcount+$doccount;
 ?>
 <div class="w3-top">
@@ -32,24 +52,26 @@
     <a href="../../message/index.php">
     <button class="w3-button w3-padding-large" title="Messages"><i class="fa fa-envelope"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $msgcount; ?></span></button>
     </a>
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:180px">
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:220px">
     <?php
-          $sql_getmsg=mysqli_query($con,"SELECT count(sender_userid),sender_userid FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
+          $sql_getmsg=mysqli_query($con,"SELECT COUNT(sender_userid) as sender,sender_userid FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."' GROUP BY sender_userid");
           if(mysqli_num_rows($sql_getmsg)>0){
             while($result=mysqli_fetch_assoc($sql_getmsg)){
               // href="../message/index.php?id='.$result['id'].'"
-              echo '<a class="w3-bar-item w3-button" href="../../message/index.php">'.$result['count(sender_userid)'].' new messages from '.$result['sender_userid'].'</a>';
+              $sql_getmsgsender=mysqli_query($con,"SELECT email FROM user WHERE id = '".$result['sender_userid']."'");
+              $senderResult=mysqli_fetch_assoc($sql_getmsgsender);
+              echo '<a class="w3-bar-item w3-button" href="../../message/index.php">'.$result['sender'].' new messages from '.$senderResult['email'].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
             }
           }
           else{
-            echo '<a class="w3-bar-item w3-button" href="#">No new messages!</a>';
+            echo '<a class="w3-bar-item w3-button" href="#">No new messages!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
           }
       ?>
     </div>
   </div>
   <div class="w3-dropdown-hover w3-hide-small w3-right">
     <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>     
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px;height:500px;overflow:auto;">
     <?php
           echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Messages</div>';
           $sql_getmsg=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
@@ -78,7 +100,8 @@
           {
             $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
             $todate = date('Y-m-d');
-            if($todate == $oneweekbefore){
+            $today_time = strtotime($todate);
+            if(($today_time > $oneweekbefore) && $today_time < strtotime($row["date"])){
               $flag1 = 1;
               echo '<a class="w3-bar-item w3-button" href="#">You have an upcoming event on '.$row["date"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
             }

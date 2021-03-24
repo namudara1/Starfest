@@ -68,7 +68,7 @@
           {
             $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
             $todate = date('Y-m-d');
-            if($todate == $oneweekbefore)
+            if($todate > $oneweekbefore && $todate < strtotime($row["date"]))
               echo '<a class="w3-bar-item w3-button" href="#">You have an upcoming event on'.$row["date"].'</a>';
           }
           while ($row = $sql_getEventDate->fetch_assoc())
