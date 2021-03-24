@@ -1,4 +1,5 @@
 <?php
+ session_start();
  include_once "../../config/connection.php";
  $not_count = 0;
 ?>
@@ -29,9 +30,20 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <h4 class="w3-center">My Profile</h4>
          <p class="w3-center"><img src="../../img/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
          <hr>
-         <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> Name</p>
+         <?php  
+          $sql_getuser=mysqli_query($con,"SELECT * FROM event_participant WHERE id = '".$_SESSION['user_id']."'");
+          if(mysqli_num_rows($sql_getuser)>0){
+            while($result1=mysqli_fetch_assoc($sql_getuser)){
+              echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
+              echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Event Participant</p>';
+              echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result1["address"].'</p>';
+              echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result1["email"].'</p>';
+            }
+          }
+          ?>
+         <!-- <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> Name</p>
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Event Organizer</p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p> -->
          <!-- <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p> -->
         </div>
       </div>
@@ -40,7 +52,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <!-- Accordion -->
       <div class="w3-card w3-round">
         <div class="w3-white">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> To-do list</button>
+          <!-- <button onclick="myFunction('Demo1')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> To-do list</button>
           <div id="Demo1" class="w3-hide w3-container">
             <p>Some text..</p>
           </div>
@@ -74,7 +86,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           </div>
           <a href="../../fileupload/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-file fa-fw w3-margin-right"></i>My Files</button>
-        </a>
+        </a> -->
         </div>      
       </div>
       <br>
@@ -120,9 +132,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
             <header class="showcase">
-            <h1>Organize Your Event</h1>
-                    <p>Simply manage your all events</p>
-                    <a href="../create_event/index.php" class="btn" >Manage Events</a>
+            <h1>Find amazing Events</h1>
+                    <p>Simply search and register for any events</p>
+                    <a href="../create_event/index.php" class="btn" >Serach Events</a>
             </header>
             </div>
           </div>

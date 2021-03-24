@@ -20,8 +20,8 @@ $eo_id1 = $row['eo_id'];
 $sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date desc ";
 
 
-$result = mysqli_query($conn1,$sql) ;
-// $row1 = mysqli_fetch_array($result);
+$result2 = mysqli_query($conn1,$sql) ;
+// $row1 = mysqli_fetch_array($result2);
 
 
 //$image1 = $row1['image'];
@@ -105,10 +105,10 @@ button {
           <div id="Demo1" class="w3-hide w3-container">
             <p>Some text..</p>
           </div>-->
-          <button onclick="myFunction('Demo2')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+          <!-- <button onclick="myFunction('Demo2')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
-          </div> 
+          </div>  -->
           <!-- <button onclick="myFunction('Demo3')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
           <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
@@ -138,6 +138,9 @@ button {
         </a>
         <a href="../../message/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-whatsapp fa-fw w3-margin-right"></i>Messages</button>
+        </a>
+        <a href="../../fileupload/index.php" style="text-decoration: none;">
+          <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Reports</button>
         </a>
         </div>      
       </div>
@@ -267,7 +270,7 @@ $i=0;
 
 
 
-while ($row=mysqli_fetch_assoc($result)){
+while ($row=mysqli_fetch_assoc($result2)){
 
 
 //if($i%3 == 0){
@@ -362,7 +365,7 @@ $i++;
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding"> -->
           
-            <header class="showcase">
+            <!-- <header class="showcase">
 
             <?php echo $row["event_name"]; ?>
 
@@ -370,7 +373,7 @@ $i++;
          
             
         
-            </header>
+            </header> -->
             </div>
           </div>
         </div>
@@ -390,8 +393,6 @@ $i++;
 <!-- End Page Container -->
 </div>
 <br>
-
-  -->
 <script>
 // Accordion
 function myFunction(id) {
