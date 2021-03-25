@@ -14,6 +14,7 @@ $description = filter_input(INPUT_POST, 'description');
 $eo_id = filter_input(INPUT_POST, 'eo_id');
 $question = filter_input(INPUT_POST, 'qselection');
 $profileImage =$_FILES['pro']['name'];
+$free = filter_input(INPUT_POST, 'free');
 
 // echo "<pre>", print_r($_FILES),"</pre>";
 // echo "<pre>", print_r($_FILES['pro']),"</pre>";
@@ -52,8 +53,8 @@ $eo_idd = $row['eo_id'];
 
 // echo $eo_idd;
 
-$sql = "INSERT INTO event (event_name,category,type,date,time,participant_amt,description, venue,image,question, eo_id)
-values ('$event_name','$category','$type','$date','$time','$participant_amt','$description','$venue','$profileImage','$question','$eo_idd')";
+$sql = "INSERT INTO event (event_name,category,type,date,time,participant_amt,description, venue,image,eo_id,free)
+values ('$event_name','$category','$type','$date','$time','$participant_amt','$description','$venue','$profileImage','$eo_idd','$free')";
 
 
 

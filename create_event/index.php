@@ -75,6 +75,12 @@ return;
 #noCheck:checked ~ #ifNo {display: block;}
 </style>
 
+<!-- <style>
+ #no { display: none;}
+/* #yes1:checked ~ #yes {display: block;}  */
+#no1:checked ~ #no {display: block;}
+</style> -->
+
 <script type="text/javascript">
 function toggle(obj) {
           var obj=document.getElementById(obj);
@@ -222,11 +228,22 @@ function toggle(obj) {
 
 
                                 <!-- <a href="index2.php?data1=<?php echo $currentId?>> Add ticket prices</a> --> 
+
+                                <p> Is this event Free of charge?</p>
+                                <input type="radio" id="yes" name="free" value="yes">
+                                <label for="yes">Yes</label><br>
+                                <input type="radio" id="no" name="free" value="no">
+                                <label for="no">No</label><br>
+
                                  
                                 <label class="label label--block">
                                  
                                  <a href="index2.php?data1=<?php echo $currentId?>"> Add ticket prices</a>
                                  </label>
+
+                                
+
+
                             
                               
 </div>
