@@ -10,6 +10,7 @@ $address = filter_input(INPUT_POST, 'address');
 $email = filter_input(INPUT_POST, 'email');
 $telno = filter_input(INPUT_POST, 'telno');
 $password = filter_input(INPUT_POST, 'password');
+$cpassword = filter_input(INPUT_POST, 'cpassword');
 $role = filter_input(INPUT_POST, 'role');
 
 
@@ -32,7 +33,10 @@ if($emailcount==0){
 if (!empty($firstname)){
 if (!empty($password)){
 
-
+    if($password!=$cpassword){
+        echo "<script>alert('Yor both passwords are not same!!!!')</script>";
+    }
+    else{
 if (mysqli_connect_error()){
 die('Connect Error ('. mysqli_connect_errno() .') '
 . mysqli_connect_error());
@@ -227,6 +231,7 @@ elseif($role=='eventparticipant'){
         // VALUES ('$firstname','$lastname','$address','$email','$telno','$password')";}
 
     }
+}
 // if ($conn->query($sql)){
 // echo "New record is inserted sucessfully";
 // }

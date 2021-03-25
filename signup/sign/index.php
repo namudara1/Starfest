@@ -80,7 +80,7 @@ function toggle(obj) {
                             <div class="name">First Name</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="firstname">
+                                    <input class="input--style-5" type="text" name="firstname" required>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@ function toggle(obj) {
                             <div class="name">Last Name</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="lastname">
+                                    <input class="input--style-5" type="text" name="lastname" required>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@ function toggle(obj) {
                             <div class="name">Address</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="address">
+                                    <input class="input--style-5" type="text" name="address" required>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@ function toggle(obj) {
                             <div class="name">Email</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="email">
+                                    <input class="input--style-5" type="text" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"   required>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@ function toggle(obj) {
                             <div class="name">Tel No</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="telno">
+                                    <input class="input--style-5" type="text" name="telno" pattern="[0-9]{10}"required>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@ function toggle(obj) {
                             <div class="name">Password</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="password">
+                                    <input class="input--style-5" type="password" name="password" required>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@ function toggle(obj) {
                             <div class="name">Confirm Password</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="password">
+                                    <input class="input--style-5" type="password" name="cpassword" required>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@ function toggle(obj) {
 
                             <div class="value">
                                 <div class="input-group">
-                                    <input type="radio"  name="role" value="eventorganizer"> 
+                                    <input type="radio"  name="role" value="eventorganizer" > 
                                 </div>
                             </div>
                             
@@ -159,7 +159,7 @@ function toggle(obj) {
                             <div class="name">Event participant</div>
                             <div class="value"> 
                                 <div class="input-group">
-                                    <input type="radio"  name="role" value="eventparticipant">
+                                    <input type="radio"  name="role" value="eventparticipant" >
                                 </div>
                             </div>
                             
@@ -170,7 +170,7 @@ function toggle(obj) {
                             <div class="name">Service provider</div></a>
                             <div class="value">
                                 <div class="input-group">
-                                    <input type="radio"  name="role" value="serviceprovider">
+                                    <input type="radio"  name="role" value="serviceprovider" >
                                 </div>
                             </div>
                                 <div id="q1" style="display:none;">
