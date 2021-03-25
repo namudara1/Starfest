@@ -85,7 +85,7 @@ window.history.back();
 
               <input type="text" 
                      name="ticket_price" 
-                     placeholder="Ticket prices?" />
+                     placeholder="Ticket/ Entrance Fee prices?" />
 
                      <input type="text" 
                      name="quantity" 
@@ -104,7 +104,7 @@ window.history.back();
 
               <input type="text" 
                      name="ticket_price" 
-                     placeholder="Ticket prices?" />
+                     placeholder="Ticket/ Entrance Fee prices?" />
 
                      <input type="text" 
                      name="quantity" 

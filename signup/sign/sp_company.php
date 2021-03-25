@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Starfest Signup Form</title>
+    <title>Starfest Service Providers</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -84,35 +84,27 @@ function CheckColors(val){
                     <h2 class="title">Service Details</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="service_db.php">
+                    <form method="POST" action="company_db.php">
                     
                     <select name="category" onchange='CheckColors(this.value);'> 
                     <option>Service Category</option>  
-                    <option value="gold">Gold</option>
-                    <option value="silver">Silver</option>
+                    <option value="catering">Catering</option>
+                    <option value="band">Band</option>
                     <option value="others">others</option>
                 </select>
-                <input type="text" name="category1" id="category1" style='display:none;'/>
+                <input class="input--style-5" type="text" name="category1" id="category1" style='display:none;'/> <br>
 
 
                         <div class="form-row">
                             <div class="name">Company Name</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="companyname">
+                                    <input class="input--style-5" type="text" name="company_name">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="name">Registration date</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="registrationdate">
-                                </div>
-                            </div>
-                        </div>
-
+                        
                     
                         <button class="btn btn--radius-2 btn--red" type="submit" >Finish</button>
                         </div> 

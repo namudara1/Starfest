@@ -1,5 +1,9 @@
 <?php
 
+
+session_start();
+
+
 $firstname = filter_input(INPUT_POST, 'firstname');
 $lastname = filter_input(INPUT_POST, 'lastname');
 $address = filter_input(INPUT_POST, 'address');
@@ -19,6 +23,10 @@ $conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
 $data = mysqli_query($conn,"SELECT COUNT(`email`) AS num FROM `user` where email='$email'");
 $row = mysqli_fetch_assoc($data);
 $emailcount = $row['num'];
+
+
+$_SESSION['email'] = $email;
+
 
 if($emailcount==0){
 if (!empty($firstname)){
@@ -190,8 +198,8 @@ elseif($role=='eventparticipant'){
                     $row = mysqli_fetch_assoc($result);
                     //echo $row['eo_id'];
                    
-                    $sql1 = "INSERT INTO service_provider (id,firstname, lastname, address, email, telno, password)
-            values ('$row[id]','$firstname','$lastname','$address','$email','$telno','$password')";
+                    $sql1 = "INSERT INTO service_provider (id,firstname, lastname, address, email, telno, password,category)
+            values ('$row[id]','$firstname','$lastname','$address','$email','$telno','$password','other')";
             
             echo "<script>alert('Login Credentials verified')</script>";
             
