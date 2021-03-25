@@ -90,16 +90,19 @@ if($i%3 == 0){
         $spId = $row["sp_id"];
         $_SESSION['spid'] = $spId;
 
+        $userid=$row["id"];
+        $_SESSION['userid'] = $userid;
+
        
        
         
         ?>
 
-        <form action="../spProfile/index.php">
+        <!-- <form action="../spProfile/index.php"> -->
 
-        <button  type="submit">Contact Service Provider</button>
+        <a href="../spProfile/index.php?data1=<?php echo $row["sp_id"]?> & data2=<?php echo $row["id"]?>"><button  type="submit" >Contact Service Provider</button> </a>
 
-        </form>
+        <!-- </form> -->
 
       
       </ul>

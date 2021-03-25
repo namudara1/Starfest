@@ -6,10 +6,17 @@
  session_start();
  $not_count = 0;
 
- $spid = $_SESSION['spid'];
+//  $spid = $_SESSION['spid'];
 
- echo '$spid';
+//  echo '$spid';
 
+//  $userid = $_SESSION['userid'];
+
+//  echo '$userid';
+
+
+ $sp_id = $_GET['data1'];
+ $user_id = $_GET['data2'];
  
 
 ?>
@@ -46,7 +53,7 @@
 <?php
 
 
-$sql1 = "SELECT * FROM service_provider where sp_id='$spid' ";
+$sql1 = "SELECT * FROM service_provider where sp_id='$sp_id' ";
 
 $result1 = mysqli_query($conn1,$sql1) ;
 $row1 = mysqli_fetch_array($result1);
