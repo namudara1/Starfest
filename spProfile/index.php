@@ -29,9 +29,16 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../dashboard/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <script>
+        $(document).ready(function(){
+            $('#MyButton').click(function(){
+            CapacityChart();
+            });
+        });
+    </script>
 </head>
 <body>
-    
+<?php include('../common/header.php'); ?>
     <div class="container">
         <div class="profile-header">
             <div class="profile-img">
@@ -69,17 +76,17 @@ $row1 = mysqli_fetch_array($result1);
 
  
                     <div class="profile-btn">
-                        
+                    <!-- <form method="post" action="action.php" enctype='multipart/form-data'> -->
                          <button class="chatbtn">
-                         <a href="../message/index.php" style="text-decoration: none;">
+                         <a href="action.php" style="text-decoration: none;">
                              <i class="fa fa-comment"></i>Chat
                              </a>
                          </button>
+                         <!-- <input class="chatbtn" type='submit' value='Chat' name='but_chat'/> -->
                          <button class="createbtn">
                              <i class="fa fa-plus"></i>Request 
-
-                            
                          </button>
+						<!-- </form> -->
                     </div>
                     <div class="user-rating">
                         <h3 class="rating">4.5</h3>

@@ -54,7 +54,7 @@
   <?php
   if($usertype["type"] == "eo" || $usertype["type"] == "sp"){
     echo '<a href="../../message/index.php">
-    <button class="w3-button w3-padding-large" title="Messages"><i class="fa fa-envelope"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $msgcount; ?></span></button>
+    <button class="w3-button w3-padding-large" title="Messages"><i class="fa fa-envelope"></i><span class="w3-badge w3-right w3-small w3-green">'.$msgcount.'</span></button>
     </a>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:220px">';
           $sql_getmsg=mysqli_query($con,"SELECT COUNT(sender_userid) as sender,sender_userid FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."' GROUP BY sender_userid");
