@@ -2,71 +2,19 @@
   session_start();
  include_once "../../config/connection.php";
  $not_count = 0;
-
-
-//session_start();
-
-require_once 'publicevent_db.php';
-// Connect to MySQL
-
-// $sql = "SELECT * FROM event ORDER BY date DESC";
-$id=$_SESSION['user_id'];
-$pe="Select sp_id from service_provider where id='$id'";
-$data3 = mysqli_query($conn1,"Select sp_id from service_provider where id='$id'");
-$row = mysqli_fetch_assoc($data3);
-$sp_id1 = $row['sp_id'];
-
-
-$sql = "SELECT * FROM service where sp_id=$sp_id1 ORDER BY date desc ";
-
-
-$result = mysqli_query($conn1,$sql) ;
-//$row1 = mysqli_fetch_array($result);
-
-
-//$image1 = $row1['image'];
- //$image_src = "../create_event/upload/".$image1;
-
-
-
-
-
-
 ?>
-
-?>
-
-
-
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/style.css">
-
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-
-button {
-  background-color: grey; /* Green */
-  border: none;
-  color: white;
-  padding: 5px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-
-
-
-
 </style>
 <body class="w3-theme-l5">
-<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']) { ?> 
 
 <?php include('../common/header.php'); ?>
 
@@ -83,16 +31,16 @@ button {
          <p class="w3-center"><img src="../../img/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
          <hr>
          <?php  
-        $sql_getuser=mysqli_query($con,"SELECT * FROM service_provider WHERE id = '".$_SESSION['user_id']."'");
-        if(mysqli_num_rows($sql_getuser)>0){
-          while($result=mysqli_fetch_assoc($sql_getuser)){
-            echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result["firstname"].' '.$result["lastname"].'</p>';
-            echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Service provider</p>';
-            echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result["address"].'</p>';
-            echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result["email"].'</p>';
+          $sql_getuser=mysqli_query($con,"SELECT * FROM service_provider WHERE id = '".$_SESSION['user_id']."'");
+          if(mysqli_num_rows($sql_getuser)>0){
+            while($result1=mysqli_fetch_assoc($sql_getuser)){
+              echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
+              echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Event Participant</p>';
+              echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result1["address"].'</p>';
+              echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result1["email"].'</p>';
+            }
           }
-        }
-        ?>
+          ?>
          <!-- <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> Name</p>
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Event Organizer</p>
          <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p> -->
@@ -107,12 +55,12 @@ button {
           <!-- <button onclick="myFunction('Demo1')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> To-do list</button>
           <div id="Demo1" class="w3-hide w3-container">
             <p>Some text..</p>
-          </div>-->
-          <button onclick="myFunction('Demo2')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Services</button>
+          </div>
+          <button onclick="myFunction('Demo2')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
-          </div> 
-           <button onclick="myFunction('Demo3')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+          </div> -->
+          <button onclick="myFunction('Demo3')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
           <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
          <br>
@@ -135,12 +83,15 @@ button {
              <img src="../../img/snow.jpg" style="width:100%" class="w3-margin-bottom">
            </div>
          </div>
-          </div> 
+          </div>
           <a href="../../fileupload/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-file fa-fw w3-margin-right"></i>My Files</button>
         </a>
         <a href="../../message/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-whatsapp fa-fw w3-margin-right"></i>Messages</button>
+        </a>
+        <a href="../../fileupload/index.php" style="text-decoration: none;">
+          <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Reports</button>
         </a>
         </div>      
       </div>
@@ -186,29 +137,29 @@ button {
         <div class="w3-col m12">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
-            <header class="showcase" style="background:url(../../img/michelin_restaurants_in_rome-942.jpg);">
-            <h1>Organize Your Service</h1>
-                    <p>Simply learn how to create and manage your service with us</p>
-                    <a href="../../create_service/index.php" class="btn" >Create Service</a>
+            <header class="showcase">
+            <h1>Manage Events</h1>
+                    <p>Simply manage events that are connected</p>
+                    <a href="../create_event/index.php" class="btn" >Events Connected</a>
             </header>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="w3-row-padding">
+      <!-- <div class="w3-row-padding">
         <div class="w3-col m12">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
             <header class="showcase" style="background:url(../../img/restaurant-3597677_1920.jpg);">
-            <h1>Browse Event organizer</h1>
-                    <p>Browse for event organizer under any event category</p>
-                    <a href="../../event_org/index.php" class="btn" >Manage event organizer</a>
+            <h1>Browse Service Providers</h1>
+                    <p>Simply learn how to create and manage your event with us</p>
+                    <a href="#" class="btn" >Manage Service Providers</a>
             </header>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       
        <!-- <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
         <img src="img/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -256,183 +207,21 @@ button {
     <!-- Right Column -->
     <div class="w3-col m2">
       <div class="w3-card w3-round w3-white w3-center">
-      <div class="w3-container">
-      <p>My other create part:</p>
-          
-          <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
-     <br><br><br>
-      <a href="../../create_service_offer/index.php"><button type="button">Create Service offer</button></a> <br><br>
-      <p>Deatils:</p>
-          
-          <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
-     <br><br><br>
-      <a href="v"><button type="button"> Service payment </button></a> <br><br>
-      <a href="../../service_pro/index.php"><button type="button"> All Service providers</button></a> <br><br>
-
-          <?php 
-
-
-if($result!=NULL){
-$i=0;
-
-
-
-while($row=mysqli_fetch_assoc($result)){
-
-
-//if($i%3 == 0){
-
-// echo "<li class=\"one_third first\">";
-//echo"<li class=\"one_third \">";
-
-//}
-?> 
-
-<li class="one_third">
-   <figure>
-     <figcaption>
-       
-       
-
-
-
-       <!-- <button onclick="myFunction('Demo1')"  name="subject" type="submit" value="<?php echo $row["event_name"]; ?>" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> To-do list</button> -->
-       <!-- <button onclick="myFunction('Demo1')"  name="subject" type="submit" value="fav_HTML">HTML</button> -->
-
-       <?php
-       
-        // $message1 = $row["event_id"];;
-        // $_SESSION['firstMessage'] = $message1;
-       
-       
-      //  $event=$row["event_id"];?>
-
-
-       
-
-       <?php 
-       
-      //  $events= array();
-
-
-      //  $p=0;
-      
-      //  $events[$p]=$event;
-      //  $p=$p+1;
-
-       
-       ?>
-     
-      
-     </figcaption>
-   </figure>
- </li>
- 
-
- <?php
-
-
-if($i%3 == 3){
-
-
-}
-$i++;
-}
-
-?>
-
-<?php
-
-}
-else{
-
-
-}
-?>
-        </div>
-      </div>
-      <br>
-      
-
-     
-</div>
-      <!-- Accordion -->
-
-      
-    
-    
-    <!-- Middle Column -->
-    <!-- <a name="middle"></a>   -->
-    <!-- <div id="Demo1" class="w3-col m8">
-    
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding"> -->
-          
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-     
-      
-    <!-- End Middle Column -->
-    </div>
-    
-   
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-<!-- End Page Container -->
-</div>
-<br>
-
-  -->
-<script>
-// Accordion
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-theme-d1";
-  } else { 
-    x.className = x.className.replace("w3-show", "");
-    x.previousElementSibling.className = 
-    x.previousElementSibling.className.replace(" w3-theme-d1", "");
-  }
-}
-
-// Used to toggle the menu on smaller screens when clicking on the menu button
-function openNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <br>
-      
-      <!-- <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <p>Friend Request</p>
+          <p>Upcoming Events:</p>
+          <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
+          <p><strong>Wedding</strong></p>
+          <p>Friday 15:00</p>
+          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+        </div>
+      </div>
+      <br>
+      
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Event Request</p>
           <img src="../../img/avatar6.png" alt="Avatar" style="width:50%"><br>
-          <span>Jane Doe</span>
+          <span>John's Birthday Party</span>
           <div class="w3-row w3-opacity">
             <div class="w3-half">
               <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
@@ -443,14 +232,14 @@ function openNav() {
           </div>
         </div>
       </div>
-      <br> -->
+      <br>
       
       <!-- <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
         <p>ADS</p>
       </div>
-      <br> -->
+      <br>
       
-      <!-- <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
+      <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
         <p><i class="fa fa-bug w3-xxlarge"></i></p>
       </div> -->
       
@@ -497,6 +286,6 @@ function openNav() {
   }
 }
 </script>
-<?php } ?>
+
 </body>
 </html> 

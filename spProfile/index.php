@@ -1,6 +1,17 @@
 <?php
  include_once "../config/connection.php";
+
+ require 'db_conn1.php';
+
+ session_start();
  $not_count = 0;
+
+ $spid = $_SESSION['spid'];
+
+ echo '$spid';
+
+ 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +24,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 </head>
 <body>
-    <?php include('../common/header.php'); ?>	
+    
     <div class="container">
         <div class="profile-header">
             <div class="profile-img">
@@ -26,27 +37,30 @@
                     <span class="country">United Kingdom</span>
                 </div>
             </div>
-            <!-- <div class="profile-option">
-                <div class="notification">
-                    <i class="fa fa-bell"></i>
-                    <span class="alert-message">1</span>
-                </div>
-            </div> -->
+         
         </div>
         <div class="main-bd">
             <div class="left-side">
                 <div class="profile-side">
-                    <p class="mobile-no"><i class="fa fa-phone"></i>+94xxx77895</p>
-                    <p class="user-mail">
-                        <i class="fa fa-envelope"></i>starfestinc@gmail.com
+
+<?php
+
+
+$sql1 = "SELECT * FROM service_provider where sp_id='$spid' ";
+
+$result1 = mysqli_query($conn1,$sql1) ;
+$row1 = mysqli_fetch_array($result1);
+
+
+
+
+?>
+                    <p >
+                        <i></i><?php echo "Service Category: ";?> <?php echo "$row1[category]";?>
                     </p>
-                    <p class="user-address">
-                    <i class="fa fa-map-marker-alt"></i>134  Victoria Road, LITTLE BEDWYN
-                    </p>
-                    <div class="user-bio">
-                        <h3>Bio</h3>
-                        <p class="bio">Leading Service Provider in country. Instant services and communiction.</p>
-                    </div>
+                    <p ><i ></i><?php echo "$row1[firstname]";?>  <?php echo "$row1[lastname]";?></p>
+
+ 
                     <div class="profile-btn">
                         
                          <button class="chatbtn">
@@ -55,7 +69,9 @@
                              </a>
                          </button>
                          <button class="createbtn">
-                             <i class="fa fa-plus"></i>Request
+                             <i class="fa fa-plus"></i>Request 
+
+                            
                          </button>
                     </div>
                     <div class="user-rating">
@@ -67,12 +83,14 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <span class="no-user"><span>123</span>&nbsp;&nbsp; reviews
+                            <span class="no-user"><span>123</span>&nbsp;&nbsp; reviews     
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
+
+
             <div class="right-side">
                 <div class="nav">
                     <ul>

@@ -81,9 +81,26 @@ if($i%3 == 0){
        <h3 class="logoname"> <img src="1.png"> <b> <?php echo $row["firstname"]; ?>         <b><?php echo $row["lastname"]; ?></b></h3>
       
         </li>
-        <li class="w3-padding-16"><p>Address - <?php echo $row["address"]; ?></p></li>
+        <li class="w3-padding-16"><p>Service - <?php echo $row["category"]; ?></p></li>
         <li class="w3-padding-16"><p>Email - <?php echo $row["email"]; ?></p></li>
         <li class="w3-padding-16"><p>Telephone Number - <?php echo $row["telno"]; ?></p></li>
+
+        <?php 
+        
+        $spId = $row["sp_id"];
+        $_SESSION['spid'] = $spId;
+
+       
+       
+        
+        ?>
+
+        <form action="../spProfile/index.php">
+
+        <button  type="submit">Contact Service Provider</button>
+
+        </form>
+
       
       </ul>
     </div>
