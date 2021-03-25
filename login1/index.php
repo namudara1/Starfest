@@ -14,7 +14,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Log in</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -59,6 +59,16 @@ return;
 
 </script> -->
 
+<script>
+
+function goBack(){
+
+window.history.back();
+
+}
+
+</script>
+
 </head>
 <body>
 <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
@@ -99,7 +109,7 @@ return;
                             <a href=../login/index.php>Log in as Service Provider   </a> 
                             <a href=../login/index.php>Log in as Event Participant</a>
                 <p>
-                    <button class="btn btn--radius-2 btn--red" type="button" name="back" >Back</button>
+                    <button class="btn btn--radius-2 btn--red" type="button" name="back" onclick="goBack()" >Back</button>
                     <button class="btn btn--radius-2 btn--red" type="submit" name="submit" >Login</button>
                     
                     

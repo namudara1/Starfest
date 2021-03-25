@@ -25,7 +25,7 @@ $currentId=$preid+1;
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Create Event Form</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -92,7 +92,7 @@ function toggle(obj) {
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Form</h2>
+                    <h2 class="title">Create Event</h2>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="data.php" enctype="multipart/form-data">

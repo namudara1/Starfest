@@ -58,8 +58,5 @@ $conn->close();
 // die();
 // }
 }
-else{
-echo "Username should not be empty";
-die();
-}
+
 ?>
