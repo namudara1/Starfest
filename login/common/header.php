@@ -1,37 +1,44 @@
 <!-- Navbar -->
 <?php
-  $not_count=0;
-  $sql_get=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
-  if(mysqli_num_rows($sql_get)>0)
-    $not_count++;
-  $msgcount=mysqli_num_rows($sql_get);
-  $sql_get=mysqli_query($con,"SELECT * FROM document WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
-  if(mysqli_num_rows($sql_get)>0)
-    $not_count++;
-  $doccount=mysqli_num_rows($sql_get);
-  $sql_get=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
-  while ($row = $sql_get->fetch_assoc())
-  {
-    $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
-    $todate = date('Y-m-d');
-    $today_time = strtotime($todate);
-    if(($today_time > $oneweekbefore) && $today_time < strtotime($row["date"])){
-      $not_count++;
-    }
-  }
-  $sql_get=mysqli_query($con,"SELECT event_name,date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
-  while ($row = $sql_get->fetch_assoc())
-  {
-    $todate = date('Y-m-d');
-    foreach($row as $value){
-      if($todate > $value){
-        $not_count++;
-      }
-    }
-  }
-  $count=$msgcount+$doccount;
-  $sql_getusertype = mysqli_query($con,"SELECT type FROM user WHERE id = '".$_SESSION['user_id']."' ");
-  $usertype=mysqli_fetch_assoc($sql_getusertype);
+   $not_count=0;
+   $sql_getusertype = mysqli_query($con,"SELECT type FROM user WHERE id = '".$_SESSION['user_id']."' ");
+   $usertype=mysqli_fetch_assoc($sql_getusertype);
+   if($usertype["type"] == "sp"  || $usertype["type"] == "eo"){
+   $sql_get=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
+   if(mysqli_num_rows($sql_get)>0)
+     $not_count++;
+   $msgcount=mysqli_num_rows($sql_get);
+   $sql_get=mysqli_query($con,"SELECT * FROM document WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
+   if(mysqli_num_rows($sql_get)>0)
+     $not_count++;
+   $doccount=mysqli_num_rows($sql_get);
+   }
+   if($usertype["type"] == "eo"){
+   $sql_get=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+   while ($row = $sql_get->fetch_assoc())
+   {
+     $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
+     $todate = date('Y-m-d');
+     $today_time = strtotime($todate);
+     if(($today_time > $oneweekbefore) && $today_time < strtotime($row["date"])){
+       $not_count++;
+     }
+   }
+ }
+ // if($usertype["type"] == "ep"){
+ //   $sql_get=mysqli_query($con,"SELECT event_name,date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+ //   while ($row = $sql_get->fetch_assoc())
+ //   {
+ //     $todate = date('Y-m-d');
+ //     foreach($row as $value){
+ //       if($todate > $value){
+ //         $not_count++;
+ //       }
+ //     }
+ //   }
+ //   $count=$msgcount+$doccount;
+ // }
+   
 ?>
 <div class="w3-top">
  <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
