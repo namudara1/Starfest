@@ -3,12 +3,10 @@
     session_start();
     $sql_getusertype = mysqli_query($con,"SELECT type FROM user WHERE id = '".$_SESSION['user_id']."' ");
     $usertype=mysqli_fetch_assoc($sql_getusertype);
-    // $tablename = "";
-    // if($usertype['type'] == "eo")
-    //     $tablename = "event_organizer";
-    // else if($usertype['type'] == "sp")
     $sql_getusername = mysqli_query($con,"SELECT firstname from event_organizer where id = '".$_SESSION['user_id']."' ");
     $getname = mysqli_fetch_assoc($sql_getusername);
+    $sql_getspname = mysqli_query($con,"SELECT firstname from service_provider where id = '".$_SESSION['spid']."' ");
+    $getspname = mysqli_fetch_assoc($sql_getspname);
     mysqli_query($con,"INSERT INTO message (reciever_userid, sender_userid, message, status) values('".$_SESSION['spid']."', '".$_SESSION['user_id']."', null, '1') ");
     $sql_checkuser = mysqli_query($con,"SELECT * from chat_users");
     // $checkuser = mysqli_fetch_assoc($sql_checkuser);
@@ -26,10 +24,14 @@
             $flagr = 1;
         }
     }
-    if($flags == 0)
+    if($flags == 0){
         mysqli_query($con,"INSERT INTO chat_users (userid, username, current_session) values('".$_SESSION['user_id']."', '".$getname['firstname']."', '".$_SESSION['spid']."') ");
-    echo $getname['firstname'];
+    }
+    else{
+        mysqli_query($con,"UPDATE chat_users SET current_session = '".$_SESSION['spid']."' WHERE userid = '".$_SESSION['user_id']."' ");
+    }
+    // echo $getname['firstname'];
     if($flagr == 0)
-        mysqli_query($con,"INSERT INTO chat_users (userid, username, current_session) values('".$_SESSION['spid']."', '".$getname['firstname']."', '".$_SESSION['user_id']."') ");
-    // header('Location: ../message/index.php');
+        mysqli_query($con,"INSERT INTO chat_users (userid, username, current_session) values('".$_SESSION['spid']."', '".$getspname['firstname']."', '".$_SESSION['user_id']."') ");
+    header('Location: ../message/index.php');
 ?>
