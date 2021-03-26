@@ -68,7 +68,7 @@ return;
 <div id="modal">
 	<div class="overlay">
 		<div class="feedback container--small align--center">
-			<button id="close">Close</button>
+			<button id="close" ><a href="../home/index.php">Close</a></button>
 			<h1 class="feedback__title">How did we do?</h1>
 			<p class="feedback__description">Please let us know how or event service was. It will really help us to keep improving our service!</p>
                     <form method="POST" action="signup_db.php">
