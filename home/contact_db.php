@@ -5,7 +5,7 @@ session_start();
 
 $email = filter_input(INPUT_POST, 'email');
 $message = filter_input(INPUT_POST, 'message');
-
+$like = filter_input(INPUT_POST, 'Like');
 // echo "<pre>", print_r($_FILES),"</pre>";
 // echo "<pre>", print_r($_FILES['pro']),"</pre>";
 
@@ -36,8 +36,8 @@ else{
 
 
 
-$sql = "INSERT INTO contact (email,message)
-values ('$email','$message')";
+$sql = "INSERT INTO contact (email,message,like_it)
+values ('$email','$message','$like')";
 
 
 

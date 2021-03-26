@@ -62,7 +62,7 @@ echo"<tr>";
                     <img class="booking-img" src="images/form-img.jpg" alt="Booking Image">
                 </div>
         <div class="booking-form">
-            <form id="booking-form" >
+            <form id="booking-form" method="POST" action="reg_db.php?id=<?=$row['event_id']; ?>"  >
                 <h1><?php echo $row["event_name"]; ?></h1>
                 <?php echo "<li><img src='../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
                 <div class="form-group form-input">

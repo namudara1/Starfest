@@ -189,7 +189,7 @@ $i++;
       <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  STARFEST@DOMAIN.com</p>
     </div>
     <div class="w3-col m7">
-      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white" method="POST" action="contact_db.php" >
       
       <div class="w3-section">      
         <label>Email</label>
