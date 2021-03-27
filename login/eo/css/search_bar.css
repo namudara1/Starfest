@@ -1,0 +1,22 @@
+.search {
+  margin-left: 40%;
+  margin-top:.5%;
+  margin-bottom:-44%;
+}
+
+.lives {
+  margin-left: 48%;
+  width: 20%;
+  border: white;
+  text-align: left;
+  border-style: white;
+  margin-top: 2.5%;
+  position:absolute;
+  color:black;
+}
+
+.search_bar{
+ position:absolute;
+ margin-left:40%;
+}
+}
