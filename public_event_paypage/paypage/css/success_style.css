@@ -1,0 +1,40 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+html {
+  height: 100%;
+  /*Image only BG fallback*/
+
+  /*background = gradient + image pattern combo*/
+  background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+body {
+  font-family: Arial, "helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.suc{
+    width: 600px;
+  height: 350px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  left:27%;
+  margin-top:10%;
+}
+
+.redirect {
+    width: 150px;
+    height: 50px;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: inherit;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px;
+    border: darkgray;
+  }

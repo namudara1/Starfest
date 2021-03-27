@@ -38,7 +38,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link href="layout/styles/mainwork.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link href="css/search_bar.css" rel="stylesheet">
 
 </head>
 <body id="top">
@@ -123,10 +123,15 @@ Licence URI: https://www.os-templates.com/template-terms
     <div class="sectiontitle">
      <b> <h1 class="logoname"><span>PUBLIC EVENTS</span></h1>
       <p>Register with events and enjoy your life</p></b>
+
+     <!-- ****search bar******  -->
+     <div class="search_bar">
+      <input id="search_input" type="text" placeholder="Search..." class="search" size="30" onkeyup="showResult(this.value)" list="x">
+      <datalist id="x" > </datalist> 
     </div>
-
-
-
+    <div id="livesearch" class="lives"></div>
+    </div>
+    <!-- searchbar  -->
 
 <ul class="nospace group overview">
 
@@ -152,7 +157,7 @@ if($i%3 == 0){
 </a></p>
         </li>
         <li class="w3-padding-16"><p><?php echo $row["description"]; ?></p></li>
-        <li><footer><a class="btn" href="view.php?id=<?=$row['event_id']; ?>">Book now</a></footer></li>
+        <li><footer><a class="btn" href="view.php?id=<?=$row['event_id']; ?>">MORE DETAILS</a></footer></li>
       
       </ul>
     </div>
@@ -241,5 +246,6 @@ $i++;
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script  src="livesearch.js"></script>
 </body>
 </html>
