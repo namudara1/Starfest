@@ -6,7 +6,7 @@ html {
 }
 #modal {
 	position: relative;
-	background: linear-gradient(150deg, #e9967a, #e75480);
+	background: linear-gradient(150deg, #7ad3e9, #54a0e7);
 	height: 100vh;
 	text-align: center;
 }
@@ -41,7 +41,7 @@ svg {
 	padding: 10px 0;
 }
 .feedback__submit {
-	background-color: #e75480;
+	background-color: #5483e7;
 	padding: 10px 40px;
 	border: 0;
 	color: #fff;
@@ -51,7 +51,7 @@ svg {
 	transition: all 0.2s;
 }
 .feedback__submit:hover {
-	background-color: #e1275f;
+	background-color: #277ee1;
 }
 .rating {
 	margin-bottom: 20px;
@@ -87,7 +87,7 @@ html {
 }
 #modal {
 	position: relative;
-	background: linear-gradient(150deg, #e9967a, #e75480);
+	background: linear-gradient(150deg, #7a8be9, #5488e7);
 	height: 100vh;
 	text-align: center;
 }
@@ -122,7 +122,7 @@ svg {
 	padding: 10px 0;
 }
 .feedback__submit {
-	background-color: #e75480;
+	background-color: #5488e7;
 	padding: 10px 40px;
 	border: 0;
 	color: #fff;
@@ -132,7 +132,7 @@ svg {
 	transition: all 0.2s;
 }
 .feedback__submit:hover {
-	background-color: #e1275f;
+	background-color: #278de1;
 }
 .rating {
 	margin-bottom: 20px;

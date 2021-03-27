@@ -76,7 +76,9 @@ $conn->close();
 // }
 }
 else{
-echo "Username should not be empty";
+
+header('Location: index.php');
+// echo "Event details required";
 die();
 }
 ?>

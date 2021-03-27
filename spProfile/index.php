@@ -18,6 +18,9 @@
  $sp_id = $_GET['data1'];
  $user_id = $_GET['data2'];
  
+ $_SESSION['spid'] = $user_id;
+
+ $_SESSION['unid'] = $sp_id;
 
 ?>
 <!DOCTYPE html>
