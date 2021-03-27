@@ -57,7 +57,12 @@ require_once('connection.php'); ?>
                                 header('Location: eo/index.php');
                            }
                            if($user_type == 'ep'){
-                                header('Location: ep/index.php');
+                                $event_id = $_SESSION['event_id'];
+                                if(isset($event_id)){
+                                    header('Location: ../public_event_paypage/index.php');
+                                }else{
+                                    header('Location: ep/index.php');
+                            }
                            }
                         }
                         }
