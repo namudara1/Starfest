@@ -4,22 +4,25 @@ session_start();
 require_once('connection.php'); ?>
 
 <?php
+    $_SESSION['login_error'] = "";
     //check for form submission
     if (isset($_POST['submit'])){
 
-        $errors = array();
+        // $errors = array();
 
         //check if the user name and password has been entered
         if (!isset($_POST['email']) || strlen(trim($_POST['email'])) < 1 ){
-            $errors[] = 'Username is Missing / Invalid';    
+            $_SESSION['login_error'] = 'Username is Missing / Invalid';
+            header('Location: index.php');    
         }
 
         if (!isset($_POST['password']) || strlen(trim($_POST['password'])) < 1 ){
-            $errors[] = 'Password is Missing / Invalid';
+            $_SESSION['login_error'] = 'Password is Missing / Invalid';
+            header('Location: index.php');
         }
 
         //check if there any errors in the form
-        if (empty($errors)) {
+        if (empty($_SESSION['login_error'])) {
 
             //save username and password into varible
             $email = mysqli_real_escape_string($connection, $_POST['email']);
@@ -49,20 +52,37 @@ require_once('connection.php'); ?>
                            $user_type = $record ['type'];
                            $_SESSION['user_type'] = $user_type;
                            if(isset($_SESSION['user_id']) && $_SESSION['user_id']) {
+                          
+                            // service provider login
                            if($user_type == 'sp'){
-                                
+                            if(isset($_SESSION['tempery_another_log_id'])){
+                                $_SESSION['login_error'] = "Invalid username or password";
+                                header('Location: index.php');
+                            }
+                            else{
                                 header('Location: sp/index.php');
+                            }     
                            }
+                           //event orgizelogin
                            if($user_type == 'eo'){
+                               if(isset($_SESSION['tempery_another_log_id'])){
+                                    $_SESSION['login_error'] = "Invalid username or password";
+                                    header('Location: index.php');
+                               }
+                               else{
                                 header('Location: eo/index.php');
+                               }   
                            }
                            if($user_type == 'ad'){
                             header('Location: admin/index.php');
                             }
                            if($user_type == 'ep'){
-                                $event_id = $_SESSION['event_id'];
-                                if(isset($event_id)){
-                                    header('Location: ../public_event_paypage/index.php');
+                                $event_idd = $_SESSION['event_idd'];
+                                if(isset($_SESSION['tempery_another_log_id'])){
+                                    $_SESSION['event_idd'] = NULL;
+                                    $_SESSION['tempery_id'] = NULL;
+                                    $_SESSION['tempery_another_log_id'] = NULL;
+                                    header('Location: ../public_event_paypage/index.php');    
                                 }else{
                                     header('Location: ep/index.php');
                             }
@@ -72,8 +92,9 @@ require_once('connection.php'); ?>
                     }
             } 
             if($num3 != 5 ){
-                echo "hi";
-                $errors[] = "Invalid username and password";
+                // echo "hi";
+                $_SESSION['login_error'] = "Invalid username or password";
+                header('Location: index.php');
             }
        }
     }

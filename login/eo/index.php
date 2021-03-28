@@ -311,8 +311,23 @@ while ($row=mysqli_fetch_assoc($result2)){
        <a href="all_events/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["category"]?>"><button type="button"> Todos</button></a> <br><br>
 
        <a href="event/index.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Event details</button></a><br><br>
+      
+      <!-- check before add ticket details button -->
+      <?php
+      $event_type = "public";
+      if($row["type"] == $event_type){
+       ?>
+
+        <a href="event/ticket.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Ticket Details</button></a><br><br>
+      <?php
+      }
+       ?>
+
+       <a href="accepted_sp.php?data1=<?php echo $row["event_id"]?>?>"><button type="button"> Service Providers</button></a><br><br>
 
        <a href="event/data1.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Remove event</button></a><br><br>
+
+       
 
        <!-- <a href="attendees/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Attendees</button></a> -->
 
@@ -508,6 +523,6 @@ function openNav() {
 }
 </script>
 <?php } ?>
-<script  src="livesearch.js"></script>
+<!-- <script  src="livesearch.js"></script> -->
 </body>
 </html> 

@@ -2,10 +2,16 @@
 session_start();
 require_once('connection.php'); 
 $user_id = $_SESSION['user_id'];
+$user_type = $_SESSION['user_type'];
 
 if(!isset($user_id)){
     header('Location: ../login/index.php');
+    $_SESSION['event_idd'] = $event_id;
 }
+
+// if($user_type == 'sp' || $user_type == 'eo'){
+//     header('Location: ../login/index.php');
+// }
 ?>
 
 
@@ -59,16 +65,7 @@ if(!isset($user_id)){
                      $price = $record ['ticket_price'];
                      $quantity = $record ['quantity'];
                      $issue_ticket = $record ['issue_tickets'];
-                    //  echo '<div class="pricerow">';
-                    //     echo '<div class="price">';
-                    //         echo $price ."<br>";
-                    //     echo '</div>';
-                    //     echo '<div class="bookbtn">';
-                            
-                    //     echo '</div>';
-                    //  echo '</div>';
-                    //  echo '<hr>';
-
+                     
                      echo '<tr>';
                      
                         echo '<td>';

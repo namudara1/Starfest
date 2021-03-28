@@ -32,10 +32,10 @@
         // output data of each row
         if($result->num_rows == 1){
           $row = $result->fetch_assoc();
-          echo "<a href='../../spProfile/index.php?id={$row["sp_id"]}'>".$row["firstname"]."</a>";
+          echo "<a href='../spProfile/index.php?id={$row["sp_id"]}'>".$row["firstname"]."</a>";
         }
         while($row = $result->fetch_assoc()) {
-          echo "<a href='../../spProfile/index.php?id={$row["sp_id"]}'>".$row["firstname"]."</a>";
+          echo "<a href='../spProfile/index.php?id={$row["sp_id"]}'>".$row["firstname"]."</a>";
           echo "<br>";
         }
       }

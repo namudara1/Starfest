@@ -2,14 +2,19 @@
 require_once 'publicevent_db.php';
 // Connect to MySQL
 
-$sql = "SELECT e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
+$eid = $_GET['data1'];
+
+
+$sql = "SELECT s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
         join event e on er.event_id=e.event_id 
         join service_provider s on er.sp_userid=s.id 
-        where er.status='accepted'";
+        where er.status='accepted' && e.event_id='$eid'";
 
 
 
 $result = mysqli_query($conn1,$sql) ;
+
+
 
 
 
@@ -26,7 +31,7 @@ $result = mysqli_query($conn1,$sql) ;
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Accepted service providers</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -80,6 +85,8 @@ return;
 		<polygon points="512 0 627 354 999 354 698 572 813 926 512 708 211 926 326 572 25 354 397 354 512 0" />
 	</symbol>
 </svg>
+
+
 <?php 
 $i=0;
 while($row=mysqli_fetch_assoc($result)){
@@ -89,8 +96,8 @@ while($row=mysqli_fetch_assoc($result)){
 <div id="modal">
 	<div class="overlay">
 		<div class="feedback container--small align--center">
-			<button id="close" ><a href="../home/index.php">Close</a></button>
-			<h1 class="feedback__title">Reqest accpeted Service provider details</h1>
+			<!-- <button id="close" ><a href="../home/index.php">Close</a></button> -->
+			<h1 class="feedback__title">Service providers</h1>
 			<p class="feedback__description"></p>
                 <form method="POST" action="signup_db.php?data1=<?=$row['sp_userid']; ?>&data2=<?=$row['eo_userid']; ?>">
                     <fieldset class="rating rating__plan">
