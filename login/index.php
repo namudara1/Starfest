@@ -73,6 +73,14 @@ return;
                 <legend><h1>Log In</h1></legend>
 
                 <?php
+                if(isset($_SESSION['event_id'])){
+                    echo '<div class="book_ticket">';
+                    echo '<h4>Please signup or login before booking..</h4>';
+                    echo '</div>';
+                }
+                ?>
+
+                <?php
                      if (isset($errors) && !empty($errors)) {
                          echo '<p class="error">Invalid username / password </p>';                     
                         }
@@ -103,7 +111,11 @@ return;
                     
                 </p> 
         </form>
+        <p><span>Not a member? </span><a href="../signup/sign/index.php">Sign Up</a></p>
         </div>
+        <!-- <div class="signup">
+            <</p>
+        </div> -->
     </div> 
 </body>
 </html>

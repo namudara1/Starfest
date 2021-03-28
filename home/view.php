@@ -1,5 +1,21 @@
 <?php
-$event_id=$_GET['id'];
+session_start();
+// check set the serach eventid
+if(isset($_GET["search_event_id"])){
+    $event_id = $_GET["search_event_id"];
+
+}
+
+if(isset($_GET["id"])){
+    $event_id = $_GET["id"];
+}
+
+$_SESSION['event_id'] = $event_id;
+
+//redirect homepage when payment 
+$re = 10;
+$_SESSION['redirect_pay'] = $re;
+
 require_once 'publicevent_db.php';
 // Connect to MySQL
 
@@ -62,7 +78,7 @@ echo"<tr>";
                     <img class="booking-img" src="images/form-img.jpg" alt="Booking Image">
                 </div>
         <div class="booking-form">
-            <form id="booking-form" method="POST" action="reg_db.php?id=<?=$row['event_id']; ?>"  >
+            <form id="booking-form" action="../public_event_paypage/index.php" >
                 <h1><?php echo $row["event_name"]; ?></h1>
                 <?php echo "<li><img src='../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
                 <div class="form-group form-input">
@@ -82,8 +98,7 @@ echo"<tr>";
                 </div>
                <br>
                 <div class="form-submit">
-                    <input type="submit" value="Register" class="submit" id="submit" name="submit" />
-                   
+                    <input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" />
                 </div>
             </form>
         </div>
@@ -95,11 +110,7 @@ echo"<tr>";
 <!-- JS -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="js/main.js"></script>
-
-
-
-
-          
+    
           <?php
 if($i == 0){
 echo "</tr>";
@@ -110,14 +121,8 @@ $i++;
 
 ?>
 
-
-
-
 </ul>
 </table>
-
-
-
 
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
@@ -128,7 +133,7 @@ $i++;
 <!-- ################################################################################################ -->
 <div class="wrapper row5">
   
-  
+
 </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->

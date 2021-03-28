@@ -1,0 +1,149 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+
+html {
+  height: 100%;
+  /*Image only BG fallback*/
+
+  /*background = gradient + image pattern combo*/
+  background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+body {
+  font-family: Arial, "helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.btn_add_cart {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000;
+  color: #000;
+  border-radius: inherit;
+  background: white;
+  border-radius: 8px;
+  font-size: 5px;
+  border: darkgray;
+  background-image: url(image/cart.png);
+}
+
+.cart_bt{
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 1px 49px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: absolute;
+  right: 20px;
+
+}
+
+
+.cart_btn.btn_add_cart {
+  align-items: center;
+}
+
+.center {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 800px;
+  height: 500px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  left: 20%;
+  position: relative;
+  overflow: scroll;
+  margin-top: 5%;
+}
+
+.ticket_container {
+  width: 100%;
+  /* max-width: 6px; */
+  display: flex;
+  justify-content: flex-start;
+  /* border-bottom: 4px solid lightgrey; */
+  margin: 0 auto;
+}
+
+.container .text {
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  width: 410px;
+  padding: 1px;
+}
+
+/* .close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 25px;
+  /* transform: rotate(45deg); */
+  /* cursor: pointer;
+} */ */
+
+/* .price {
+  float: left;
+  width: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.bookbtn {
+  float: left;
+  width: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.pricerow::after {
+  content: "";
+  display: table;
+  clear: both;
+} */
+
+#ticket_table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 8px;
+}
+
+#ticket_table td,
+#ticket_table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  content: horizontal;
+}
+
+#ticket_table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#ticket_table tr:hover {
+  background-color: #ddd;
+}
+
+#ticket_table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right:150px;
+  text-align: left;
+  background-color: lightsteelblue;
+  color: black;
+  content: horizontal;
+  font-size: 12px;
+}
