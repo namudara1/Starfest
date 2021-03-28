@@ -101,7 +101,7 @@
       while ($row = $sql_getreq->fetch_assoc()){
         $sql_getEventDet=mysqli_query($con,"SELECT event_name,date FROM event WHERE event_id = '".$row['event_id']."' ");
         $res =$sql_getEventDet->fetch_assoc();
-        echo '<div class="reqitem"><span>'.$res['event_name'].' on '.$res['date'].'</span>';
+        echo '<div class="reqitem"><a href="../../home/view.php?id='.$res["event_id"].'" style="text-decoration: none;"><span>'.$res['event_name'].' on '.$res['date'].' at '.$res['time'].'</span></a>';
         echo '<div class="w3-row w3-opacity">
               <div class="w3-half">
                 <button event-id= "'.$row['id'].'" class="w3-button w3-block w3-green w3-section" title="Accept" id="request-accept"><i class="fa fa-check"></i></button>
