@@ -62,6 +62,7 @@
   
   <div class="w3-dropdown-hover w3-hide-small w3-right">
   <?php
+  
   if($usertype["type"] == "eo" || $usertype["type"] == "sp"){
     echo '<a href="../../message/index.php">
     <button class="w3-button w3-padding-large" title="Messages"><i class="fa fa-envelope"></i><span class="w3-badge w3-right w3-small w3-green">'.$msgcount.'</span></button>
@@ -87,6 +88,29 @@
     <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>     
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px;height:500px;overflow:auto;">
     <?php
+    if($usertype["type"] == "sp"){
+      echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Event Requests</div>
+      <div class="w3-container" >';
+      $sql_getreq=mysqli_query($con,"SELECT * FROM event_request WHERE status='pending' and sp_userid = '".$_SESSION['user_id']."'");
+      while ($row = $sql_getreq->fetch_assoc()){
+        $sql_getEventDet=mysqli_query($con,"SELECT event_name,date,time FROM event WHERE event_id = '".$row['event_id']."' ");
+        $res =$sql_getEventDet->fetch_assoc();
+        echo '<div class="reqitem"><a href="../../home/view.php?id='.$row['event_id'].'" style="text-decoration: none;"><span>'.$res['event_name'].' on '.$res['date'].' at '.$res['time'].'</span></a>';
+        echo '<div class="w3-row w3-opacity">
+              <div class="w3-half">
+                <button event-id= "'.$row['id'].'" class="w3-button w3-block w3-green w3-section" title="Accept" id="request-accept"><i class="fa fa-check"></i></button>
+              </div>
+              <div class="w3-half">
+                <button event-id= "'.$row['id'].'" class="w3-button w3-block w3-red w3-section" title="Decline" id="request-decline"><i class="fa fa-remove"></i></button>
+              </div>
+            </div><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">
+            </div>';
+      }
+      if(mysqli_num_rows($sql_getreq)<=0){
+        echo '<a class="w3-bar-item w3-button" href="#">No new event requests!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+      }
+      echo '</div>';
+    }
           if($usertype["type"] == "eo" || $usertype["type"] == "sp"){
           echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Messages</div>';
           $sql_getmsg=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");

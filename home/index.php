@@ -106,7 +106,7 @@ Licence URI: https://www.os-templates.com/template-terms
       <p>Plan your day with us</p>
       <h3 class="heading">Starfest Event Planning</h3>
       <p>Dreaming after all, is a form of planning</p>
-      <footer><a class="btn" href="../login1/index.php">Create Event</a></footer>
+      <footer><a class="btn" href="../login/login1/index.php">Create Event</a></footer>
     </article>
     <!-- ################################################################################################ -->
   </div>

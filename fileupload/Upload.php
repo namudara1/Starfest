@@ -104,6 +104,7 @@
             $userChat = $this->getData($sqlQuery);	
             $doclist = '<ul>';
             foreach($userChat as $files){
+                if($files["file_name"] != null){
                 $file_sizemb=$files["file_size"]/1000000;
                 $doclist .= '<li>';
                 $doclist .= '<div class="file_item">';
@@ -127,12 +128,13 @@
                 $doclist .= '</div>';
                 if($files["file_desc"] == "Invoice")
                 {
-                    $doclist .= '<a href="../paypage/payment.php" style="text-decoration: none;">';
+                    $doclist .= '<a href="../paypage/payment.php?id='.$files["docid"].'" style="text-decoration: none;">';
                     $doclist .= '<div class="file_close">Pay</div>';
                     $doclist .= '</a>';
                 }
                 $doclist .= '</div>';
                 $doclist .= '</li>';
+            }
             }		
             $doclist .= '</ul>';
             return $doclist;

@@ -73,7 +73,9 @@ require_once('connection.php'); ?>
                                 header('Location: eo/index.php');
                                }   
                            }
-                           //event participant login
+                           if($user_type == 'ad'){
+                            header('Location: admin/index.php');
+                            }
                            if($user_type == 'ep'){
                                 $event_idd = $_SESSION['event_idd'];
                                 if(isset($_SESSION['tempery_another_log_id'])){

@@ -1,10 +1,26 @@
 <?php
   session_start();
  include_once "../../config/connection.php";
+
+ require_once 'publicevent_db.php';
+ // Connect to MySQL
+ 
+ $sql = "SELECT e.event_id,e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
+         join event e on er.event_id=e.event_id 
+         join service_provider s on er.sp_userid=s.id 
+         where er.status='accepted'";
+ 
+ 
+ 
+ $result = mysqli_query($conn,$sql) ;
+ 
+
+
  $not_count = 0;
 ?>
 <!DOCTYPE html>
 <html>
+<head>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +30,42 @@
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+        $(document).ready(function(){
+              $('.reqitem').on('click', '#request-decline', function(){
+                const id = $(this).attr('event-id');
+                
+                $.post("deny.php", 
+                      {
+                          id: id
+                      },
+                      (data)  => {
+                         if(data){
+                             $(this).closest("div.reqitem").hide();
+                         }
+                      }
+                );
+            });
+
+            $('.reqitem').on('click', '#request-accept', function(){
+                const id = $(this).attr('event-id');
+                
+                $.post("accept.php", 
+                      {
+                          id: id
+                      },
+                      (data)  => {
+                         if(data){
+                          $(this).closest("div.reqitem").hide();
+                         }
+                      }
+                );
+            });
+        });
+    </script>
+
+</head>
 <body class="w3-theme-l5">
 
 <?php include('../common/header.php'); ?>
@@ -210,29 +262,53 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <div class="w3-container">
           <p>Upcoming Events:</p>
           <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
-          <p><strong>Wedding</strong></p>
-          <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+
+
+
+          <?php 
+$i=0;
+while($row=mysqli_fetch_assoc($result)){
+
+?> 
+
+   
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+            <li class="one_third"> 
+ <figure>
+     <figcaption>
+       <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
+
+       <a href="event_details.php?data1=<?php echo $row["event_id"]?> ?>"><button type="button"> Event details</button></a><br><br>
+
+           
+     </figcaption>
+   </figure>
+   </li>
+                              
+                                <br><br><br>
+                             
+               
+           
+        </div>
+    </div>
+
+    <?php
+
+
+if($i% 1== 1){
+
+
+}
+$i++;
+}
+?>
+         
         </div>
       </div>
       <br>
       
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
-          <p>Event Request</p>
-          <img src="../../img/avatar6.png" alt="Avatar" style="width:50%"><br>
-          <span>John's Birthday Party</span>
-          <div class="w3-row w3-opacity">
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-            </div>
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
+ 
       
       <!-- <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
         <p>ADS</p>

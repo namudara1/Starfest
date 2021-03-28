@@ -371,3 +371,7 @@ button.chatbtn i, button.createbtn i{
     top: 0 !important;
     transition-delay: 50ms;
   }
+
+  .event_list{
+      
+  }

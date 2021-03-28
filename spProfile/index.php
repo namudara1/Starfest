@@ -25,14 +25,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/checkboxes.css">
     <link rel="stylesheet" href="../dashboard/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <script>
-        $(document).ready(function(){
-            $('#MyButton').click(function(){
-            CapacityChart();
-            });
-        });
+        function showDiv() {
+             document.getElementById('welcomeDiv').style.display = "block";
+        }
     </script>
 </head>
 <body>
@@ -85,17 +84,35 @@ $row1 = mysqli_fetch_array($result1);
 
  
                     <div class="profile-btn">
-                    <!-- <form method="post" action="action.php" enctype='multipart/form-data'> -->
                          <button class="chatbtn">
                          <a href="action.php" style="text-decoration: none;">
                              <i class="fa fa-comment"></i>Chat
                              </a>
                          </button>
-                         <!-- <input class="chatbtn" type='submit' value='Chat' name='but_chat'/> -->
-                         <button class="createbtn">
+                         <button class="createbtn" onclick="showDiv()">
+                         <!-- <a href="request.php" style="text-decoration: none;"> -->
                              <i class="fa fa-plus"></i>Request 
+                             <!-- </a> -->
                          </button>
-						<!-- </form> -->
+                         
+                    </div>
+                    <div id="welcomeDiv"  style="display:none;" class="event_list" >
+                        <ul>
+                        <h4>Choose Event/s </h4>
+                        <form method="post" action="request.php" enctype='multipart/form-data'>
+                            <?php 
+                                $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."') ");
+                                while ($row = $sql_getevents->fetch_assoc())
+                                {
+                                    echo '<li> 
+                                        <input name="check_list[]" type="checkbox" value="'.$row['event_id'].'">
+                                        <label>'.$row['event_name'].'</label>
+                                    </li>';
+                                }
+                            ?>
+                            <input type='submit' value='Submit Request' name='but_req'/>
+                        </form>
+                        </ul>
                     </div>
                     <div class="user-rating">
                         <h3 class="rating">4.5</h3>
