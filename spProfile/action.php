@@ -9,7 +9,6 @@
     $getspname = mysqli_fetch_assoc($sql_getspname);
     mysqli_query($con,"INSERT INTO message (reciever_userid, sender_userid, message, status) values('".$_SESSION['spid']."', '".$_SESSION['user_id']."', null, '1') ");
     $sql_checkuser = mysqli_query($con,"SELECT * from chat_users");
-    // $checkuser = mysqli_fetch_assoc($sql_checkuser);
     $flags = 0;
     while ($checkuser = $sql_checkuser->fetch_assoc())
     {

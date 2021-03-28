@@ -1,11 +1,44 @@
 <?php
  session_start();
  include_once "../../config/connection.php";
+
+
  $not_count = 0;
+
+ require_once 'publicevent_db.php';
+
+
+ // Connect to MySQL
+ 
+ // $sql = "SELECT * FROM event ORDER BY date DESC";
+ $id=$_SESSION['user_id'];
+
+//$pe="Select event_id from issued_ticket_details where id='$id'";
+ $data3 = mysqli_query($conn,"Select event_id from issued_ticket_details where user_id=$id ");
+ $row = mysqli_fetch_assoc($data3);
+ $event_id1 = $row['event_id'];
+ 
+ 
+ 
+ $sql = "SELECT * FROM event where event_id='$event_id1' ORDER BY date desc ";
+ 
+ 
+
+ $result3 = mysqli_query($conn,$sql) ;
+ // $row1 = mysqli_fetch_array($result);
+ 
+ 
+ //$image1 = $row1['image'];
+  //$image_src = "../create_event/upload/".$image1;
+ 
+ 
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Event Participant Dashboard</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/style.css">
@@ -134,7 +167,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
             <header class="showcase">
             <h1>Find amazing Events</h1>
                     <p>Simply search and register for any events</p>
-                    <a href="../create_event/index.php" class="btn" >Serach Events</a>
+                    <a href="search.php" class="btn" >Search Events</a>
             </header>
             </div>
           </div>
@@ -202,14 +235,100 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     <div class="w3-col m2">
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <p>Upcoming Events:</p>
+          <p>Registered Events:</p>
+
+        
+
+ 
           <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
-          <p><strong>Seminar</strong></p>
-          <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+          
+
+          <?php 
+
+if (mysqli_fetch_assoc($result3)==NULL){ 
+ echo "No registered events yet"; }?>
+
+
+          <?php 
+
+
+
+$i=0;
+
+
+
+while ($row=mysqli_fetch_assoc($result3)){
+
+ 
+
+//if($i%3 == 0){
+
+// echo "<li class=\"one_third first\">";
+//echo"<li class=\"one_third \">";
+
+//}
+?> 
+
+<li class="one_third">
+   <figure>
+     <figcaption>
+       <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
+       
+
+
+
+       <!-- <button onclick="myFunction('Demo1')"  name="subject" type="submit" value="<?php echo $row["event_name"]; ?>" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> To-do list</button> -->
+       <!-- <button onclick="myFunction('Demo1')"  name="subject" type="submit" value="fav_HTML">HTML</button> -->
+
+       <?php
+       
+        // $message1 = $row["event_id"];;
+        // $_SESSION['firstMessage'] = $message1;
+       
+       
+      //  $event=$row["event_id"];?>
+
+
+       <a href="event_details.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Event details</button></a><br><br>
+
+      
+
+       <?php 
+       
+      //  $events= array();
+
+
+      //  $p=0;
+      
+      //  $events[$p]=$event;
+      //  $p=$p+1;
+
+       
+       ?>
+     
+      
+     </figcaption>
+   </figure>
+ </li>
+ 
+
+ <?php
+
+
+if($i%3 == 3){
+
+
+}
+$i++;
+}
+
+?>
+
+
         </div>
       </div>
       <br>
+      
       
       <!-- <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">

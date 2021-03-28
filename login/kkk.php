@@ -56,6 +56,9 @@ require_once('connection.php'); ?>
                            if($user_type == 'eo'){
                                 header('Location: eo/index.php');
                            }
+                           if($user_type == 'ad'){
+                            header('Location: admin/index.php');
+                            }
                            if($user_type == 'ep'){
                                 $event_id = $_SESSION['event_id'];
                                 if(isset($event_id)){
