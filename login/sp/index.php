@@ -18,7 +18,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script>
         $(document).ready(function(){
-            $('#request-decline').click(function(){
+              $('.reqitem').on('click', '#request-decline', function(){
                 const id = $(this).attr('event-id');
                 
                 $.post("deny.php", 
@@ -33,7 +33,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
                 );
             });
 
-            $('#request-accept').click(function(){
+            $('.reqitem').on('click', '#request-accept', function(){
                 const id = $(this).attr('event-id');
                 
                 $.post("accept.php", 

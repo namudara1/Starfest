@@ -90,15 +90,20 @@
       $sql_getreq=mysqli_query($con,"SELECT * FROM event_request WHERE status='pending' and sp_userid = '".$_SESSION['user_id']."'");
       while ($row = $sql_getreq->fetch_assoc()){
         $sql_getEventDet=mysqli_query($con,"SELECT event_name,date FROM event WHERE event_id = '".$row['event_id']."' ");
-        echo '<span>'.$sql_getEventDet['event_name'].'on'.$sql_getEventDet['date'].'</span>';
+        $res =$sql_getEventDet->fetch_assoc();
+        echo '<div class="reqitem"><span>'.$res['event_name'].' on '.$res['date'].'</span>';
         echo '<div class="w3-row w3-opacity">
               <div class="w3-half">
-                <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+                <button event-id= "'.$row['id'].'" class="w3-button w3-block w3-green w3-section" title="Accept" id="request-accept"><i class="fa fa-check"></i></button>
               </div>
               <div class="w3-half">
-                <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+                <button event-id= "'.$row['id'].'" class="w3-button w3-block w3-red w3-section" title="Decline" id="request-decline"><i class="fa fa-remove"></i></button>
               </div>
+            </div><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">
             </div>';
+      }
+      if(mysqli_num_rows($sql_getreq)<=0){
+        echo '<a class="w3-bar-item w3-button" href="#">No new event requests!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
       }
       echo '</div>';
     }

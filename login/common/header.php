@@ -112,6 +112,9 @@
             </div><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">
             </div>';
       }
+      if(mysqli_num_rows($sql_getreq)<=0){
+        echo '<a class="w3-bar-item w3-button" href="#">No new event requests!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+      }
       echo '</div>';
     }
           if($usertype["type"] == "eo" || $usertype["type"] == "sp"){
