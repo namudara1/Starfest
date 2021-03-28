@@ -44,6 +44,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"> -->
 <link href="layout/styles/mainwork.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/search_bar.css" rel="stylesheet">
 
 
 </head>
@@ -56,6 +57,14 @@ Licence URI: https://www.os-templates.com/template-terms
      <b> <h1 class="logoname"><span><b><u>Service providers</u></b></span></h1>
 
     </div>
+
+    
+    <div class="search_bar">
+      <input id="search_input" type="text" placeholder="Search..." class="search" size="30" onkeyup="showResult(this.value)">
+    </div>
+    <div id="livesearch" class="lives"></div>
+   
+    
 
 
 
@@ -125,5 +134,6 @@ $i++;
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script  src="livesearch.js"></script>
 </body>
 </html>

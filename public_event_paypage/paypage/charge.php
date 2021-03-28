@@ -12,10 +12,10 @@
 
   $token = $POST['stripeToken'];
   //***********methana session id eka */
-  $eo_id = $_SESSION['user_id'];
+  $ep_id = $_SESSION['user_id'];
   // $ep_id = 32;
 
-  $query = "SELECT SUM(amount) AS amount FROM cart WHERE user_id='$eo_id'";
+  $query = "SELECT SUM(amount) AS amount FROM cart WHERE user_id='$ep_id'";
   $result_set = mysqli_query($connection, $query); 
   $record = mysqli_fetch_assoc($result_set);
   $amount = $record['amount'];
@@ -42,7 +42,7 @@
    
   //sent data in to database
   
-  $query2 = "SELECT * FROM cart where id=$ep_id";
+  $query2 = "SELECT * FROM cart where user_id=$ep_id";
   $result_set2 = mysqli_query($connection, $query2);
 
   if($result_set2){
@@ -51,11 +51,15 @@
       $quanty1 = $record2['quantity'];
       $ticket_price1 = $record2['ticket_price'];
       
-      $sql = "INSERT INTO issued_ticket_details (user_id, event_id, ticket_price,	booked_quantity,)
+      $sql1 = "INSERT INTO issued_ticket_details (user_id, event_id, ticket_price,	booked_quantity)
       values ('$ep_id','$event_id','$ticket_price1','$quanty1')";
-      $connection->query($sql);
+      $connection->query($sql1);
     }
   }
+
+  // delete a record
+$sql3 = "DELETE FROM cart WHERE user_id=$ep_id";
+$connection->query($sql3);
 
   //redirect to success
  header('Location: ./db/success.php');
