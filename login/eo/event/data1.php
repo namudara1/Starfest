@@ -30,6 +30,7 @@ $id= $_SESSION['user_id'];
 
 $sql = "DELETE FROM event WHERE event_id='$eid'";
 
+$sql1 = "DELETE FROM event_request WHERE event_id='$eid'";
 
 
 
@@ -44,6 +45,18 @@ else{
 echo "Error: ". $sql ."
 ". $conn->error;
 }
+
+if ($conn->query($sql1)){
+    // echo "New record is inserted sucessfully";
+    // echo "user id: {$_SESSION['user_id']}<br>";
+    header('Location: ../index.php');
+    }
+    else{
+    echo "Error: ". $sql1 ."
+    ". $conn->error;
+    }
+
+
 $conn->close();
 }
 // }

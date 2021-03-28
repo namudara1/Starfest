@@ -11,7 +11,7 @@ require_once 'publicevent_db.php';
 
 // $sql = "SELECT * FROM event ORDER BY date DESC";
 $id=$_SESSION['user_id'];
-$pe="Select eo_id from event_organizer where id='$id'";
+//$pe="Select eo_id from event_organizer where id='$id'";
 $data3 = mysqli_query($conn1,"Select eo_id from event_organizer where id='$id'");
 $row = mysqli_fetch_assoc($data3);
 $eo_id1 = $row['eo_id'];
@@ -21,6 +21,8 @@ $sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date desc ";
 
 
 $result2 = mysqli_query($conn1,$sql) ;
+
+
 // $row1 = mysqli_fetch_array($result);
 
 
@@ -262,6 +264,10 @@ button {
           
           <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
           
+          <?php 
+
+if (mysqli_fetch_assoc($result2)==NULL){ 
+ echo "No created events yet"; }?>
 
           <?php 
 
