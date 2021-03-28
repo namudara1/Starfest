@@ -123,9 +123,9 @@ while($row=mysqli_fetch_assoc($result)){
 							</svg></label>
 					</div>
 				</fieldset>
-
+                <input class="input--style-5" type="text" name="feedback" placeholder='Type Feedback...............................................' required>
 			
-
+<br><br>
                         <button class="feedback__submit" type="submit" >Submit feedback</button>
                         </div> 
                     </form>
