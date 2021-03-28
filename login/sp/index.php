@@ -5,6 +5,7 @@
 ?>
 <!DOCTYPE html>
 <html>
+<head>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +15,42 @@
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $('#request-decline').click(function(){
+                const id = $(this).attr('event-id');
+                
+                $.post("deny.php", 
+                      {
+                          id: id
+                      },
+                      (data)  => {
+                         if(data){
+                             $(this).closest("div.reqitem").hide();
+                         }
+                      }
+                );
+            });
+
+            $('#request-accept').click(function(){
+                const id = $(this).attr('event-id');
+                
+                $.post("accept.php", 
+                      {
+                          id: id
+                      },
+                      (data)  => {
+                         if(data){
+                          $(this).closest("div.reqitem").hide();
+                         }
+                      }
+                );
+            });
+        });
+    </script>
+
+</head>
 <body class="w3-theme-l5">
 
 <?php include('../common/header.php'); ?>

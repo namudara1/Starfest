@@ -84,6 +84,24 @@
     <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>     
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px;height:500px;overflow:auto;">
     <?php
+    if($usertype["type"] == "sp"){
+      echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Event Requests</div>
+      <div class="w3-container" >';
+      $sql_getreq=mysqli_query($con,"SELECT * FROM event_request WHERE status='pending' and sp_userid = '".$_SESSION['user_id']."'");
+      while ($row = $sql_getreq->fetch_assoc()){
+        $sql_getEventDet=mysqli_query($con,"SELECT event_name,date FROM event WHERE event_id = '".$row['event_id']."' ");
+        echo '<span>'.$sql_getEventDet['event_name'].'on'.$sql_getEventDet['date'].'</span>';
+        echo '<div class="w3-row w3-opacity">
+              <div class="w3-half">
+                <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+              </div>
+              <div class="w3-half">
+                <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+              </div>
+            </div>';
+      }
+      echo '</div>';
+    }
     if($usertype["type"] == "eo" || $usertype["type"] == "sp"){
           echo '<div class="w3-bar-item w3-button" style="background-color: lightblue;text-align: center;">Messages</div>';
           $sql_getmsg=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
