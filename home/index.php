@@ -38,7 +38,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link href="layout/styles/mainwork.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link href="css/search_bar.css" rel="stylesheet">
 
 </head>
 <body id="top">
@@ -87,7 +87,7 @@ Licence URI: https://www.os-templates.com/template-terms
         </ul>
       </li>
       
-      <li><a href="#">Contact Us</a></li>
+      <li><a href="../contact_uspage/index.php">Contact Us</a></li>
       
       <li><a href="../signup/sign/index.php" >Signup</a></li>
       <li><a href="../login/index.php">Login</a></li>
@@ -123,10 +123,15 @@ Licence URI: https://www.os-templates.com/template-terms
     <div class="sectiontitle">
      <b> <h1 class="logoname"><span>PUBLIC EVENTS</span></h1>
       <p>Register with events and enjoy your life</p></b>
+
+     <!-- ****search bar******  -->
+     <div class="search_bar">
+      <input id="search_input" type="text" placeholder="Search..." class="search" size="30" onkeyup="showResult(this.value)" list="x">
+      <datalist id="x" > </datalist> 
     </div>
-
-
-
+    <div id="livesearch" class="lives"></div>
+    </div>
+    <!-- searchbar  -->
 
 <ul class="nospace group overview">
 
@@ -152,7 +157,7 @@ if($i%3 == 0){
 </a></p>
         </li>
         <li class="w3-padding-16"><p><?php echo $row["description"]; ?></p></li>
-        <li><footer><a class="btn" href="view.php?id=<?=$row['event_id']; ?>">Book now</a></footer></li>
+        <li><footer><a class="btn" href="view.php?id=<?=$row['event_id']; ?>">MORE DETAILS</a></footer></li>
       
       </ul>
     </div>
@@ -189,7 +194,7 @@ $i++;
       <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  STARFEST@DOMAIN.com</p>
     </div>
     <div class="w3-col m7">
-      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white" method="POST" action="contact_db.php" >
       
       <div class="w3-section">      
         <label>Email</label>
@@ -241,5 +246,6 @@ $i++;
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script  src="livesearch.js"></script>
 </body>
 </html>

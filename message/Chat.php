@@ -113,16 +113,18 @@ class Chat{
 		$userChat = $this->getData($sqlQuery);	
 		$conversation = '<ul>';
 		foreach($userChat as $chat){
-			$user_name = '';
-			if($chat["sender_userid"] == $from_user_id) {
-				$conversation .= '<li class="msg">';
-			} else {
-				$conversation .= '<li class="msgr">';
-				$conversation .= '<img width="22px" height="22px" src="userpics/user3.jpg" alt="" />';
-			}			
-			$conversation .= '<p>'.$chat["message"].'</p>';		
-			$conversation .= '<span>'.$chat["timestamp"].'</span>';		
-			$conversation .= '</li>';
+			if($chat["message"] != null){
+				$user_name = '';
+				if($chat["sender_userid"] == $from_user_id) {
+					$conversation .= '<li class="msg">';
+				} else {
+					$conversation .= '<li class="msgr">';
+					$conversation .= '<img width="22px" height="22px" src="userpics/user3.jpg" alt="" />';
+				}			
+				$conversation .= '<p>'.$chat["message"].'</p>';		
+				$conversation .= '<span>'.$chat["timestamp"].'</span>';		
+				$conversation .= '</li>';
+			}
 		}		
 		$conversation .= '</ul>';
 		return $conversation;

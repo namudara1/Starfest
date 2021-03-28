@@ -1,7 +1,33 @@
 <?php
     session_start();
-?>
+    
+    if(isset($_SESSION['user_id']) && $_SESSION['user_type']) {
+        $user_type = $_SESSION['user_type'];
+        if(isset($_SESSION['event_id'] )){
+            //event participant login
+            if($user_type == 'ep'){
+                header('Location: ../public_event_paypage/index.php');
+            }
+        }
 
+        //event participant login
+        if($user_type == 'ep'){
+            header('Location: ep/index.php');
+           }
+   
+        // service provider login
+        if($user_type == 'sp'){
+            header('Location: sp/index.php');   
+        }
+
+        //event orgizelogin
+        if($user_type == 'eo'){
+            header('Location: eo/index.php');  
+        }
+
+    
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,36 +55,6 @@
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
 
-    <!-- <script>
-
-// function check2(x){
-
-// if(x==0)
-// document.getElementById('c2_check').style.display='block';
-
-// else
-// document.getElementById('c2_check').style.display='none';
-// return;
-
-// }
-
-function check1(x){
-
-if(x==0)
-document.getElementById('isBox').style.display='block.c1_check';
-//document.getElementById('c2_check').style.display='none';
-// else
-//document.getElementById('c1_check').style.display='none';
-else
-document.getElementById('isBox').style.display='block.c2_check';
-
-return;
-
-}
-
-
-</script> -->
-
 </head>
 <body>
 <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
@@ -73,9 +69,21 @@ return;
                 <legend><h1>Log In</h1></legend>
 
                 <?php
-                     if (isset($errors) && !empty($errors)) {
-                         echo '<p class="error">Invalid username / password </p>';                     
-                        }
+                if(isset($_SESSION['tempery_id'])){
+                    echo '<div class="book_ticket">';
+                    echo '<h4>Please signup or login before booking..</h4>';
+                    echo '</div>';
+                    $_SESSION['tempery_id'] = NULL;
+                    $_SESSION['tempery_another_log_id'] = 1;
+                }
+                ?>
+
+                <?php
+                    echo '<div class="book_ticket">';
+                    if(isset($_SESSION['login_error'])){
+                        echo '<p class="error">'.$_SESSION['login_error'].'</p>';
+                    }
+                    echo '</div>';
                 ?>
 
                 <div class="form-row">
@@ -103,7 +111,11 @@ return;
                     
                 </p> 
         </form>
+        <p><span>Not a member? </span><a href="../signup/sign/index.php">Sign Up</a></p>
         </div>
+        <!-- <div class="signup">
+            <</p>
+        </div> -->
     </div> 
 </body>
 </html>

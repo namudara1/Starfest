@@ -71,29 +71,29 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <div class="wrapper row1">
   
-  <nav id="mainav" class="hoc clear"> 
+<nav id="mainav" class="hoc clear"> 
   
-    <!-- ################################################################################################ -->
-    <ul class="clear">
-      <li class="active"><a href="../home/index.php">Home</a></li>
-      <li><a class="drop" href="#">Event Categories</a>
-        <ul>
-          <li><a href="#">Musical Shows</a></li>
-          <li><a href="pages/full-width.html">Cooperate Events</a></li>
-          <li><a href="pages/sidebar-left.html">Seminars</a></li>
-          <li><a href="pages/sidebar-right.html">Others</a></li>
-         
-        </ul>
-      </li>
-      
-      <li><a href="#">Contact Us</a></li>
-      
-      <li><a href="../signup/user_selection/index.php" >Signup</a></li>
-      <li><a href="../login/index.php">Login</a></li>
-      
-    </ul>
-    <!-- ################################################################################################ -->
-  </nav>
+  <!-- ################################################################################################ -->
+  <ul class="clear">
+    <li class="active"><a href="../../home/index.php">Home</a></li>
+    <li><a class="drop" href="../public_events/all/index.php">Event Categories</a>
+      <ul>
+        <li><a href="../musical_shows/index.php">Musical Shows</a></li>
+        <li><a href="../cooperate_events/index.php">Cooperate Events</a></li>
+        <li><a href="../seminars/index.php">Seminars</a></li>
+        <li><a href="../others/index.php">Others</a></li>
+       
+      </ul>
+    </li>
+    
+    <li><a href="../contact_uspage/index.php" >Contact Us</a></li>
+    
+    <li><a href="../signup/sign/index.php" >Signup</a></li>
+    <li><a href="../login/index.php">Login</a></li>
+    <li><a href="../rating/index.php">Rating</a></li>
+  </ul>
+  <!-- ################################################################################################ -->
+</nav>
 </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->

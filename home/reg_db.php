@@ -2,7 +2,7 @@
 session_start();
 //echo "<pre>", print_r($_FILES['pro']['name']),"</pre>";
 
-$id = filter_input(INPUT_POST, '<?php echo $row["event_id"]; ?>');
+$id = $_GET['id'];
 $host='localhost';
 $username='root';
 $password='';

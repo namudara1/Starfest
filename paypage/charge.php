@@ -37,6 +37,12 @@
    $event_id = 1;
    $eo_id = 41;
    $ep_id = 2;
+   $user_id = $_SESSION['user_id'];
+
+   $query1 = "SELECT * FROM event where event_id=$event_id";
+   $result_set1 = mysqli_query($connection, $query1);
+   $record1 = mysqli_fetch_assoc($result_set1);
+   $event_name = $record1['event_name'];
 
    if (mysqli_connect_error()){
     die('Connect Error ('. mysqli_connect_errno() .') '

@@ -44,6 +44,7 @@ $result2 = mysqli_query($conn1,$sql) ;
 <link rel="stylesheet" href="../css/style.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/search_bar.css" rel="stylesheet">
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
@@ -304,8 +305,21 @@ while ($row=mysqli_fetch_assoc($result2)){
        <a href="all_events/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["category"]?>"><button type="button"> Todos</button></a> <br><br>
 
        <a href="event/index.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Event details</button></a><br><br>
+      
+      <!-- check before add ticket details button -->
+      <?php
+      $event_type = "public";
+      if($row["type"] == $event_type){
+       ?>
+
+        <a href="event/ticket.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Ticket Details</button></a><br><br>
+      <?php
+      }
+       ?>
 
        <a href="event/data1.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Remove event</button></a><br><br>
+
+       
 
        <!-- <a href="attendees/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Attendees</button></a> -->
 
@@ -501,5 +515,6 @@ function openNav() {
 }
 </script>
 <?php } ?>
+<!-- <script  src="livesearch.js"></script> -->
 </body>
 </html> 

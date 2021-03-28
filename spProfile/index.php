@@ -6,18 +6,16 @@
  session_start();
  $not_count = 0;
 
-//  $spid = $_SESSION['spid'];
-
-//  echo '$spid';
-
-//  $userid = $_SESSION['userid'];
-
-//  echo '$userid';
 
 
- $sp_id = $_GET['data1'];
- $user_id = $_GET['data2'];
+ if(isset($_GET['data1'])){
+    $sp_id = $_GET['data1'];
+    $user_id = $_GET['data2'];
+ }
  
+ $_SESSION['spid'] = $user_id;
+
+ $_SESSION['unid'] = $sp_id;
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +36,18 @@
     </script>
 </head>
 <body>
-<?php include('../common/header.php'); ?>
+<?php include('../common/header.php'); 
+
+if(isset($_GET["id"])){
+    $sp_id = $_GET["id"];
+    $user_id = $_SESSION['user_id'];
+    // echo $spid;
+
+
+}
+
+
+?>
     <div class="container">
         <div class="profile-header">
             <div class="profile-img">

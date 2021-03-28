@@ -1,0 +1,26 @@
+.search_bar {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: white;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    /* overflow: scroll; */
+  }
+  
+  .search {
+    margin-left: 32%;
+  }
+  
+  .lives {
+    margin-left: 30%;
+    width: 42%;
+    border: white;
+    text-align: left;
+    border-style: white;
+    margin-top: 5%;
+  }
+  
