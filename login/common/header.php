@@ -47,12 +47,6 @@
   <a href="index.php" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Starfest</a>
   <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a> -->
 
-  <!-- search bar -->
-  <div class="search_bar">
-      <input id="search_input" type="text" placeholder="Search..." class="search" size="30" onkeyup="showResult(this.value)">
-    </div>
-    <div id="livesearch" class="lives"></div>
-
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
   <div class="w3-dropdown-hover w3-hide-small w3-right">
     <a href="../../message/index.php">

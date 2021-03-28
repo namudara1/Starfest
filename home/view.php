@@ -12,6 +12,14 @@ if(isset($_GET["id"])){
 
 $_SESSION['event_id'] = $event_id;
 
+//redirec pay page 
+
+
+$_SESSION['tempery_id'] = 1;
+
+// session id generate for the block to the go to sp and eo account
+$_SESSION['tempery_b_id'] = 1;
+
 //redirect homepage when payment 
 $re = 10;
 $_SESSION['redirect_pay'] = $re;
@@ -98,7 +106,16 @@ echo"<tr>";
                 </div>
                <br>
                 <div class="form-submit">
-                    <input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" />
+                <?php
+                // if(isset($_SESSION['user_type']) || )
+                if(isset($_SESSION['user_type'])) {
+                if(($_SESSION['user_type']== 'ep' || $_SESSION['user_type'] == NULL)){
+                    echo'<input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" />';
+                }
+            } else {
+                echo'<input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" />';
+            }
+                ?>
                 </div>
             </form>
         </div>
