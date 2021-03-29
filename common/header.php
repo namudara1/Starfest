@@ -87,7 +87,11 @@ if($usertype["type"] == "sp"){
         }?>
   </div>
   <div class="w3-dropdown-hover w3-hide-small w3-right">
-    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>     
+  <?php
+  if($usertype["type"] != "ad")
+    echo '<button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>';
+
+    ?>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px;height:500px;overflow:auto;">
     <?php
     if($usertype["type"] == "sp"){
