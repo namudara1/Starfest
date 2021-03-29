@@ -269,6 +269,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
           <?php 
 $i=0;
+if($result){
 while($row=mysqli_fetch_assoc($result)){
 
 ?> 
@@ -303,6 +304,10 @@ if($i% 1== 1){
 
 }
 $i++;
+}
+}
+else{
+  echo "no upcoming events";
 }
 ?>
          
