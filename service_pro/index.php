@@ -72,7 +72,7 @@ if($i%3 == 0){
 <div class="w3-third w3-margin-bottom">
       <ul class="w3-ul w3-border w3-hover-shadow">
         <li class="w3-theme-l2">
-       <h3 class="logoname"> <img src="1.png"> <b> <?php echo $row["firstname"]; ?>         <b><?php echo $row["lastname"]; ?></b></h3>
+       <h3 > <img src="1.png"> <b> <?php echo $row["firstname"]; ?>         <b><?php echo $row["lastname"]; ?></b></h3>
       
         </li>
         <li class="w3-padding-16"><p>Service - <?php echo $row["category"]; ?></p></li>
