@@ -5,13 +5,17 @@ require_once 'publicevent_db.php';
 session_start();
 
 $e_id = $_GET['data1'];
-// echo $e_id;
+//echo $e_id;
 
-
+$type = $_GET['data2'];
+//echo $type;
 
 
 $message1 = $e_id;
 $_SESSION['firstMessage'] = $message1;
+
+$message2 = $type;
+$_SESSION['secondMessage'] = $message2;
 
 
 ?>
@@ -21,11 +25,18 @@ $_SESSION['firstMessage'] = $message1;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ticket Prices</title>
-    <link rel="stylesheet" href="css1/style.css">
+    <title>Attendees List</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<?php
+
+
+if ($type == "Private") {
+  
+
+?>
 
     <div class="main-section">
        <div class="add-section">
@@ -40,14 +51,24 @@ $_SESSION['firstMessage'] = $message1;
              <?php }else{ ?>
               <input type="text" 
                      name="title" 
-                     placeholder="Ticket prices?" />
+                     placeholder="To whom are you going to invite?" />
               <button type="submit">Add &nbsp; <span>&#43;</span></button>
              <?php } ?>
           </form>
        </div>
        <?php
+
+
+
             
-          $todos = $conn->query("SELECT * FROM public_ticket_price where event_id= $e_id  ORDER BY ticket_price");
+            // while($todo1 = $empty1->fetch(PDO::FETCH_ASSOC)) { 
+                
+            //     echo $todo1['count(empty)']; 
+
+                             
+             } 
+    
+          $todos = $conn->query("SELECT * FROM attendees where event_id= $e_id  ORDER BY id DESC");
        ?>
        <div class="show-todo-section">
             <?php if($todos->rowCount() <= 0){ ?>
@@ -63,11 +84,18 @@ $_SESSION['firstMessage'] = $message1;
                 <div class="todo-item">
                     <span id="<?php echo $todo['id']; ?>"
                           class="remove-to-do">x</span>
-            
-                        
-                        
+                    <?php if($todo['checked']){ ?> 
+                        <input type="checkbox"
+                               class="check-box"
+                               data-todo-id ="<?php echo $todo['id']; ?>"
+                               checked />
+                        <h2 class="checked"><?php echo $todo['title'] ?></h2>
+                    <?php }else { ?>
+                        <input type="checkbox"
+                               data-todo-id ="<?php echo $todo['id']; ?>"
+                               class="check-box" />
                         <h2><?php echo $todo['title'] ?></h2>
-                
+                    <?php } ?>
                     <br>
                     
                 </div>
@@ -75,7 +103,7 @@ $_SESSION['firstMessage'] = $message1;
        </div>
     </div>
 
-    <script src="js1/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -94,25 +122,25 @@ $_SESSION['firstMessage'] = $message1;
                 );
             });
 
-            // $(".check-box").click(function(e){
-            //     const id = $(this).attr('data-todo-id');
+            $(".check-box").click(function(e){
+                const id = $(this).attr('data-todo-id');
                 
-            //     $.post('app/check.php', 
-            //           {
-            //               id: id
-            //           },
-            //           (data) => {
-            //               if(data != 'error'){
-            //                   const h2 = $(this).next();
-            //                   if(data === '1'){
-            //                       h2.removeClass('checked');
-            //                   }else {
-            //                       h2.addClass('checked');
-            //                   }
-            //               }
-            //           }
-            //     );
-            // });
+                $.post('app/check.php', 
+                      {
+                          id: id
+                      },
+                      (data) => {
+                          if(data != 'error'){
+                              const h2 = $(this).next();
+                              if(data === '1'){
+                                  h2.removeClass('checked');
+                              }else {
+                                  h2.addClass('checked');
+                              }
+                          }
+                      }
+                );
+            });
         });
     </script>
 

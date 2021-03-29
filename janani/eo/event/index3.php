@@ -1,17 +1,15 @@
 <?php 
 require 'db_conn.php';
-require_once 'publicevent_db.php';
 
 session_start();
 
-$e_id = $_GET['data1'];
-// echo $e_id;
+echo $_SESSION['firstMessage'];
+
+
+$message1 = $_SESSION['firstMessage'];
 
 
 
-
-$message1 = $e_id;
-$_SESSION['firstMessage'] = $message1;
 
 
 ?>
@@ -25,6 +23,7 @@ $_SESSION['firstMessage'] = $message1;
     <link rel="stylesheet" href="css1/style.css">
 </head>
 <body>
+
 
 
     <div class="main-section">
@@ -45,9 +44,10 @@ $_SESSION['firstMessage'] = $message1;
              <?php } ?>
           </form>
        </div>
-       <?php
-            
-          $todos = $conn->query("SELECT * FROM public_ticket_price where event_id= $e_id  ORDER BY ticket_price");
+       <?php 
+
+          
+          $todos = $conn->query("SELECT * FROM public_ticket_price where event_id= $message1  ORDER BY title");
        ?>
        <div class="show-todo-section">
             <?php if($todos->rowCount() <= 0){ ?>
@@ -63,13 +63,12 @@ $_SESSION['firstMessage'] = $message1;
                 <div class="todo-item">
                     <span id="<?php echo $todo['id']; ?>"
                           class="remove-to-do">x</span>
-            
-                        
-                        
+                   
+                       
                         <h2><?php echo $todo['title'] ?></h2>
-                
+                  
                     <br>
-                    
+
                 </div>
             <?php } ?>
        </div>
@@ -115,8 +114,6 @@ $_SESSION['firstMessage'] = $message1;
             // });
         });
     </script>
-
-
 
 
 </body>
