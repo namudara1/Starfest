@@ -273,11 +273,17 @@ button {
 
 
 
+
 $i=0;
 
 
 if($result2){
 while ($row=mysqli_fetch_assoc($result2)){
+
+  if(date("Y-m-d") < $row['date']){
+  
+    
+
 
 
 //if($i%3 == 0){
@@ -359,6 +365,7 @@ if($i%3 == 3){
 
 }
 $i++;
+  }
 }
 }
 else{
