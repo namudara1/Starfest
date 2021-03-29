@@ -21,13 +21,13 @@ if(isset($_POST['title'])){
         $res = $stmt->execute([$title]);
 
         if($res){
-            header("Location: ../index.php?mess=success"); 
+            header("Location: ../event_dashboard.php?mess=success"); 
         }else {
-            header("Location: ../index.php");
+            header("Location: ../event_dashboard.php");
         }
         $conn = null;
         exit();
     }
 }else {
-    header("Location: ../index.php?mess=error");
+    header("Location: ../event_dashboard.php?mess=error");
 }

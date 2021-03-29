@@ -107,10 +107,13 @@ $row1 = mysqli_fetch_array($result1);
                                 $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."') ");
                                 while ($row = $sql_getevents->fetch_assoc())
                                 {
+                                    $todate = date('Y-m-d');
+                                    if($todate < $row['date']){
                                     echo '<li> 
                                         <input name="check_list[]" type="checkbox" value="'.$row['event_id'].'">
                                         <label>'.$row['event_name'].'</label>
                                     </li>';
+                                    }
                                 }
                             ?>
                             <input type='submit' value='Submit Request' name='but_req'/>
@@ -154,169 +157,65 @@ $row1 = mysqli_fetch_array($result1);
                         <!-- <h1>User Reviews</h1>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga perferendis nisi aliquid quas cum incidunt dignissimos quos laboriosam iusto quam!</p> -->
 
-                        <section id="testimonials">
+        <section id="testimonials">
 
-        <!--heading--->
-        <div class="testimonial-heading">
-            <span>Comments and Feedbacks</span>
-            <!-- <h1></h1> -->
-        </div>
+            <!--heading--->
+            <div class="testimonial-heading">
+                <span>Comments and Feedbacks</span>
+                <!-- <h1></h1> -->
+            </div>
 
-        <!--testimonials-box-container------>
-        <div class="testimonial-box-container">
+            <!--testimonials-box-container------>
+            <div class="testimonial-box-container">
 
-            <!--BOX-1-------------->
-            <div class="testimonial-box">
+                <?php 
+                    $rtflag = 0;
+                    $sql_getratings = mysqli_query($con,"SELECT * FROM rating WHERE sp_id = '".$_SESSION['spid']."' ");
+                    while ($row = $sql_getratings->fetch_assoc())
+                    {
+                        $rtflag = 1; 
+                    $sql_getusername = mysqli_query($con,"SELECT firstname from event_organizer where id = '".$row['eo_id']."' ");
+                    $getname = mysqli_fetch_assoc($sql_getusername);
 
-                <!--top------------------------->
-                <div class="box-top">
-
-                    <!--profile----->
-                    <div class="profile">
-                        <!--img---->
-                        <div class="pro-img">
-                            <img src="images/c-1.jpg" />
+                echo '<div class="testimonial-box">
+                    <div class="box-top">
+                        <div class="profile">
+                            <div class="pro-img">
+                                <img src="../img/avatar3.png" />
+                            </div>
+                            <div class="name-user">
+                                <strong>'.$getname['firstname'].'</strong>
+                                <span>@'.$row['date'].'</span>
+                            </div>
                         </div>
-                        <!--name-and-username-->
-                        <div class="name-user">
-                            <strong>Name</strong>
-                            <span>@Name</span>
-                        </div>
+
+                        <div class="reviews">';
+
+                        for ($x = 1; $x <= $row['star_count']; $x++) {
+                            echo '<i class="fas fa-star"></i>';
+                        }
+
+                        for ($x = 1; $x <= (5-$row['star_count']); $x++) {
+                            echo '<i class="far fa-star"></i><!--Empty star-->';
+                        }
+                        echo '</div>
+
                     </div>
 
-                    <!--reviews------>
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!--Empty star-->
+                    <div class="client-comment">
+                        <p>'.$row['feedback'].'</p>
                     </div>
 
-                </div>
+                </div>';
 
-                <!--Comments---------------------------------------->
-                <div class="client-comment">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                </div>
+                }
+                if($rtflag == 0){
+                    echo '<p>No reviews yet</p>' ;
+                } ?>
 
             </div>
 
-            <!--BOX-2-------------->
-            <div class="testimonial-box">
-
-                <!--top------------------------->
-                <div class="box-top">
-
-                    <!--profile----->
-                    <div class="profile">
-                        <!--img---->
-                        <div class="pro-img">
-                            <img src="images/c-2.jpg" />
-                        </div>
-                        <!--name-and-username-->
-                        <div class="name-user">
-                            <strong>Name</strong>
-                            <span>@Name</span>
-                        </div>
-                    </div>
-
-                    <!--reviews------>
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><!--Empty star-->
-                    </div>
-
-                </div>
-
-                <!--Comments---------------------------------------->
-                <div class="client-comment">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                </div>
-
-            </div>
-
-            <!--BOX-3-------------->
-            <div class="testimonial-box">
-
-                <!--top------------------------->
-                <div class="box-top">
-
-                    <!--profile----->
-                    <div class="profile">
-                        <!--img---->
-                        <div class="pro-img">
-                            <img src="images/c-3.jpg" />
-                        </div>
-                        <!--name-and-username-->
-                        <div class="name-user">
-                            <strong>Name</strong>
-                            <span>@Name</span>
-                        </div>
-                    </div>
-
-                    <!--reviews------>
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!--Empty star-->
-                    </div>
-
-                </div>
-
-                <!--Comments---------------------------------------->
-                <div class="client-comment">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                </div>
-
-            </div>
-
-
-            <!--BOX-4-------------->
-            <div class="testimonial-box">
-
-                <!--top------------------------->
-                <div class="box-top">
-
-                    <!--profile----->
-                    <div class="profile">
-                        <!--img---->
-                        <div class="pro-img">
-                            <img src="images/c-4.jpg" />
-                        </div>
-                        <!--name-and-username-->
-                        <div class="name-user">
-                            <strong>Name</strong>
-                            <span>@Name</span>
-                        </div>
-                    </div>
-
-                    <!--reviews------>
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!--Empty star-->
-                    </div>
-
-                </div>
-
-                <!--Comments---------------------------------------->
-                <div class="client-comment">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+        </section>
                     </div>
                     <div class="profile-posts tab">
                         <h1>Your Posts</h1>

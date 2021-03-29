@@ -48,11 +48,14 @@ if(isset($_POST['but_upload'])){
 
 }
 
+$sql_getusertype = mysqli_query($con,"SELECT type FROM user WHERE id = '".$_SESSION['user_id']."' ");
+$usertype=mysqli_fetch_assoc($sql_getusertype);
+
 if($_POST['action'] == 'show_docs') {
-	$upload->showUserDocs($_SESSION['user_id'], $_POST['to_user_id']);
+	$upload->showUserDocs($_SESSION['user_id'], $_POST['to_user_id'], $usertype["type"]);
 }
 if($_POST['action'] == 'update_user_docs') {
-	$conversation = $upload->getUserDocs($_SESSION['user_id'], $_POST['to_user_id']);
+	$conversation = $upload->getUserDocs($_SESSION['user_id'], $_POST['to_user_id'], $usertype["type"]);
 	$data = array(
 		"conversation" => $conversation			
 	);

@@ -40,7 +40,7 @@ $result2 = mysqli_query($conn1,$sql) ;
 
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Event Organizer Dashbord</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/style.css">
@@ -273,11 +273,17 @@ button {
 
 
 
+
 $i=0;
 
 
 if($result2){
 while ($row=mysqli_fetch_assoc($result2)){
+
+  if(date("Y-m-d") < $row['date']){
+  
+    
+
 
 
 //if($i%3 == 0){
@@ -308,12 +314,12 @@ while ($row=mysqli_fetch_assoc($result2)){
       //  $event=$row["event_id"];?>
 
 
-       <a href="all_events/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["category"]?>"><button type="button"> Todos</button></a> <br><br>
+       <!-- <a href="all_events/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["category"]?>"><button type="button"> Todos</button></a> <br><br> -->
 
-       <a href="event/index.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Event details</button></a><br><br>
+       <a href="event_dashboard.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?> & data3=<?php echo $row["category"]?>"><button type="button"> More info</button></a><br><br>
       
       <!-- check before add ticket details button -->
-      <?php
+      <!-- <?php
       $event_type = "public";
       if($row["type"] == $event_type){
        ?>
@@ -323,11 +329,11 @@ while ($row=mysqli_fetch_assoc($result2)){
       }
        ?>
 
-       <a href="accepted_sp.php?data1=<?php echo $row["event_id"]?>?>"><button type="button"> Service Providers</button></a><br><br>
+       <a href="../../rating_new/index.php?data1=<?php echo $row["event_id"]?>?>"><button type="button"> Service Providers</button></a><br><br>
 
        <a href="event/data1.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Remove event</button></a><br><br>
 
-       
+        -->
 
        <!-- <a href="attendees/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button"> Attendees</button></a> -->
 
@@ -359,6 +365,7 @@ if($i%3 == 3){
 
 }
 $i++;
+  }
 }
 }
 else{

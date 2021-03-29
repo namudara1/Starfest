@@ -93,7 +93,7 @@
             return $output;
         }
         //Get all messages of the current chat session and display them
-        public function getUserDocs($from_user_id, $to_user_id) {			
+        public function getUserDocs($from_user_id, $to_user_id, $ustype) {			
             $sqlQuery = "
                 SELECT * FROM ".$this->chatTable." 
                 WHERE (sender_userid = '".$from_user_id."' 
@@ -126,9 +126,9 @@
                 $doclist .= '<div class="inner_progress" style="width: 100%;"></div>';
                 $doclist .= '</div>';
                 $doclist .= '</div>';
-                if($files["file_desc"] == "Invoice")
+                if($files["file_desc"] == "Invoice" && $ustype == "eo")
                 {
-                    $doclist .= '<a href="../paypage/payment.php?id='.$files["docid"].'" style="text-decoration: none;">';
+                    $doclist .= '<a href="../paypage/payment.php?id='.$files["event_id"].'" style="text-decoration: none;">';
                     $doclist .= '<div class="file_close">Pay</div>';
                     $doclist .= '</a>';
                 }
@@ -141,10 +141,10 @@
         }
         
         //Show chat session of a user when click on his chat contact
-        public function showUserDocs($from_user_id, $to_user_id) {		
+        public function showUserDocs($from_user_id, $to_user_id, $ustype) {		
             $userDetails = $this->getUserDetails($to_user_id);	
             // get user conversation
-            $doclists = $this->getUserDocs($from_user_id, $to_user_id);	
+            $doclists = $this->getUserDocs($from_user_id, $to_user_id, $ustype);	
             // update chat user read status		
             $sqlUpdate = "
                 UPDATE ".$this->chatTable." 
