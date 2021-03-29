@@ -14,6 +14,7 @@ $id=$_SESSION['user_id'];
 
 
 $event_id = $_GET['data1'];
+$_SESSION['event_id'] = $event_id ;
 $type = $_GET['data2'];
 $category = $_GET['data3'];
 
