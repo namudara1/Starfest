@@ -5,6 +5,7 @@ session_start();
 
 $event_id = $_GET['data1'];
 
+
 // $_SESSION['event_id'] = $event_id;
 
 //redirect homepage when payment 
@@ -69,15 +70,23 @@ echo"<tr>";
 <div class="main">
 <div class="container">
             <div class="booking-content">
+
+
                 <div class="booking-image">
                     <img class="booking-img" src="images/form-img.jpg" alt="Booking Image">
                 </div>
         <div class="booking-form">
             <form id="booking-form" action="../public_event_paypage/index.php" >
                 <h1><?php echo $row["event_name"]; ?></h1>
+                <?php 
+            if($row["type"]=='public'){
+            
+            ?>
                 <?php echo "<li><img src='../../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
+
+                <?php }?>
                 <div class="form-group form-input">
-                     <label for="name" class="form-label"><u><b>Description </u></b></label>
+                     <label for="name" class="form-label"><u><b>Description</u></b></label>
                 </div>
                 
                 <div class="form-group form-input">
@@ -90,6 +99,18 @@ echo"<tr>";
                     </div>
                     <div class="form-group form-input"> 
                     <label for="phone" class="form-label">TIME -  <?php echo $row["time"]; ?> </label>
+                </div>
+                <div class="form-group form-input"> 
+                    <label for="phone" class="form-label">CATEGORY -  <?php echo $row["category"]; ?> </label>
+                </div>
+                <div class="form-group form-input"> 
+                    <label for="phone" class="form-label">TYPE-  <?php echo $row["type"]; ?> </label>
+                </div>
+                <div class="form-group form-input"> 
+                    <label for="phone" class="form-label">PARTICIPANT AMOUNT-  <?php echo $row["participant_amt"]; ?> </label>
+                </div>
+                <div class="form-group form-input"> 
+                    <label for="phone" class="form-label">VENUE-  <?php echo $row["venue"]; ?> </label>
                 </div>
                <br>
                 <!-- <div class="form-submit">

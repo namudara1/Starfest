@@ -73,7 +73,7 @@ $sql_getSp=mysqli_query($con,"SELECT * FROM event_request WHERE event_id = '".$e
 while ($getsps = $sql_getSp->fetch_assoc()){
     mysqli_query($con,"INSERT INTO event_request (eo_userid, sp_userid, event_id) values('".$_SESSION['user_id']."', '".$getsps['sp_userid']."', '".$e1_id."') ");
 }
-header('Location: ../index.php');
+header('Location: ../event_dashboard.php');
 }
 else{
 echo "Error: ". $sql ."
