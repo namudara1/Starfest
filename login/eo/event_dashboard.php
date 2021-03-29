@@ -145,6 +145,27 @@ button {
         <a href="../../fileupload/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Reports</button>
         </a>
+
+        <a href="all_events/index2.php?data1=<?php echo $event_id?> & data2=<?php echo $category?>" style="text-decoration: none;">
+        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Todos </button>
+        </a>
+
+        <a href="event/index.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" style="text-decoration: none;">
+        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Edit event</button>
+        </a>
+
+        <a href="event/ticket.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" style="text-decoration: none;">
+        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Ticket details </button>
+        </a>
+
+        <a href="accepted_sp.php?data1=<?php echo $event_id?>?>" style="text-decoration: none;">
+        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Service providers </button>
+        </a>
+
+        <a href="event/data1.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" style="text-decoration: none;">
+        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Remove event </button>
+        </a>
+
         </div>      
       </div>
       <br>
@@ -192,12 +213,12 @@ button {
             <header class="showcase">
             <h1>Organize Your Event</h1>
                     <p>Simply learn how to create and manage your event with us</p>
-                    <a href="all_events/index2.php?data1=<?php echo $event_id?> & data2=<?php echo $category?>" class ="btn">Todos</a> <br>
+                    <!-- <a href="all_events/index2.php?data1=<?php echo $event_id?> & data2=<?php echo $category?>" class ="btn">Todos</a> <br> -->
                     <a href="../../create_event/index.php" class="btn" >Event details</a> <br>
-                    <a href="event/index.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Edit event</a> <br>
+                    <!-- <a href="event/index.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Edit event</a> <br>
                     <a href="event/ticket.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Ticket details</a> <br>
                     <a href="accepted_sp.php?data1=<?php echo $event_id?>?>" class="btn">Service providers</a> <br>
-                    <a href="event/data1.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Remove event</a> <br>
+                    <a href="event/data1.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Remove event</a> <br> -->
             </header>
             </div>
           </div>
