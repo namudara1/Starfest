@@ -194,7 +194,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
             <header class="showcase">
             <h1>Manage Documents</h1>
                     <p>Simply manage with your connected events</p>
-                    <a href="../../fileupload/index.php" class="btn" >Events Connected</a>
+                    <a href="../../message/index.php" class="btn" >Events Connected</a>
             </header>
             </div>
           </div>
