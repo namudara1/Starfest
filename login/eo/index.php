@@ -323,7 +323,7 @@ while ($row=mysqli_fetch_assoc($result2)){
       }
        ?>
 
-       <a href="accepted_sp.php?data1=<?php echo $row["event_id"]?>?>"><button type="button"> Service Providers</button></a><br><br>
+       <a href="../../rating_new/index.php?data1=<?php echo $row["event_id"]?>?>"><button type="button"> Service Providers</button></a><br><br>
 
        <a href="event/data1.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Remove event</button></a><br><br>
 
