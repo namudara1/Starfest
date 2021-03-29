@@ -16,8 +16,6 @@ $result2 = mysqli_query($conn,$sql) ;
 
 
 
-
-
 <!DOCTYPE html>
 <!--
 Template Name: Surogou
@@ -40,9 +38,8 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"> -->
 <link href="layout/styles/mainwork.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="style.css">
+
 </head>
 <?php include('../common/header.php'); ?>
 <body id="top">
@@ -64,34 +61,24 @@ Licence URI: https://www.os-templates.com/template-terms
 <?php 
 $i=0;
 while($row=mysqli_fetch_assoc($result2)){
- ?>
 
+if($i%3 == 0){
+
+// echo "<li class=\"one_third first\">";
+//echo"<li class=\"one_third \">";
+
+}
+?> 
 <div class="w3-third w3-margin-bottom">
       <ul class="w3-ul w3-border w3-hover-shadow">
         <li class="w3-theme-l2">
-       
-       <h3 class="logoname"> <img src="1.png"> <b> <?php echo $row["firstname"]; ?>         <b><?php echo $row["lastname"]; ?></b></h3>
+       <h3 > <img src="1.png"> <b> <?php echo $row["firstname"]; ?>         <b><?php echo $row["lastname"]; ?></b></h3>
       
         </li>
         <li class="w3-padding-16"><p>Service - <?php echo $row["category"]; ?></p></li>
         <li class="w3-padding-16"><p>Email - <?php echo $row["email"]; ?></p></li>
         <li class="w3-padding-16"><p>Telephone Number - <?php echo $row["telno"]; ?></p></li>
-        <li class="w3-padding-16"><p>Rating -<td>
-        <?php
-         $total=5;
-         $star=round($row['avg']);
-       while($i<$star){?>
-         <span class="fa fa-star checked"></span>
-       <?php
-       $i++;
-       $total--; }
-       $j=0;
-       while($j<$total){?>
-        <span class="fa fa-star"></span>
-       <?php 
-       $j++; } ?>
-        </p></li>
-      
+        <li class="w3-padding-16"><p>Rating - <?php echo $row["avg"]; ?></p></li>
         <?php 
         
         $spId = $row["sp_id"];
@@ -132,23 +119,5 @@ $i++;
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
-<script>
-  const ratings = {
-  hotel_a : 2.8,
-  hotel_b : 3.3,
-  hotel_c : 1.9,
-  hotel_d : 4.3,
-  hotel_e : 4.74
-};
-
-// total number of stars
-const starTotal = 5;
-
-for(const rating in ratings) {  
-  const starPercentage = (ratings[rating] / starTotal) * 100;
-  const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)}%`;
-  document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded; 
-}
-</script>
 </body>
 </html>
