@@ -20,7 +20,7 @@ die('Connect Error ('. mysqli_connect_errno() .') '
 . mysqli_connect_error());
 }
 else{
-    $sql = "INSERT INTO rating(sp_id, eo_id, star_count,feedback) VALUES ('$sp_id','$eo_id','$count','$feedback')";
+    $sql = "INSERT INTO rating(sp_id, eo_id, star_count,feedback,date) VALUES ('$sp_id','$eo_id','$count',CURDATE())";
     
 
 if ($conn->query($sql)){
