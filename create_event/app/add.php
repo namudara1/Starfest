@@ -33,15 +33,15 @@ if(isset($_POST['ticket_price'])){
 
         if($category!='others'){
 
-        $sql = "INSERT INTO public_ticket_price (ticket_price,event_id,quantity,category)
-        values ($ticket_price,$a,$quantity,'$category')";
+        $sql = "INSERT INTO public_ticket_price (ticket_price,event_id,quantity,category,issue_tickets)
+        values ($ticket_price,$a,$quantity,'$category',0)";
         
         }
         else{
 
 
-            $sql = "INSERT INTO public_ticket_price (ticket_price,event_id,quantity,category)
-            values ($ticket_price,$a,$quantity,'$category1')";
+            $sql = "INSERT INTO public_ticket_price (ticket_price,event_id,quantity,category,issue_tickets)
+            values ($ticket_price,$a,$quantity,'$category1',0)";
 
         }
         

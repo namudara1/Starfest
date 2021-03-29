@@ -54,7 +54,9 @@
 						<div class="file_upload" >
 							<div class="file_upload_list" id="file_upload_lists">
 								<?php
-									echo $upload->getUserDocs($_SESSION['user_id'], $currentSession);						
+									$sql_getusertype = mysqli_query($con,"SELECT type FROM user WHERE id = '".$_SESSION['user_id']."' ");
+									$usertype=mysqli_fetch_assoc($sql_getusertype);
+									echo $upload->getUserDocs($_SESSION['user_id'], $currentSession, $usertype["type"]);						
 								?>
 								<!-- <div class="file_close">X</div> -->
 							</div>

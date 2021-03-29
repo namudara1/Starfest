@@ -128,7 +128,7 @@ return;
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">time</div>
+                            <div class="name">Time</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="time" name="time" value="<?php echo $row1['time']?>">
@@ -136,14 +136,14 @@ return;
                             </div>
                         </div>
                     
-                        <div class="form-row">
+                        <!-- <div class="form-row">
                             <div class="name">Participant Amount</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="participant_amt" value="<?php echo $row1['participant_amt']?>">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-row">
                             <div class="name">Description</div>
                             <div class="value">
@@ -152,7 +152,7 @@ return;
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row p-t-20">
+                        <!-- <div class="form-row p-t-20">
                             <label class="label label--block">Event Type</label>
 
                             <?php 
@@ -218,54 +218,33 @@ else{
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                            
+                                <div> -->
+<!--                             
                                 <input type="file" name="pro" id="pro">
                                 
                                 </div>
                                 </div> 
+ -->
+
+      
 
 
-                                <div class="form-row p-t-20">
-                            <label class="label label--block">Do you want to ask some questions from the event participants</label>
-                            
-                            <?php 
-                            
-                            $type2=$row1['question'];
-                            if($type2=='yes'){
-                            
-                            ?>
 
-                            <br><br>
-                            Yes<input type="radio" name="qselection"  value="yes" checked >  No<input type="radio" name="qselection"  value="no">
-<?php }
-
-else{
-
-?>
-
-
-<br><br>
-                            Yes<input type="radio" name="qselection"  value="yes" >  No<input type="radio" name="qselection"  value="no" checked>
-
-<?php
-}
-?>
-                                <!-- <a href="index2.php?data1=<?php echo $currentId?>> Add ticket prices</a> --> -->
-                                 
+                                <!-- <a href="index2.php?data1=<?php echo $currentId?>> Add ticket prices</a> --> 
+<!--                                  
                                 <label class="label label--block">
                                  
                                  <a href="index2.php?data1=<?php echo $currentId?>"> Change ticket prices</a>
                                  </label>
-                            
+                             -->
                               
-</div>
+<!-- </div> -->
 
 
-                            </div>
+                            <!-- </div> -->
 
                        
-                        </div>
+                        <!-- </div> -->
                         <div>
                         <br>
                         

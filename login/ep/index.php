@@ -1,11 +1,34 @@
 <?php
  session_start();
  include_once "../../config/connection.php";
+
+
  $not_count = 0;
+
+ require_once 'publicevent_db.php';
+
+
+ // Connect to MySQL
+ 
+ $id=$_SESSION['user_id'];
+ 
+ $sql = "SELECT e.event_id,e.event_name, e.date FROM issued_ticket_id er 
+         join event e on er.event_id=e.event_id 
+         join event_participant p on er.user_id=p.id 
+         where  p.user_id=$id";
+ 
+ 
+ 
+ $result = mysqli_query($conn,$sql) ;
+ 
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Event Participant Dashboard</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/style.css">
@@ -134,7 +157,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
             <header class="showcase">
             <h1>Find amazing Events</h1>
                     <p>Simply search and register for any events</p>
-                    <a href="../create_event/index.php" class="btn" >Serach Events</a>
+                    <a href="search.php" class="btn" >Search Events</a>
             </header>
             </div>
           </div>
@@ -204,12 +227,66 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <div class="w3-container">
           <p>Upcoming Events:</p>
           <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
-          <p><strong>Seminar</strong></p>
-          <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+
+
+
+          <?php 
+$i=0;
+
+if($result){
+while($row=mysqli_fetch_assoc($result)){
+  if(date("Y-m-d") < $row['date']){
+  
+   
+
+?> 
+
+   
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+            <li class="one_third"> 
+ <figure>
+     <figcaption>
+       <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
+
+       <a href="event_details.php?data1=<?php echo $row["event_id"]?> ?>"><button type="button"> Event details</button></a><br><br>
+
+           
+     </figcaption>
+   </figure>
+   </li>
+                              
+                                <br><br><br>
+                             
+               
+           
+        </div>
+    </div>
+
+    <?php
+
+
+// if($i% 1== 1){
+
+
+// }
+// $i++;
+  }
+}
+}
+else{
+
+  echo "No upcoming events";
+}
+
+?>
+         
         </div>
       </div>
       <br>
+      
+ 
+      
       
       <!-- <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
