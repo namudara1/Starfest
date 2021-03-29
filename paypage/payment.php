@@ -4,7 +4,10 @@
     //include_once "../config/connection.php";
     $not_count = 0;
 
-    // $id = $_GET['id'];
+    $id = $_GET['id'];
+    $_SESSION['user_id_pay_page'] = $id;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +26,7 @@
 <div class="wrapper">
         <div class="payment">
           <h1>Payment Details</h1>
-          <form action="./charge.php" method="post" id="payment-form">
+          <form action="./charge.php?id=$id" method="post" id="payment-form">
               <div class="form-row">
               <div class="receiver">
                   <input type="text" class="input" name="receiver" placeholder="Receiver's Name">

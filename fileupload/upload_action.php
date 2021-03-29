@@ -37,8 +37,8 @@ if(isset($_POST['but_upload'])){
      // Insert record
      $sqlInsert = "
                 INSERT INTO document
-                (reciever_userid, sender_userid, file_path, file_name, type, file_size, file_desc, status) 
-                VALUES ('".$reciever_userid."', '".$user_id."', '".$target_dir."', '".$filename."', '".$FileType."','".$size."','".$file_desc."','1')";
+                (reciever_userid, sender_userid, event_id, file_path, file_name, type, file_size, file_desc, status) 
+                VALUES ('".$reciever_userid."', '".$user_id."', '".$_SESSION['event_id']."', '".$target_dir."', '".$filename."', '".$FileType."','".$size."','".$file_desc."','1')";
      mysqli_query($con,$sqlInsert);
   
      // Upload file
