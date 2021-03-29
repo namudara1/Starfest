@@ -3,11 +3,14 @@ $idd=$_GET['id'];
 require_once 'publicevent_db.php';
 // Connect to MySQL
 
+$event_id = $_GET['data1'];
+
+
 $sql = "SELECT e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
         join event e on er.event_id=e.event_id 
         join service_provider s on er.sp_userid=s.id 
-        where er.status='accepted'
-        AND $idd=s.id";
+        where er.status='accepted' &&
+         s.id='$idd' && e.event_id='$event_id'";
 
 
 

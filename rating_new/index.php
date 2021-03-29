@@ -2,6 +2,9 @@
 require_once 'publicevent_db.php';
 // Connect to MySQL
 
+$event_id = $_GET['data1'];
+
+
 $sql = "SELECT firstname,lastname,category,id FROM service_provider";
 	$result = $conn->query($sql);
 
@@ -122,7 +125,7 @@ while($row=mysqli_fetch_assoc($result)){
                 <td></td>
                 <td><?php echo $row["category"]; ?></td>
                 <td></td>
-				<td> <button class="btn btn--radius-2 btn--red"><a href="display_data1/index.php?id=<?=$row['id']; ?>">Click</a></button</td>
+				<td> <button class="btn btn--radius-2 btn--red"><a href="display_data1/index.php?id=<?=$row['id']; ?> & data1=<?php echo $event_id?>">Click</a></button</td>
 				
 				
 		</tr>
