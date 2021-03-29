@@ -9,7 +9,7 @@ $sql = "SELECT e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid FRO
 
 
 
-$result = mysqli_query($conn,$sql) ;
+$result = mysqli_query($conn1,$sql) ;
 
 
 
@@ -39,7 +39,7 @@ $result = mysqli_query($conn,$sql) ;
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="css1/main.css" rel="stylesheet" media="all">
 
     <!-- <script>
 

@@ -5,10 +5,12 @@
  require_once 'publicevent_db.php';
  // Connect to MySQL
  
+ $id=$_SESSION['user_id'];
+ 
  $sql = "SELECT e.event_id,e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
          join event e on er.event_id=e.event_id 
          join service_provider s on er.sp_userid=s.id 
-         where er.status='accepted'";
+         where er.status='accepted' && er.sp_userid=$id";
  
  
  
@@ -21,7 +23,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
+<title>Service Provider Dashbord</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/style.css">
@@ -142,7 +144,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <a href="../../message/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-whatsapp fa-fw w3-margin-right"></i>Messages</button>
         </a>
-        <a href="../../fileupload/index.php" style="text-decoration: none;">
+        <a href="report/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Reports</button>
         </a>
         </div>      
@@ -267,6 +269,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
           <?php 
 $i=0;
+if($result){
 while($row=mysqli_fetch_assoc($result)){
 
 ?> 
@@ -301,6 +304,10 @@ if($i% 1== 1){
 
 }
 $i++;
+}
+}
+else{
+  echo "no upcoming events";
 }
 ?>
          

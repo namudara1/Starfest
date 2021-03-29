@@ -1,0 +1,68 @@
+/*........................ table container ......................*/
+
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+body{
+background: white;
+}
+
+
+
+
+.heading{
+background: #3d76fc;
+border-radius: 7px 7px 0px 0px;
+padding: 10px;
+color: #fff;
+text-align: center;
+font-family: right;
+}
+
+
+}
+
+
+
+
+/*.........................arrange in row....................*/
+
+
+
+
+
+/*.......................... selection box ......................................*/
+
+
+/*................. PDF .......................*/
+
+
+/*....................... icon ..........................*/
+
+
+/*.............................. table ..................................................*/
+
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #3d76fc;
+  padding: 4px;
+}
+
+table tr:nth-child(even){background-color: white;}
+
+table tr:hover {background-color: rgb(90, 2, 252);}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #3d76fc;
+  color: white;
+ }
+ 
+ 
+/*................................. next, previous .....................*/

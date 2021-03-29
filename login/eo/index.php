@@ -17,7 +17,7 @@ $row = mysqli_fetch_assoc($data3);
 $eo_id1 = $row['eo_id'];
 
 
-$sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date desc ";
+$sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date  ";
 
 
 $result2 = mysqli_query($conn1,$sql) ;
@@ -266,8 +266,8 @@ button {
           
           <?php 
 
-if (mysqli_fetch_assoc($result2)==NULL){ 
- echo "No created events yet"; }?>
+// if (mysqli_fetch_assoc($result2)==NULL){ 
+//  echo "No created events yet"; }?>
 
           <?php 
 
@@ -276,7 +276,7 @@ if (mysqli_fetch_assoc($result2)==NULL){
 $i=0;
 
 
-
+if($result2){
 while ($row=mysqli_fetch_assoc($result2)){
 
 
@@ -323,6 +323,8 @@ while ($row=mysqli_fetch_assoc($result2)){
       }
        ?>
 
+       <a href="accepted_sp.php?data1=<?php echo $row["event_id"]?>?>"><button type="button"> Service Providers</button></a><br><br>
+
        <a href="event/data1.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?>"><button type="button">  Remove event</button></a><br><br>
 
        
@@ -358,7 +360,11 @@ if($i%3 == 3){
 }
 $i++;
 }
+}
+else{
 
+  echo "no events created yet";
+}
 ?>
 
 
