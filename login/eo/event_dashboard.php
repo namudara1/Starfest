@@ -11,6 +11,7 @@ require_once 'publicevent_db.php';
 
 // $sql = "SELECT * FROM event ORDER BY date DESC";
 $id=$_SESSION['user_id'];
+
 //$pe="Select eo_id from event_organizer where id='$id'";
 $data3 = mysqli_query($conn1,"Select eo_id from event_organizer where id='$id'");
 $row = mysqli_fetch_assoc($data3);
@@ -29,10 +30,9 @@ $result2 = mysqli_query($conn1,$sql) ;
 //$image1 = $row1['image'];
  //$image_src = "../create_event/upload/".$image1;
 
-
-
-
-
+ $event_id = $_GET['data1'];
+ $type = $_GET['data2'];
+ $category = $_GET['data3'];
 
 ?>
 
@@ -192,7 +192,12 @@ button {
             <header class="showcase">
             <h1>Organize Your Event</h1>
                     <p>Simply learn how to create and manage your event with us</p>
-                    <a href="../../create_event/index.php" class="btn" >Create Event</a>
+                    <a href="all_events/index2.php?data1=<?php echo $event_id?> & data2=<?php echo $category?>" class ="btn">Todos</a> <br>
+                    <a href="../../create_event/index.php" class="btn" >Event details</a> <br>
+                    <a href="event/index.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Edit event</a> <br>
+                    <a href="event/ticket.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Ticket details</a> <br>
+                    <a href="accepted_sp.php?data1=<?php echo $event_id?>?>" class="btn">Service providers</a> <br>
+                    <a href="event/data1.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Remove event</a> <br>
             </header>
             </div>
           </div>
@@ -310,8 +315,8 @@ while ($row=mysqli_fetch_assoc($result2)){
 
        <!-- <a href="all_events/index2.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["category"]?>"><button type="button"> Todos</button></a> <br><br> -->
 
-       <a href="event_dashboard.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?> & data3=<?php echo $row["category"]?>"><button type="button"> More info</button></a><br><br>
-      
+       <!-- <a href="event_dashboard.php?data1=<?php echo $row["event_id"]?> & data2=<?php echo $row["type"]?> & data3=<?php echo $row["category"]?>"><button type="button"> More info</button></a><br><br>
+       -->
       <!-- check before add ticket details button -->
       <!-- <?php
       $event_type = "public";
