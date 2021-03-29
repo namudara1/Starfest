@@ -89,7 +89,7 @@ if($usertype["type"] == "sp"){
   <div class="w3-dropdown-hover w3-hide-small w3-right">
   <?php
   if($usertype["type"] != "ad")
-    echo '<button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>';
+    echo '<button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">'.$not_count.'</span></button>';
 
     ?>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px;height:500px;overflow:auto;">
@@ -99,9 +99,9 @@ if($usertype["type"] == "sp"){
       <div class="w3-container" >';
       $sql_getreq=mysqli_query($con,"SELECT * FROM event_request WHERE status='pending' and sp_userid = '".$_SESSION['user_id']."'");
       while ($row = $sql_getreq->fetch_assoc()){
-        $sql_getEventDet=mysqli_query($con,"SELECT event_name,date FROM event WHERE event_id = '".$row['event_id']."' ");
+        $sql_getEventDet=mysqli_query($con,"SELECT event_name,date,time FROM event WHERE event_id = '".$row['event_id']."' ");
         $res =$sql_getEventDet->fetch_assoc();
-        echo '<div class="reqitem"><a href="../../home/view.php?id='.$res["event_id"].'" style="text-decoration: none;"><span>'.$res['event_name'].' on '.$res['date'].' at '.$res['time'].'</span></a>';
+        echo '<div class="reqitem"><a href="../home/view.php?id='.$row["event_id"].'" style="text-decoration: none;"><span>'.$res['event_name'].' on '.$res['date'].' at '.$res['time'].'</span></a>';
         echo '<div class="w3-row w3-opacity">
               <div class="w3-half">
                 <button event-id= "'.$row['id'].'" class="w3-button w3-block w3-green w3-section" title="Accept" id="request-accept"><i class="fa fa-check"></i></button>
@@ -145,10 +145,9 @@ if($usertype["type"] == "sp"){
           while ($row = $sql_getEventDate->fetch_assoc())
           {
             $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
-            echo $oneweekbefore;
+            
             $todate = date('Y-m-d');
-            $today_time = strtotime($todate);
-            echo $today_time;
+            
             if(($todate > $oneweekbefore) && $todate < strtotime($row["date"])){
               $flag1 = 1;
               echo '<a class="w3-bar-item w3-button" href="#">You have an upcoming event on '.$row["date"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
