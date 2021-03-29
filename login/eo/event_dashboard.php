@@ -12,16 +12,23 @@ require_once 'publicevent_db.php';
 // $sql = "SELECT * FROM event ORDER BY date DESC";
 $id=$_SESSION['user_id'];
 
+
+$event_id = $_GET['data1'];
+$type = $_GET['data2'];
+$category = $_GET['data3'];
+
 //$pe="Select eo_id from event_organizer where id='$id'";
 $data3 = mysqli_query($conn1,"Select eo_id from event_organizer where id='$id'");
 $row = mysqli_fetch_assoc($data3);
 $eo_id1 = $row['eo_id'];
 
 
-$sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date  ";
+$sql = "SELECT * FROM event where eo_id=$eo_id1 && event_id=$event_id  ";
 
 
 $result2 = mysqli_query($conn1,$sql) ;
+
+
 
 
 // $row1 = mysqli_fetch_array($result);
@@ -30,9 +37,7 @@ $result2 = mysqli_query($conn1,$sql) ;
 //$image1 = $row1['image'];
  //$image_src = "../create_event/upload/".$image1;
 
- $event_id = $_GET['data1'];
- $type = $_GET['data2'];
- $category = $_GET['data3'];
+
 
 ?>
 
@@ -286,7 +291,7 @@ button {
     <div class="w3-col m2">
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <p>My Events:</p>
+          <p>My Event:</p>
           
           <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
           
