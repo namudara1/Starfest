@@ -107,10 +107,13 @@ $row1 = mysqli_fetch_array($result1);
                                 $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."') ");
                                 while ($row = $sql_getevents->fetch_assoc())
                                 {
+                                    $todate = date('Y-m-d');
+                                    if($todate < $row['date']){
                                     echo '<li> 
                                         <input name="check_list[]" type="checkbox" value="'.$row['event_id'].'">
                                         <label>'.$row['event_name'].'</label>
                                     </li>';
+                                    }
                                 }
                             ?>
                             <input type='submit' value='Submit Request' name='but_req'/>
