@@ -20,7 +20,7 @@
     $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
     $todate = date('Y-m-d');
     $today_time = strtotime($todate);
-    if(($today_time > $oneweekbefore) && $today_time < strtotime($row["date"])){
+    if(($todate > $oneweekbefore) && $todate < strtotime($row["date"])){
       $not_count++;
     }
   }
@@ -87,7 +87,11 @@ if($usertype["type"] == "sp"){
         }?>
   </div>
   <div class="w3-dropdown-hover w3-hide-small w3-right">
-    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>     
+  <?php
+  if($usertype["type"] != "ad")
+    echo '<button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green"><?php echo $not_count; ?></span></button>';
+
+    ?>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px;height:500px;overflow:auto;">
     <?php
     if($usertype["type"] == "sp"){
@@ -141,9 +145,11 @@ if($usertype["type"] == "sp"){
           while ($row = $sql_getEventDate->fetch_assoc())
           {
             $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
+            echo $oneweekbefore;
             $todate = date('Y-m-d');
             $today_time = strtotime($todate);
-            if(($today_time > $oneweekbefore) && $today_time < strtotime($row["date"])){
+            echo $today_time;
+            if(($todate > $oneweekbefore) && $todate < strtotime($row["date"])){
               $flag1 = 1;
               echo '<a class="w3-bar-item w3-button" href="#">You have an upcoming event on '.$row["date"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
             }

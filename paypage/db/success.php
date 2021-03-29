@@ -1,26 +1,37 @@
-<?php require_once('connection.php'); ?>
-<?php
+<?php 
+    require_once('connection.php'); 
     session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        body{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow: hidden;
-            background: url("bg.png"), -webkit-linear-gradient(bottom, #0250c5, black);
-        }
-    </style>
+    <link rel="stylesheet" href="../css/success.css">
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h1 style="font-size:400%;">Payment successfull</h1>
+
+    
+    <div class="suc">
+        <h1 style="font-size:400%;">Payment successfull</h1>
+        
+       
+        <div class="cart_btn">
+        <button id="redirect_button" class="redirect">Back</button>
+        </div>
+    
+    </div>
+
+    
+
+<script type="text/javascript">
+    document.getElementById("redirect_button").onclick = function () {
+        location.href = "../../fileupload/index.php";
+    };
+</script>
+    
 </body>
 </html>

@@ -6,6 +6,7 @@
 
 <?php
   require_once('vendor/autoload.php');
+  // $id = $_GET['id'];
 
   // Set your secret key. Remember to switch to your live secret key in production.
   // See your keys here: https://dashboard.stripe.com/account/apikeys
@@ -19,6 +20,7 @@
   $email = $POST['email'];
   $amount = $POST['amount'];
   $token = $POST['stripeToken'];
+  $doc_id = $_SESSION['user_id_pay_page'];
 
   $token = $_POST['stripeToken'];
   $customer = \Stripe\customer::create([
@@ -32,35 +34,23 @@
     "description" => $purpose,
     "customer" => $customer->id
   ]);
-   
-   //sent data in to database
-   $event_id = 1;
-   $eo_id = 41;
-   $ep_id = 2;
-   $user_id = $_SESSION['user_id'];
 
-   $query1 = "SELECT * FROM event where event_id=$event_id";
-   $result_set1 = mysqli_query($connection, $query1);
-   $record1 = mysqli_fetch_assoc($result_set1);
-   $event_name = $record1['event_name'];
 
-   if (mysqli_connect_error()){
-    die('Connect Error ('. mysqli_connect_errno() .') '
-    . mysqli_connect_error());
-    }
-    else{
-    $sql = "INSERT INTO payment (amount, event_id, eo_id, ep_id)
-    values ('$amount','$event_id','$eo_id','$ep_id')";
-    if ($connection->query($sql)){
-    echo "New record is inserted sucessfully";
-    }
-    else{
-    echo "Error: ". $sql ."
-    ". $connection->error;
-    }
-    $connection->close();
-    }
+   $query2 = "SELECT * FROM document where docid=$doc_id";
+   $result_set2 = mysqli_query($connection, $query2);
+   $record2 = mysqli_fetch_assoc($result_set2);
+   $sp_id = $record2['sender_userid'];
+   $eo_id = $record2['reciever_userid'];
 
+  //  $query1 = "SELECT * FROM event where event_id=$event_id";
+  //  $result_set1 = mysqli_query($connection, $query1);
+  //  $record1 = mysqli_fetch_assoc($result_set1);
+  //  $event_name = $record1['event_name'];
+
+    $sql = "INSERT INTO payment (amount, event_id, eo_id, sp_id)
+    values ('$amount','$event_id','$eo_id','$sp_id')";
+    $connection->query($sql);
+    
   //redirect to success
  header('Location: ./db/success.php');
 
