@@ -144,7 +144,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <a href="../../message/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-whatsapp fa-fw w3-margin-right"></i>Messages</button>
         </a>
-        <a href="../../fileupload/index.php" style="text-decoration: none;">
+        <a href="report/index.php" style="text-decoration: none;">
           <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Reports</button>
         </a>
         </div>      

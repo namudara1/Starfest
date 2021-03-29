@@ -7,16 +7,10 @@ require_once 'publicevent_db.php';
 // Connect to MySQL
 
 // $sql = "SELECT * FROM event ORDER BY date DESC";
-$sql = "SELECT * FROM service_provider";
+$sql="SELECT AVG(r.star_count) as avg,s.id,s.firstname,s.lastname,s.email,s.category,s.email,s.telno,s.sp_id FROM rating r right JOIN service_provider s on r.sp_id=s.id GROUP BY s.id";
 
 $result2 = mysqli_query($conn,$sql) ;
 //$row1 = mysqli_fetch_array($result2);
-
-
-//$image1 = $row1['image'];
- //$image_src = "../create_event/upload/".$image1;
-
-
 
 ?>
 
@@ -44,7 +38,6 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css"> -->
 <link href="layout/styles/mainwork.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="css/search_bar.css" rel="stylesheet">
 
 
 </head>
@@ -57,14 +50,6 @@ Licence URI: https://www.os-templates.com/template-terms
      <b> <h1 class="logoname"><span><b><u>Service providers</u></b></span></h1>
 
     </div>
-
-    
-    <div class="search_bar">
-      <input id="search_input" type="text" placeholder="Search..." class="search" size="30" onkeyup="showResult(this.value)">
-    </div>
-    <div id="livesearch" class="lives"></div>
-   
-    
 
 
 
@@ -93,7 +78,7 @@ if($i%3 == 0){
         <li class="w3-padding-16"><p>Service - <?php echo $row["category"]; ?></p></li>
         <li class="w3-padding-16"><p>Email - <?php echo $row["email"]; ?></p></li>
         <li class="w3-padding-16"><p>Telephone Number - <?php echo $row["telno"]; ?></p></li>
-
+        <li class="w3-padding-16"><p>Rating - <?php echo $row["avg"]; ?></p></li>
         <?php 
         
         $spId = $row["sp_id"];
@@ -134,6 +119,5 @@ $i++;
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
-<script  src="livesearch.js"></script>
 </body>
 </html>
