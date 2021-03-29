@@ -30,21 +30,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <h4 class="w3-center">My Profile</h4>
          <p class="w3-center"><img src="../../img/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
          <hr>
-         <?php  
-          $sql_getuser=mysqli_query($con,"SELECT * FROM event_participant WHERE id = '".$_SESSION['user_id']."'");
-          if(mysqli_num_rows($sql_getuser)>0){
-            while($result1=mysqli_fetch_assoc($sql_getuser)){
-              echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
-              echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Event Participant</p>';
-              echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result1["address"].'</p>';
-              echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result1["email"].'</p>';
-            }
-          }
-          ?>
-         <!-- <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> Name</p>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Event Organizer</p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p> -->
-         <!-- <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p> -->
+         
+         <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> System Admin</p>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Admin</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Colombo, Sri Lanka</p>
+         <!-- <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
         </div>
       </div>
       <br>
@@ -127,7 +117,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     <!-- Middle Column -->
     <div class="w3-col m7">
     
-      <div class="w3-row-padding">
+      <!-- <div class="w3-row-padding">
         <div class="w3-col m12">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
@@ -139,7 +129,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- <div class="w3-row-padding">
         <div class="w3-col m12">
@@ -199,7 +189,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     </div>
     
     <!-- Right Column -->
-    <div class="w3-col m2">
+    <!-- <div class="w3-col m2">
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
           <p>Upcoming Events:</p>
@@ -209,7 +199,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
         </div>
       </div>
-      <br>
+      <br> -->
       
       <!-- <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">

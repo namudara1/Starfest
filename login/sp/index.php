@@ -192,9 +192,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
             <header class="showcase">
-            <h1>Manage Events</h1>
-                    <p>Simply manage events that are connected</p>
-                    <a href="../create_event/index.php" class="btn" >Events Connected</a>
+            <h1>Manage Documents</h1>
+                    <p>Simply manage with your connected events</p>
+                    <a href="../../fileupload/index.php" class="btn" >Events Connected</a>
             </header>
             </div>
           </div>
