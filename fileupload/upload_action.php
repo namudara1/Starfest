@@ -38,7 +38,7 @@ if(isset($_POST['but_upload'])){
      $sqlInsert = "
                 INSERT INTO document
                 (reciever_userid, sender_userid, event_id, file_path, file_name, type, file_size, file_desc, status) 
-                VALUES ('".$reciever_userid."', '".$user_id."', '".$_SESSION['event_id']."', '".$target_dir."', '".$filename."', '".$FileType."','".$size."','".$file_desc."','1')";
+                VALUES ('".$reciever_userid."', '".$user_id."', null, '".$target_dir."', '".$filename."', '".$FileType."','".$size."','".$file_desc."','1')";
      mysqli_query($con,$sqlInsert);
   
      // Upload file
@@ -48,11 +48,14 @@ if(isset($_POST['but_upload'])){
 
 }
 
+$sql_getusertype = mysqli_query($con,"SELECT type FROM user WHERE id = '".$_SESSION['user_id']."' ");
+$usertype=mysqli_fetch_assoc($sql_getusertype);
+
 if($_POST['action'] == 'show_docs') {
-	$upload->showUserDocs($_SESSION['user_id'], $_POST['to_user_id']);
+	$upload->showUserDocs($_SESSION['user_id'], $_POST['to_user_id'], $usertype["type"]);
 }
 if($_POST['action'] == 'update_user_docs') {
-	$conversation = $upload->getUserDocs($_SESSION['user_id'], $_POST['to_user_id']);
+	$conversation = $upload->getUserDocs($_SESSION['user_id'], $_POST['to_user_id'], $usertype["type"]);
 	$data = array(
 		"conversation" => $conversation			
 	);
