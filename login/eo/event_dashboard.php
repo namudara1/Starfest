@@ -14,6 +14,7 @@ $id=$_SESSION['user_id'];
 
 
 $event_id = $_GET['data1'];
+$_SESSION['event_id'] = $event_id ;
 $type = $_GET['data2'];
 $category = $_GET['data3'];
 
@@ -219,7 +220,9 @@ button {
             <h1>Organize Your Event</h1>
                     <p>Simply learn how to create and manage your event with us</p>
                     <!-- <a href="all_events/index2.php?data1=<?php echo $event_id?> & data2=<?php echo $category?>" class ="btn">Todos</a> <br> -->
-                    <a href="../../create_event/index.php" class="btn" >Event details</a> <br>
+
+                    <a href="../sp/event_details.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>"  class="btn" >Event details</a> <br>
+
                     <!-- <a href="event/index.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Edit event</a> <br>
                     <a href="event/ticket.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" class="btn">Ticket details</a> <br>
                     <a href="accepted_sp.php?data1=<?php echo $event_id?>?>" class="btn">Service providers</a> <br>
