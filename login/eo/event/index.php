@@ -128,7 +128,7 @@ return;
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">time</div>
+                            <div class="name">Time</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="time" name="time" value="<?php echo $row1['time']?>">
