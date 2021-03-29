@@ -164,7 +164,7 @@ button {
         <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Ticket details </button>
         </a>
 
-        <a href="accepted_sp.php?data1=<?php echo $event_id?>?>" style="text-decoration: none;">
+        <a href="../../rating_new/index.php?data1=<?php echo $event_id?>?>" style="text-decoration: none;">
         <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Service providers </button>
         </a>
 
