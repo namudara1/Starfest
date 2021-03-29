@@ -226,32 +226,11 @@ else{
                                 </div> 
 
 
-                                <div class="form-row p-t-20">
-                            <label class="label label--block">Do you want to ask some questions from the event participants</label>
-                            
-                            <?php 
-                            
-                            $type2=$row1['question'];
-                            if($type2=='yes'){
-                            
-                            ?>
-
-                            <br><br>
-                            Yes<input type="radio" name="qselection"  value="yes" checked >  No<input type="radio" name="qselection"  value="no">
-<?php }
-
-else{
-
-?>
+      
 
 
-<br><br>
-                            Yes<input type="radio" name="qselection"  value="yes" >  No<input type="radio" name="qselection"  value="no" checked>
 
-<?php
-}
-?>
-                                <!-- <a href="index2.php?data1=<?php echo $currentId?>> Add ticket prices</a> --> -->
+                                <!-- <a href="index2.php?data1=<?php echo $currentId?>> Add ticket prices</a> --> 
                                  
                                 <label class="label label--block">
                                  

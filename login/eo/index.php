@@ -17,7 +17,7 @@ $row = mysqli_fetch_assoc($data3);
 $eo_id1 = $row['eo_id'];
 
 
-$sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date desc ";
+$sql = "SELECT * FROM event where eo_id=$eo_id1 ORDER BY date  ";
 
 
 $result2 = mysqli_query($conn1,$sql) ;
@@ -266,8 +266,8 @@ button {
           
           <?php 
 
-if (mysqli_fetch_assoc($result2)==NULL){ 
- echo "No created events yet"; }?>
+// if (mysqli_fetch_assoc($result2)==NULL){ 
+//  echo "No created events yet"; }?>
 
           <?php 
 

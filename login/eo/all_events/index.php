@@ -3,12 +3,12 @@ require 'db_conn.php';
 
 session_start();
 
-echo $_SESSION['firstMessage'];
+// echo $_SESSION['firstMessage'];
 
 
 $message1 = $_SESSION['firstMessage'];
 
-echo $_SESSION['secondMessage'];
+// echo $_SESSION['secondMessage'];
 
 
 $cat = $_SESSION['secondMessage'];

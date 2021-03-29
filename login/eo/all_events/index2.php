@@ -216,7 +216,7 @@ elseif ($cat == "Tamil wedding") {
             $empty2 = $conn->query("SELECT count(empty) FROM todo_item where event_id=  $e_id ");
             while($todo2 = $empty2->fetch(PDO::FETCH_ASSOC)) { 
                 
-                echo $todo2['count(empty)']; 
+                // echo $todo2['count(empty)']; 
 
                
                 
@@ -543,7 +543,7 @@ else{
             $empty3 = $conn->query("SELECT count(empty) FROM todo_item where event_id=  $e_id ");
             while($todo3 = $empty3->fetch(PDO::FETCH_ASSOC)) { 
                 
-                echo $todo3['count(empty)']; 
+                // echo $todo3['count(empty)']; 
 
                
                 
