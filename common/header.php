@@ -25,6 +25,12 @@
     }
   }
 }
+if($usertype["type"] == "sp"){
+  $sql_getreqsp=mysqli_query($con,"SELECT * FROM event_request WHERE status='pending' and sp_userid = '".$_SESSION['user_id']."'");
+  if(mysqli_num_rows($sql_getreqsp)>0){
+    $not_count++;
+  }
+}
 // if($usertype["type"] == "ep"){
 //   $sql_get=mysqli_query($con,"SELECT event_name,date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
 //   while ($row = $sql_get->fetch_assoc())
