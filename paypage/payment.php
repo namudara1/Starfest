@@ -3,6 +3,8 @@
     require_once('connection.php');
     //include_once "../config/connection.php";
     $not_count = 0;
+
+    // $id = $_GET['id'];
 ?>
 
 <!DOCTYPE html>

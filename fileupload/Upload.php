@@ -127,7 +127,7 @@
                 $doclist .= '</div>';
                 if($files["file_desc"] == "Invoice")
                 {
-                    $doclist .= '<a href="../paypage/payment.php" style="text-decoration: none;">';
+                    $doclist .= '<a href="../paypage/payment.php?id=23" style="text-decoration: none;">';
                     $doclist .= '<div class="file_close">Pay</div>';
                     $doclist .= '</a>';
                 }

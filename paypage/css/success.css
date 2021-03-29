@@ -1,0 +1,56 @@
+custom font
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+        /*basic reset*/
+        * {margin: 0; padding: 0;}
+
+        html {
+            height: 100%;
+            /*Image only BG fallback*/
+    
+            /*background = gradient + image pattern combo*/
+            /* background-color: lightblue; */
+            background: url("bg.png"), -webkit-linear-gradient(bottom, #0250c5, black);
+        }
+
+        body {
+            font-family: montserrat, arial, verdana;
+        }
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+        /* .frame {
+          position: absolute;
+        top: 50px; right: 0; bottom: 0; left: 0;
+        background: lightblue;
+        } */
+
+.suc{
+    width: 600px;
+  height: 350px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  left:27%;
+  margin-top:10%;
+}
+
+.redirect {
+    width: 150px;
+    height: 50px;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: inherit;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px;
+    border: darkgray;
+  }
