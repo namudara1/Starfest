@@ -7,7 +7,7 @@
  
  $id=$_SESSION['user_id'];
  
- $sql = "SELECT e.event_id,e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
+ $sql = "SELECT e.event_id,e.event_name,e.date,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
          join event e on er.event_id=e.event_id 
          join service_provider s on er.sp_userid=s.id 
          where er.status='accepted' && er.sp_userid=$id";
@@ -272,6 +272,11 @@ $i=0;
 if($result){
 while($row=mysqli_fetch_assoc($result)){
 
+  if(date("Y-m-d") < $row['date']){
+  
+   
+
+
 ?> 
 
    
@@ -304,6 +309,7 @@ if($i% 1== 1){
 
 }
 $i++;
+  }
 }
 }
 else{

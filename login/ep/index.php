@@ -12,7 +12,7 @@
  
  $id=$_SESSION['user_id'];
  
- $sql = "SELECT e.event_id,e.event_name FROM issued_ticket_id er 
+ $sql = "SELECT e.event_id,e.event_name, e.date FROM issued_ticket_id er 
          join event e on er.event_id=e.event_id 
          join event_participant p on er.user_id=p.id 
          where  p.user_id=$id";
@@ -235,6 +235,9 @@ $i=0;
 
 if($result){
 while($row=mysqli_fetch_assoc($result)){
+  if(date("Y-m-d") < $row['date']){
+  
+   
 
 ?> 
 
@@ -268,6 +271,7 @@ while($row=mysqli_fetch_assoc($result)){
 
 // }
 // $i++;
+  }
 }
 }
 else{
