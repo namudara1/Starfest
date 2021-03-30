@@ -19,6 +19,16 @@
 			<div class="chat" >
 				<div id="frame">
 					<div id="sidepanel">
+					<div id="profile">
+					<div class="wrap">
+						<?php
+							if($usertype["type"] == "eo"){
+							echo '<h3>Service Providers</h3>';}
+							if($usertype["type"] == "sp"){
+								echo '<h3>Event Organizers</h3>';}
+						?>
+					</div>
+					</div>
 						<?php
 							include ('Upload.php');
 							$upload = new Upload();
@@ -51,6 +61,14 @@
 						</div>
 					</div>
 					<div class="right-side">
+						<div class="contact-profile" id="userSection">	
+						<?php
+							$userDetails = $upload->getUserDetails($currentSession);
+							foreach ($userDetails as $user) {
+									echo '<h3>'.$user['username'].'</h3>';
+							}	
+						?>						
+						</div>
 						<div class="file_upload" >
 							<div class="file_upload_list" id="file_upload_lists">
 								<?php
@@ -68,13 +86,20 @@
 									<!-- <input type="hidden" name="ruserid" value="<?php //echo $newSession; ?>"/> -->
 									<span>File Description/Purpose</span>
 									<select id="filepurpose" name="filedesc">
-										<option value="Invoice">Invoice</option>
-										<option value="Event Plan">Event Plan</option>
-										<option value="Budget">Budget</option>
+										<?php
+											if($usertype["type"] == "sp"){
+												echo '<option value="Invoice">Invoice</option>
+												<option value="Voucher">Voucher</option>
+												<option value="Quotation">Quotation</option>';
+											}
+											if($usertype["type"] == "eo"){
+												echo '<option value="Event Plan">Event Plan</option>';
+											}
+										?>
 										<option value="Other">Other</option>
 									</select>
 									<!-- <input type="text" name='filedesc'/> -->
-									<input type='submit' value='Upload File' name='but_upload'/>
+									<input type='submit' value='Send File' name='but_upload'/>
 								</form>
 							</label>
 						</div>

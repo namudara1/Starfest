@@ -93,7 +93,7 @@
   <div class="dashboard-dropdown-hover dashboard-hide-small dashboard-right">
   <?php
   if($usertype["type"] != "ad")
-    echo '<button class="dashboard-button dashboard-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="dashboard-badge dashboard-right dashboard-small dashboard-green">'.$not_count.'</span></button>';
+    {echo '<button class="dashboard-button dashboard-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="dashboard-badge dashboard-right dashboard-small dashboard-green">'.$not_count.'</span></button>';}
 
     ?>
     <div class="dashboard-dropdown-content dashboard-card-4 dashboard-bar-block" style="width:300px;height:500px;overflow:auto;">

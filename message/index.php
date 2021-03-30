@@ -19,6 +19,16 @@
 			<div class="chat">	
 				<div id="frame">		
 					<div id="sidepanel">
+					<div id="profile">
+					<div class="wrap">
+					<?php
+							if($usertype["type"] == "eo"){
+							echo '<h3>Service Providers</h3>';}
+							if($usertype["type"] == "sp"){
+								echo '<h3>Event Organizers</h3>';}
+						?>
+					</div>
+					</div>
 						<?php
 							include ('Chat.php');
 							$chat = new Chat();
@@ -51,6 +61,14 @@
 						</div>
 					</div>			
 					<div class="content" id="content"> 
+						<!-- <div class="contact-profile" id="userSection">	
+						<?php
+							$userDetails = $chat->getUserDetails($currentSession);
+							foreach ($userDetails as $user) {
+									// echo '<h3>'.$user['username'].'</h3>';
+							}	
+						?>						
+						</div> -->
 						<div class="messages" id="conversation">		
 							<?php
 							echo $chat->getUserChat($_SESSION['user_id'], $currentSession);						

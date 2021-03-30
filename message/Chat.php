@@ -132,7 +132,10 @@ class Chat{
 
 	//Show chat session of a user when click on his chat contact
 	public function showUserChat($from_user_id, $to_user_id) {		
-		$userDetails = $this->getUserDetails($to_user_id);	
+		$userDetails = $this->getUserDetails($to_user_id);
+		// foreach ($userDetails as $user) {
+		// 	$userSection = '<h3>'.$user['username'].'</h3>';
+		// }	
 		// get user conversation
 		$conversation = $this->getUserChat($from_user_id, $to_user_id);	
 		// update chat user read status		
@@ -148,6 +151,7 @@ class Chat{
 			WHERE userid = '".$from_user_id."'";
 		mysqli_query($this->dbConnect, $sqlUserUpdate);		
 		$data = array(
+			// "userSection" => $userSection,
 			"conversation" => $conversation			
 		 );
 		 echo json_encode($data);		
