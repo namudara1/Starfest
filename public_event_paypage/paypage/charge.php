@@ -48,6 +48,7 @@
   if($result_set2){
     while ($record2 = mysqli_fetch_assoc($result_set2)){
       $event_id = $record2['event_id'];
+      $_SESSION['event_id'] = $event_id;
       $quanty1 = $record2['quantity'];
       $ticket_price1 = $record2['ticket_price'];
       

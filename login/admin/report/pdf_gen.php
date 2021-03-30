@@ -4,7 +4,7 @@ require('fpdf/fpdf.php');
 require_once('connection.php');
 
 
-$e_id = 20;
+$e_id = $_GET['id'];
 
 $query1 = "SELECT * FROM event where event_id='$e_id'";
 $result_set1 = mysqli_query($connection, $query1);
@@ -74,5 +74,3 @@ $pdf->AddPage();
 
 
 mysqli_close($connection);
-
-?>
