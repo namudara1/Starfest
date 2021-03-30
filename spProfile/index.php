@@ -77,7 +77,7 @@ $result1 = mysqli_query($conn1,$sql1) ;
 $row1 = mysqli_fetch_array($result1);
 
 
-
+$sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."') ");
 
 ?>
                     <p >
@@ -104,7 +104,7 @@ $row1 = mysqli_fetch_array($result1);
                         <h4>Choose Event/s </h4>
                         <form method="post" action="request.php" enctype='multipart/form-data'>
                             <?php 
-                                $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."') ");
+                                
                                 while ($row = $sql_getevents->fetch_assoc())
                                 {
                                     $todate = date('Y-m-d');
@@ -121,9 +121,18 @@ $row1 = mysqli_fetch_array($result1);
                         </ul>
                     </div>
                     <div class="user-rating">
-                        <h3 class="rating">4.5</h3>
+                        <h3 class="rating"><?php //echo $row['star_count']; ?>4.5</h3>
                             <div class="rate">
                                 <div class="stars">
+                                    <?php
+                                // for ($x = 1; $x <= $row['star_count']; $x++) {
+                                //         echo '<i class="fa fa-star"></i>';
+                                //     }
+
+                                //     for ($x = 1; $x <= (5-$row['star_count']); $x++) {
+                                //         echo '<i class="fr fa-star"></i><!--Empty star-->';
+                                //     }
+                                ?>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>

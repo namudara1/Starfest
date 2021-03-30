@@ -142,7 +142,10 @@
         
         //Show chat session of a user when click on his chat contact
         public function showUserDocs($from_user_id, $to_user_id, $ustype) {		
-            $userDetails = $this->getUserDetails($to_user_id);	
+            $userDetails = $this->getUserDetails($to_user_id);
+            foreach ($userDetails as $user) {
+                $userSection = '<h3>'.$user['username'].'</h3>';
+            }	
             // get user conversation
             $doclists = $this->getUserDocs($from_user_id, $to_user_id, $ustype);	
             // update chat user read status		
@@ -158,6 +161,7 @@
                 WHERE userid = '".$from_user_id."'";
             mysqli_query($this->dbConnect, $sqlUserUpdate);		
             $data = array(
+                "userSection" => $userSection,
                 "conversation" => $doclists		
             );
             echo json_encode($data);		
