@@ -109,7 +109,7 @@ while($row=mysqli_fetch_assoc($result)){
 <div id="modal">
 	<div class="overlay">
 		<div class="feedback container--small align--center">
-			<button id="close" ><a href="../home/index.php">Close</a></button>
+			<!-- <button id="close" ><a href="../home/index.php">Close</a></button> -->
 			<h1 class="feedback__title">Reqest accpeted Service provider details</h1>
 			<p class="feedback__description"></p>
                 <form method="POST" action="signup_db.php?data1=<?=$row['sp_userid']; ?>&data2=<?=$row['eo_userid']; ?>">

@@ -16,7 +16,11 @@ $id=$_SESSION['user_id'];
 $event_id = $_GET['data1'];
 $_SESSION['event_id'] = $event_id ;
 $type = $_GET['data2'];
+$_SESSION['type'] = $type ;
 $category = $_GET['data3'];
+$_SESSION['category'] = $category ;
+
+
 
 //$pe="Select eo_id from event_organizer where id='$id'";
 $data3 = mysqli_query($conn1,"Select eo_id from event_organizer where id='$id'");
@@ -28,6 +32,7 @@ $sql = "SELECT * FROM event where eo_id=$eo_id1 && event_id=$event_id  ";
 
 
 $result2 = mysqli_query($conn1,$sql) ;
+$result3 = mysqli_query($conn1,$sql) ;
 
 
 
@@ -167,10 +172,18 @@ button {
         <a href="../../rating_new/index.php?data1=<?php echo $event_id?>?>" style="text-decoration: none;">
         <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>Service providers </button>
         </a>
+<?php
+        
+while ($row=mysqli_fetch_assoc($result3)){ 
+  if($row['type']=='Private'){
+  
+  ?>
 
         <a href="event/data1.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" style="text-decoration: none;">
-        <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>Remove event </button>
+        <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>  Remove event  </button>
         </a>
+<?php }}?>
+   
 
         </div>      
       </div>

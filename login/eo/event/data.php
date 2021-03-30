@@ -10,6 +10,8 @@ session_start();
 $e1_id = $_GET['data3'];
 
 
+
+
 $event_name = filter_input(INPUT_POST, 'event_name');
 $venue = filter_input(INPUT_POST, 'venue');
 $date = filter_input(INPUT_POST, 'date');
@@ -20,6 +22,7 @@ $eo_id = filter_input(INPUT_POST, 'eo_id');
 
 // echo "<pre>", print_r($_FILES),"</pre>";
 // echo "<pre>", print_r($_FILES['pro']),"</pre>";
+
 
 
 // die();
@@ -54,6 +57,12 @@ $row = mysqli_fetch_assoc($data1);
 $eo_idd = $row['eo_id'];
 
 
+
+$data_new = mysqli_query($conn,"Select * from event where event_id='$e1_id'");
+$row_new = mysqli_fetch_assoc($data_new);
+$type_new=$row_new['type'];
+$category_new = $row_new['category'];
+
 $sql = "UPDATE event SET event_name='$event_name', date='$date', time='$time', description='$description', venue= '$venue'  where event_id='$e1_id'";
 
 
@@ -73,7 +82,7 @@ $sql_getSp=mysqli_query($con,"SELECT * FROM event_request WHERE event_id = '".$e
 while ($getsps = $sql_getSp->fetch_assoc()){
     mysqli_query($con,"INSERT INTO event_request (eo_userid, sp_userid, event_id) values('".$_SESSION['user_id']."', '".$getsps['sp_userid']."', '".$e1_id."') ");
 }
-header('Location: ../event_dashboard.php');
+header("Location: ../event_dashboard.php?data1=".$e1_id."&data2=".$type_new."&data3=".$category_new);
 }
 else{
 echo "Error: ". $sql ."

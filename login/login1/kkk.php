@@ -45,7 +45,7 @@
                                 header('Location: sp.php');
                            }
                            if($user_type == 'eo'){
-                                header('Location: ../create_event/index.php');
+                                header('Location: ../../create_event/index.php');
                            }
                            if($user_type == 'ep'){
                                 header('Location: ep.php');
