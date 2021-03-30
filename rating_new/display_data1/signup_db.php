@@ -24,6 +24,8 @@ else{
     
 
 if ($conn->query($sql)){
+
+    header('Location: ../../login/eo/event_dashboard.php');
 echo "<script> alert('Thank you for your feedback')</script>";
 echo"<script>window.open('index.php?','_self')</script>";
 }
