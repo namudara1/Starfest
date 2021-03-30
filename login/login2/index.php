@@ -1,30 +1,30 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user_id']) && $_SESSION['user_type']) {
-    $user_type = $_SESSION['user_type'];
-    // if(isset($_SESSION['event_id'] )){
-    //     //event participant login
-    //     if($user_type == 'ep'){
-    //         header('Location: ../public_event_paypage/index.php');
-    //     }
-    // }
+// if (isset($_SESSION['user_id']) && $_SESSION['user_type']) {
+//     $user_type = $_SESSION['user_type'];
+//     // if(isset($_SESSION['event_id'] )){
+//     //     //event participant login
+//     //     if($user_type == 'ep'){
+//     //         header('Location: ../public_event_paypage/index.php');
+//     //     }
+//     // }
 
-    //event participant login
-    if ($user_type == 'ep') {
-        header('Location: ep/index.php');
-    }
+//     //event participant login
+//     if ($user_type == 'ep') {
+//         header('Location: ep/index.php');
+//     }
 
-    // service provider login
-    if ($user_type == 'sp') {
-        header('Location: sp/index.php');
-    }
+//     // service provider login
+//     if ($user_type == 'sp') {
+//         header('Location: sp/index.php');
+//     }
 
-    //event orgizelogin
-    if ($user_type == 'eo') {
-        header('Location: eo/index.php');
-    }
-}
+//     //event orgizelogin
+//     if ($user_type == 'eo') {
+//         header('Location: eo/index.php');
+//     }
+// }
 ?>
 
 <!DOCTYPE html>
