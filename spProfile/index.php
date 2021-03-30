@@ -150,7 +150,7 @@ $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event W
                 <div class="nav">
                     <ul>
                         <li onclick="tabs(0)" class="user-review active">Reviews</li>
-                        <li onclick="tabs(1)" class="user-post">Posts</li>
+                        <!-- <li onclick="tabs(1)" class="user-post">Posts</li> -->
                         <!-- <li onclick="tabs(1)" class="user-setting">Settings</li> -->
                         
                         
@@ -226,9 +226,9 @@ $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event W
 
         </section>
                     </div>
-                    <div class="profile-posts tab">
+                    <!-- <div class="profile-posts tab">
                         <h1>Your Posts</h1>
-                        <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga perferendis nisi aliquid quas cum incidunt dignissimos quos laboriosam iusto quam!</p> -->
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga perferendis nisi aliquid quas cum incidunt dignissimos quos laboriosam iusto quam!</p>
                         <div class="gallery">
                             <div class="img-w"><img src="https://images.unsplash.com/photo-1485766410122-1b403edb53db?dpr=1&auto=format&fit=crop&w=1500&h=846&q=80&cs=tinysrgb&crop=" alt="" /></div>
                             <div class="img-w"><img src="https://images.unsplash.com/photo-1485793997698-baba81bf21ab?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" alt="" /></div>
@@ -240,7 +240,7 @@ $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event W
                             <div class="img-w"><img src="https://images.unsplash.com/photo-1485881787686-9314a2bc8f9b?dpr=1&auto=format&fit=crop&w=1500&h=969&q=80&cs=tinysrgb&crop=" alt="" /></div>
                             <div class="img-w"><img src="https://images.unsplash.com/photo-1485889397316-8393dd065127?dpr=1&auto=format&fit=crop&w=1500&h=843&q=80&cs=tinysrgb&crop=" alt="" /></div>
                         </div>
-                    </div>
+                    </div> -->
                     
                 </div>
             </div>
