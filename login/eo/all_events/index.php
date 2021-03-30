@@ -60,8 +60,8 @@ if ($cat == "Sinhala wedding") {
             <?php if($todos->rowCount() <= 0){ ?>
                 <div class="todo-item">
                     <div class="empty">
-                        <img src="img/f.png" width="100%" />
-                        <img src="img/Ellipsis.gif" width="80px">
+                        <!-- <img src="img/f.png" width="100%" />
+                        <img src="img/Ellipsis.gif" width="80px"> -->
                     </div>
                 </div>
             <?php } ?>

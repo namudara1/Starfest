@@ -45,7 +45,7 @@ $sql1 = "DELETE FROM event_request WHERE event_id='$eid'";
 if ($conn->query($sql)){
 // echo "New record is inserted sucessfully";
 // echo "user id: {$_SESSION['user_id']}<br>";
-header('Location: ../event_dashbord.php');
+header('Location: ../index.php');
 }
 else{
 echo "Error: ". $sql ."
