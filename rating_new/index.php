@@ -1,11 +1,9 @@
 <?php
 require_once 'publicevent_db.php';
 // Connect to MySQL
-
 $event_id = $_GET['data1'];
 
-
-$sql = "SELECT e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid,s.category,s.company_name FROM event_request er join event e on er.event_id=e.event_id join service_provider s on er.sp_userid=s.id where er.status='accepted'";
+$sql = "SELECT e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid,s.category,s.company_name FROM event_request er join event e on er.event_id=e.event_id join service_provider s on er.sp_userid=s.id where er.status='accepted' && e.event_id='$event_id'";
 	$result = $conn->query($sql);
 
 	
@@ -24,7 +22,7 @@ $sql = "SELECT e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid,s.c
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Starfest rating</title>
+    <title>Starfest Signup Form</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -123,7 +121,7 @@ while($row=mysqli_fetch_assoc($result)){
                 <td></td>
                 <td><?php echo $row["category"]; ?></td>
                 <td></td>
-				<td> <button class="btn btn--radius-2 btn--red"><a href="display_data1/index.php?id=<?=$row['sp_userid']; ?> & data1=<?php echo $event_id?>">Click</a></button</td>
+				<td> <button class="btn btn--radius-2 btn--red"><a href="display_data1/index.php?id=<?=$row['sp_userid']; ?>">Click</a></button</td>
 				
 				
 		</tr>

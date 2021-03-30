@@ -3,14 +3,11 @@ $idd=$_GET['id'];
 require_once 'publicevent_db.php';
 // Connect to MySQL
 
-$event_id = $_GET['data1'];
-
-
-$sql = "SELECT e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
+$sql = "SELECT e.event_name,s.firstname,s.lastname,er.sp_userid,er.eo_userid,s.company_name,s.category FROM event_request er 
         join event e on er.event_id=e.event_id 
         join service_provider s on er.sp_userid=s.id 
-        where er.status='accepted' &&
-         s.id='$idd' && e.event_id='$event_id'";
+        where er.status='accepted'
+        AND $idd=s.id";
 
 
 
@@ -109,12 +106,12 @@ while($row=mysqli_fetch_assoc($result)){
 <div id="modal">
 	<div class="overlay">
 		<div class="feedback container--small align--center">
-			<!-- <button id="close" ><a href="../home/index.php">Close</a></button> -->
+			<button id="close" ><a href="../home/index.php">Close</a></button>
 			<h1 class="feedback__title">Reqest accpeted Service provider details</h1>
 			<p class="feedback__description"></p>
                 <form method="POST" action="signup_db.php?data1=<?=$row['sp_userid']; ?>&data2=<?=$row['eo_userid']; ?>">
                     <fieldset class="rating rating__plan">
-					<h3> Service provider name&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $row["firstname"]; ?>-<?php echo $row["lastname"]; ?></h3>
+					<h3> <?php echo $row["company_name"]; ?>&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $row["category"]; ?></h3>
 					<div class="flex-container">
 						<input type="radio" id="plan-5" name="rating__plan" value="5">
 						<label for="plan-5"><svg>
