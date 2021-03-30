@@ -7,7 +7,7 @@ require_once 'publicevent_db.php';
 // Connect to MySQL
 
 // $sql = "SELECT * FROM event ORDER BY date DESC";
-$sql="SELECT AVG(r.star_count) as avg,s.id,s.firstname,s.lastname,s.email,s.category,s.email,s.telno,s.sp_id FROM rating r right JOIN service_provider s on r.sp_id=s.id GROUP BY s.id";
+$sql="SELECT AVG(r.star_count) as avg,s.id,s.firstname,s.lastname,s.email,s.category,s.email,s.telno,s.sp_id,s.company_name FROM rating r right JOIN service_provider s on r.sp_id=s.id GROUP BY s.id";
 
 $result2 = mysqli_query($conn,$sql) ;
 //$row1 = mysqli_fetch_array($result2);
@@ -70,7 +70,7 @@ while($row=mysqli_fetch_assoc($result2)){
       <ul class="w3-ul w3-border w3-hover-shadow">
         <li class="w3-theme-l2">
        
-       <h3 class="logoname"> <img src="1.png"> <b> <?php echo $row["firstname"]; ?>         <b><?php echo $row["lastname"]; ?></b></h3>
+       <h3 class="logoname"> <img src="1.png"> <b> <?php echo $row["company_name"]; ?> </b></h3>
       
         </li>
         <li class="w3-padding-16"><p>Service - <?php echo $row["category"]; ?></p></li>

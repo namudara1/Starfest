@@ -257,7 +257,7 @@ function toggle(obj) {
                         <br><br><br><br><br><br><br><br><br><br><br><br><br>
                         
 
-                            <button class="btn btn--radius-2 btn--red" type="submit" >Register</button>
+                            <button class="btn btn--radius-2 btn--red" type="submit" >Create Event</button>
                         </div> 
                     </form>
                 </div>
