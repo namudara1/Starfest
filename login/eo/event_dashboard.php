@@ -71,105 +71,105 @@ button {
 
 
 </style>
-<body class="w3-theme-l5">
+<body class="dashboard-theme-l5">
 <?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']) { ?> 
 
 <?php include('../common/header.php'); ?>
 
 <!-- Page Container -->
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+<div class="dashboard-container dashboard-content" style="max-width:1400px;margin-top:80px">    
   <!-- The Grid -->
-  <div class="w3-row">
+  <div class="dashboard-row">
     <!-- Left Column -->
-    <div class="w3-col m3">
+    <div class="dashboard-col m3">
       <!-- Profile -->
-      <div class="w3-card w3-round w3-white">
-        <div class="w3-container">
-         <h4 class="w3-center">My Profile</h4>
-         <p class="w3-center"><img src="../../img/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+      <div class="dashboard-card dashboard-round dashboard-white">
+        <div class="dashboard-container">
+         <h4 class="dashboard-center">My Profile</h4>
+         <p class="dashboard-center"><img src="../../img/avatar3.png" class="dashboard-circle" style="height:106px;width:106px" alt="Avatar"></p>
          <hr>
          <?php  
         $sql_getuser=mysqli_query($con,"SELECT * FROM event_organizer WHERE id = '".$_SESSION['user_id']."'");
         if(mysqli_num_rows($sql_getuser)>0){
           while($result1=mysqli_fetch_assoc($sql_getuser)){
-            echo '<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
-            echo '<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Event Organizer</p>';
-            echo '<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>'.$result1["address"].'</p>';
-            echo '<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i>'.$result1["email"].'</p>';
+            echo '<p><i class="fa fa-user fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
+            echo '<p><i class="fa fa-pencil fa-fw dashboard-margin-right dashboard-text-theme"></i>Event Organizer</p>';
+            echo '<p><i class="fa fa-home fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["address"].'</p>';
+            echo '<p><i class="fa fa-envelope fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["email"].'</p>';
           }
         }
         ?>
-         <!-- <p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> Name</p>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Event Organizer</p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p> -->
-         <!-- <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p> -->
+         <!-- <p><i class="fa fa-user fa-fw dashboard-margin-right dashboard-text-theme"></i> Name</p>
+         <p><i class="fa fa-pencil fa-fw dashboard-margin-right dashboard-text-theme"></i> Event Organizer</p>
+         <p><i class="fa fa-home fa-fw dashboard-margin-right dashboard-text-theme"></i> London, UK</p> -->
+         <!-- <p><i class="fa fa-birthday-cake fa-fw dashboard-margin-right dashboard-text-theme"></i> April 1, 1988</p> -->
         </div>
       </div>
       <br>
       
       <!-- Accordion -->
-      <div class="w3-card w3-round">
-        <div class="w3-white">
-          <!-- <button onclick="myFunction('Demo1')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> To-do list</button>
-          <div id="Demo1" class="w3-hide w3-container">
+      <div class="dashboard-card dashboard-round">
+        <div class="dashboard-white">
+          <!-- <button onclick="myFunction('Demo1')" class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-circle-o-notch fa-fw dashboard-margin-right"></i> To-do list</button>
+          <div id="Demo1" class="dashboard-hide dashboard-container">
             <p>Some text..</p>
           </div>-->
-          <!-- <button onclick="myFunction('Demo2')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
-          <div id="Demo2" class="w3-hide w3-container">
+          <!-- <button onclick="myFunction('Demo2')" class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-calendar-check-o fa-fw dashboard-margin-right"></i> My Events</button>
+          <div id="Demo2" class="dashboard-hide dashboard-container">
             <p>Some other text..</p>
           </div>  -->
-          <!-- <button onclick="myFunction('Demo3')" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
-          <div id="Demo3" class="w3-hide w3-container">
-         <div class="w3-row-padding">
+          <!-- <button onclick="myFunction('Demo3')" class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-users fa-fw dashboard-margin-right"></i> My Photos</button>
+          <div id="Demo3" class="dashboard-hide dashboard-container">
+         <div class="dashboard-row-padding">
          <br>
-           <div class="w3-half">
-             <img src="../../img/lights.jpg" style="width:100%" class="w3-margin-bottom">
+           <div class="dashboard-half">
+             <img src="../../img/lights.jpg" style="width:100%" class="dashboard-margin-bottom">
            </div>
-           <div class="w3-half">
-             <img src="../../img/nature.jpg" style="width:100%" class="w3-margin-bottom">
+           <div class="dashboard-half">
+             <img src="../../img/nature.jpg" style="width:100%" class="dashboard-margin-bottom">
            </div>
-           <div class="w3-half">
-             <img src="../../img/mountains.jpg" style="width:100%" class="w3-margin-bottom">
+           <div class="dashboard-half">
+             <img src="../../img/mountains.jpg" style="width:100%" class="dashboard-margin-bottom">
            </div>
-           <div class="w3-half">
-             <img src="../../img/forest.jpg" style="width:100%" class="w3-margin-bottom">
+           <div class="dashboard-half">
+             <img src="../../img/forest.jpg" style="width:100%" class="dashboard-margin-bottom">
            </div>
-           <div class="w3-half">
-             <img src="../../img/nature.jpg" style="width:100%" class="w3-margin-bottom">
+           <div class="dashboard-half">
+             <img src="../../img/nature.jpg" style="width:100%" class="dashboard-margin-bottom">
            </div>
-           <div class="w3-half">
-             <img src="../../img/snow.jpg" style="width:100%" class="w3-margin-bottom">
+           <div class="dashboard-half">
+             <img src="../../img/snow.jpg" style="width:100%" class="dashboard-margin-bottom">
            </div>
          </div>
           </div> -->
           <a href="../../fileupload/index.php" style="text-decoration: none;">
-          <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-file fa-fw w3-margin-right"></i>My Files</button>
+          <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-file fa-fw dashboard-margin-right"></i>My Files</button>
         </a>
         <a href="../../message/index.php" style="text-decoration: none;">
-          <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-whatsapp fa-fw w3-margin-right"></i>Messages</button>
+          <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-whatsapp fa-fw dashboard-margin-right"></i>Messages</button>
         </a>
         <a href="../../fileupload/index.php" style="text-decoration: none;">
-          <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Reports</button>
+          <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>Reports</button>
         </a>
 
         <a href="all_events/index2.php?data1=<?php echo $event_id?> & data2=<?php echo $category?>" style="text-decoration: none;">
-        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Todos </button>
+        <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>Todos </button>
         </a>
 
         <a href="event/index.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" style="text-decoration: none;">
-        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Edit event</button>
+        <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>Edit event</button>
         </a>
 
         <a href="event/ticket.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" style="text-decoration: none;">
-        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Ticket details </button>
+        <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>Ticket details </button>
         </a>
 
         <a href="../../rating_new/index.php?data1=<?php echo $event_id?>?>" style="text-decoration: none;">
-        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Service providers </button>
+        <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>Service providers </button>
         </a>
 
         <a href="event/data1.php?data1=<?php echo $event_id?> & data2=<?php echo $type?>" style="text-decoration: none;">
-        <button class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-line-chart fa-fw w3-margin-right"></i>Remove event </button>
+        <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-line-chart fa-fw dashboard-margin-right"></i>Remove event </button>
         </a>
 
         </div>      
@@ -177,29 +177,29 @@ button {
       <br>
       
       <!-- Interests --> 
-      <!-- <div class="w3-card w3-round w3-white w3-hide-small">
-        <div class="w3-container">
+      <!-- <div class="dashboard-card dashboard-round dashboard-white dashboard-hide-small">
+        <div class="dashboard-container">
           <p>Interests</p>
           <p>
-            <span class="w3-tag w3-small w3-theme-d5">News</span>
-            <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
-            <span class="w3-tag w3-small w3-theme-d3">Labels</span>
-            <span class="w3-tag w3-small w3-theme-d2">Games</span>
-            <span class="w3-tag w3-small w3-theme-d1">Friends</span>
-            <span class="w3-tag w3-small w3-theme">Games</span>
-            <span class="w3-tag w3-small w3-theme-l1">Friends</span>
-            <span class="w3-tag w3-small w3-theme-l2">Food</span>
-            <span class="w3-tag w3-small w3-theme-l3">Design</span>
-            <span class="w3-tag w3-small w3-theme-l4">Art</span>
-            <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-d5">News</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-d4">W3Schools</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-d3">Labels</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-d2">Games</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-d1">Friends</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme">Games</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-l1">Friends</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-l2">Food</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-l3">Design</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-l4">Art</span>
+            <span class="dashboard-tag dashboard-small dashboard-theme-l5">Photos</span>
           </p>
         </div>
       </div>
       <br> -->
       
       <!-- Alert Box -->
-      <!-- <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+      <!-- <div class="dashboard-container dashboard-display-container dashboard-round dashboard-theme-l4 dashboard-border dashboard-theme-border dashboard-margin-bottom dashboard-hide-small">
+        <span onclick="this.parentElement.style.display='none'" class="dashboard-button dashboard-theme-l3 dashboard-display-topright">
           <i class="fa fa-remove"></i>
         </span>
         <p><strong>Hey!</strong></p>
@@ -210,12 +210,12 @@ button {
     </div>
     
     <!-- Middle Column -->
-    <div class="w3-col m7">
+    <div class="dashboard-col m7">
     
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding">
+      <div class="dashboard-row-padding">
+        <div class="dashboard-col m12">
+          <div class="dashboard-card dashboard-round dashboard-white">
+            <div class="dashboard-container dashboard-padding">
             <header class="showcase">
             <h1>Organize Your Event</h1>
                     <p>Simply learn how to create and manage your event with us</p>
@@ -233,10 +233,10 @@ button {
         </div>
       </div>
 
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding">
+      <div class="dashboard-row-padding">
+        <div class="dashboard-col m12">
+          <div class="dashboard-card dashboard-round dashboard-white">
+            <div class="dashboard-container dashboard-padding">
             <header class="showcase" style="background:url(../../img/restaurant-3597677_1920.jpg);">
             <h1>Browse Service Providers</h1>
                     <p>Browse for service providers under any service category</p>
@@ -247,53 +247,53 @@ button {
         </div>
       </div>
       
-       <!-- <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="img/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">1 min</span>
+       <!-- <div class="dashboard-container dashboard-card dashboard-white dashboard-round dashboard-margin"><br>
+        <img src="img/avatar2.png" alt="Avatar" class="dashboard-left dashboard-circle dashboard-margin-right" style="width:60px">
+        <span class="dashboard-right dashboard-opacity">1 min</span>
         <h4>John Doe</h4><br>
-        <hr class="w3-clear">
+        <hr class="dashboard-clear">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-              <img src="img/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+          <div class="dashboard-row-padding" style="margin:0 -16px">
+            <div class="dashboard-half">
+              <img src="img/lights.jpg" style="width:100%" alt="Northern Lights" class="dashboard-margin-bottom">
             </div>
-            <div class="w3-half">
-              <img src="img/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+            <div class="dashboard-half">
+              <img src="img/nature.jpg" style="width:100%" alt="Nature" class="dashboard-margin-bottom">
           </div>
         </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+        <button type="button" class="dashboard-button dashboard-theme-d1 dashboard-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="dashboard-button dashboard-theme-d2 dashboard-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
       </div> -->
       
-      <!--<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="img/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">16 min</span>
+      <!--<div class="dashboard-container dashboard-card dashboard-white dashboard-round dashboard-margin"><br>
+        <img src="img/avatar5.png" alt="Avatar" class="dashboard-left dashboard-circle dashboard-margin-right" style="width:60px">
+        <span class="dashboard-right dashboard-opacity">16 min</span>
         <h4>Jane Doe</h4><br>
-        <hr class="w3-clear">
+        <hr class="dashboard-clear">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+        <button type="button" class="dashboard-button dashboard-theme-d1 dashboard-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="dashboard-button dashboard-theme-d2 dashboard-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
       </div>  
 
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="img/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">32 min</span>
+      <div class="dashboard-container dashboard-card dashboard-white dashboard-round dashboard-margin"><br>
+        <img src="img/avatar6.png" alt="Avatar" class="dashboard-left dashboard-circle dashboard-margin-right" style="width:60px">
+        <span class="dashboard-right dashboard-opacity">32 min</span>
         <h4>Angie Jane</h4><br>
-        <hr class="w3-clear">
+        <hr class="dashboard-clear">
         <p>Have you seen this?</p>
-        <img src="img/nature.jpg" style="width:100%" class="w3-margin-bottom">
+        <img src="img/nature.jpg" style="width:100%" class="dashboard-margin-bottom">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+        <button type="button" class="dashboard-button dashboard-theme-d1 dashboard-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="dashboard-button dashboard-theme-d2 dashboard-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
       </div>  -->
       
     <!-- End Middle Column -->
     </div>
     
     <!-- Right Column -->
-    <div class="w3-col m2">
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
+    <div class="dashboard-col m2">
+      <div class="dashboard-card dashboard-round dashboard-white dashboard-center">
+        <div class="dashboard-container">
           <p>My Event:</p>
           
           <img src="../../img/forest.jpg" alt="Forest" style="width:100%;">
@@ -330,7 +330,7 @@ while ($row=mysqli_fetch_assoc($result2)){
 
 
 
-       <!-- <button onclick="myFunction('Demo1')"  name="subject" type="submit" value="<?php echo $row["event_name"]; ?>" class="w3-button w3-button-border w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> To-do list</button> -->
+       <!-- <button onclick="myFunction('Demo1')"  name="subject" type="submit" value="<?php echo $row["event_name"]; ?>" class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-circle-o-notch fa-fw dashboard-margin-right"></i> To-do list</button> -->
        <!-- <button onclick="myFunction('Demo1')"  name="subject" type="submit" value="fav_HTML">HTML</button> -->
 
        <?php
@@ -420,12 +420,12 @@ else{
     
     <!-- Middle Column -->
     <!-- <a name="middle"></a>   -->
-    <!-- <div id="Demo1" class="w3-col m8">
+    <!-- <div id="Demo1" class="dashboard-col m8">
     
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding"> -->
+      <div class="dashboard-row-padding">
+        <div class="dashboard-col m12">
+          <div class="dashboard-card dashboard-round dashboard-white">
+            <div class="dashboard-container dashboard-padding"> -->
           
             <!-- <header class="showcase">
 
@@ -459,23 +459,23 @@ else{
 // Accordion
 function myFunction(id) {
   var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-theme-d1";
+  if (x.className.indexOf("dashboard-show") == -1) {
+    x.className += " dashboard-show";
+    x.previousElementSibling.className += " dashboard-theme-d1";
   } else { 
-    x.className = x.className.replace("w3-show", "");
+    x.className = x.className.replace("dashboard-show", "");
     x.previousElementSibling.className = 
-    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+    x.previousElementSibling.className.replace(" dashboard-theme-d1", "");
   }
 }
 
 // Used to toggle the menu on smaller screens when clicking on the menu button
 function openNav() {
   var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
+  if (x.className.indexOf("dashboard-show") == -1) {
+    x.className += " dashboard-show";
   } else { 
-    x.className = x.className.replace(" w3-show", "");
+    x.className = x.className.replace(" dashboard-show", "");
   }
 }
 </script>
@@ -491,30 +491,30 @@ function openNav() {
       </div>
       <br>
       
-      <!-- <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
+      <!-- <div class="dashboard-card dashboard-round dashboard-white dashboard-center">
+        <div class="dashboard-container">
           <p>Friend Request</p>
           <img src="../../img/avatar6.png" alt="Avatar" style="width:50%"><br>
           <span>Jane Doe</span>
-          <div class="w3-row w3-opacity">
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+          <div class="dashboard-row dashboard-opacity">
+            <div class="dashboard-half">
+              <button class="dashboard-button dashboard-block dashboard-green dashboard-section" title="Accept"><i class="fa fa-check"></i></button>
             </div>
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+            <div class="dashboard-half">
+              <button class="dashboard-button dashboard-block dashboard-red dashboard-section" title="Decline"><i class="fa fa-remove"></i></button>
             </div>
           </div>
         </div>
       </div>
       <br> -->
       
-      <!-- <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
+      <!-- <div class="dashboard-card dashboard-round dashboard-white dashboard-padding-16 dashboard-center">
         <p>ADS</p>
       </div>
       <br> -->
       
-      <!-- <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-        <p><i class="fa fa-bug w3-xxlarge"></i></p>
+      <!-- <div class="dashboard-card dashboard-round dashboard-white dashboard-padding-32 dashboard-center">
+        <p><i class="fa fa-bug dashboard-xxlarge"></i></p>
       </div> -->
       
     <!-- End Right Column -->
@@ -528,35 +528,35 @@ function openNav() {
 <br>
 
 <!-- Footer -->
-<!-- <footer class="w3-container w3-theme-d3 w3-padding-16">
+<!-- <footer class="dashboard-container dashboard-theme-d3 dashboard-padding-16">
   <h5>Footer</h5>
 </footer>
 
-<footer class="w3-container w3-theme-d5">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+<footer class="dashboard-container dashboard-theme-d5">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">dashboard.css</a></p>
 </footer>
   -->
 <script>
 // Accordion
 function myFunction(id) {
   var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-theme-d1";
+  if (x.className.indexOf("dashboard-show") == -1) {
+    x.className += " dashboard-show";
+    x.previousElementSibling.className += " dashboard-theme-d1";
   } else { 
-    x.className = x.className.replace("w3-show", "");
+    x.className = x.className.replace("dashboard-show", "");
     x.previousElementSibling.className = 
-    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+    x.previousElementSibling.className.replace(" dashboard-theme-d1", "");
   }
 }
 
 // Used to toggle the menu on smaller screens when clicking on the menu button
 function openNav() {
   var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
+  if (x.className.indexOf("dashboard-show") == -1) {
+    x.className += " dashboard-show";
   } else { 
-    x.className = x.className.replace(" w3-show", "");
+    x.className = x.className.replace(" dashboard-show", "");
   }
 }
 </script>
