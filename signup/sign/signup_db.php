@@ -9,9 +9,12 @@ $lastname = filter_input(INPUT_POST, 'lastname');
 $address = filter_input(INPUT_POST, 'address');
 $email = filter_input(INPUT_POST, 'email');
 $telno = filter_input(INPUT_POST, 'telno');
-$password = filter_input(INPUT_POST, 'password');
-$cpassword = filter_input(INPUT_POST, 'cpassword');
+$password1 = filter_input(INPUT_POST, 'password');
+$cpassword1 = filter_input(INPUT_POST, 'cpassword');
 $role = filter_input(INPUT_POST, 'role');
+
+$password = sha1($password1);
+$cpassword = sha1($cpassword1);
 
 
 $host = "localhost";
@@ -42,8 +45,8 @@ die('Connect Error ('. mysqli_connect_errno() .') '
 . mysqli_connect_error());
 }
 else{
-    $sql = "INSERT INTO form(firstname, lastname, address, email, telno, password,role)
-VALUES ('$firstname','$lastname','$address','$email','$telno','$password','$role')";
+//     $sql = "INSERT INTO form(firstname, lastname, address, email, telno, password,role)
+// VALUES ('$firstname','$lastname','$address','$email','$telno','$password','$role')";
     if($role=='eventorganizer'){
 
         if (mysqli_connect_error()){
@@ -80,8 +83,8 @@ VALUES ('$firstname','$lastname','$address','$email','$telno','$password','$role
                     $row = mysqli_fetch_assoc($result);
                     //echo $row['eo_id'];
                    
-                    $sql1 = "INSERT INTO event_organizer (id,firstname, lastname, address, email, telno, password)
-            values ('$row[id]','$firstname','$lastname','$address','$email','$telno','$password')";
+                    $sql1 = "INSERT INTO event_organizer (id,firstname, lastname, address, email, telno)
+            values ('$row[id]','$firstname','$lastname','$address','$email','$telno')";
             
             echo "<script>alert('Login Credentials verified')</script>";
             
@@ -104,6 +107,9 @@ VALUES ('$firstname','$lastname','$address','$email','$telno','$password','$role
 // VALUES ('$firstname','$lastname','$address','$email','$telno','$password')";}
 
     }
+
+    // ***************************************************************************************************************
+    // ***************************************************************************************************************
 
 elseif($role=='eventparticipant'){
 
@@ -142,8 +148,8 @@ elseif($role=='eventparticipant'){
                 $row = mysqli_fetch_assoc($result);
                 //echo $row['eo_id'];
                
-                $sql1 = "INSERT INTO event_participant (id,firstname, lastname, address, email, telno, password)
-        values ('$row[id]','$firstname','$lastname','$address','$email','$telno','$password')";
+                $sql1 = "INSERT INTO event_participant (id,firstname, lastname, address, email, telno)
+        values ('$row[id]','$firstname','$lastname','$address','$email','$telno')";
         
         echo "<script>alert('Login Credentials verified')</script>";
         
@@ -164,6 +170,9 @@ elseif($role=='eventparticipant'){
     // VALUES ('$firstname','$lastname','$address','$email','$telno','$password')";}
 
 }
+
+// ***************************************************************************************************************
+// ***************************************************************************************************************
 
     elseif($role=='serviceprovider'){
 
@@ -202,8 +211,8 @@ elseif($role=='eventparticipant'){
                     $row = mysqli_fetch_assoc($result);
                     //echo $row['eo_id'];
                    
-                    $sql1 = "INSERT INTO service_provider (id,firstname, lastname, address, email, telno, password,category)
-            values ('$row[id]','$firstname','$lastname','$address','$email','$telno','$password','other')";
+                    $sql1 = "INSERT INTO service_provider (id,firstname, lastname, address, email, telno,category)
+            values ('$row[id]','$firstname','$lastname','$address','$email','$telno','other')";
             
             echo "<script>alert('Login Credentials verified')</script>";
             

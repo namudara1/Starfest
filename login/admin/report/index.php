@@ -1,14 +1,11 @@
 <?php
 
-require_once('connection.php'); 
+require_once('connection.php');
 session_start();
 
 $e_id = $_GET['id'];
 
-// $e_id = 20;
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,11 +34,20 @@ $e_id = $_GET['id'];
     <!-- Main CSS-->
     <link href="css/style.css" rel="stylesheet" media="all">
 
-<style>
-#ifYes, #ifNo { display: none;}
-#yesCheck:checked ~ #ifYes {display: block;} 
-#noCheck:checked ~ #ifNo {display: block;}
-</style>
+    <style>
+        #ifYes,
+        #ifNo {
+            display: none;
+        }
+
+        #yesCheck:checked~#ifYes {
+            display: block;
+        }
+
+        #noCheck:checked~#ifNo {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,78 +60,83 @@ $e_id = $_GET['id'];
                 </div>
                 <div class="card-body">
 
-                <table id = "ticket_table">
-                <tr>
-                    <th><h1 class="text1">Ticket Price</h1></th>
-                    <th><h1 class="text1">Quantity</h1></th>
-                    <th><h1 class="text1">Issued Tickets</h1></th>
-                    <th><h1 class="text1">Available Tickets</h1></th>
-                    <th><h1 class="text1">Amount</h1></th>
-                </tr>
-             
-            <?php
-             
-             $query = "SELECT * FROM public_ticket_price where event_id='$e_id'";
+                    <table id="ticket_table">
+                        <tr>
+                            <th>
+                                <h1 class="text1">Ticket Price</h1>
+                            </th>
+                            <th>
+                                <h1 class="text1">Quantity</h1>
+                            </th>
+                            <th>
+                                <h1 class="text1">Issued Tickets</h1>
+                            </th>
+                            <th>
+                                <h1 class="text1">Available Tickets</h1>
+                            </th>
+                            <th>
+                                <h1 class="text1">Amount</h1>
+                            </th>
+                        </tr>
 
-             $result_set = mysqli_query($connection, $query);
-             $total_amount = 0;
+                        <?php
+                        $query = "SELECT * FROM public_ticket_price where event_id='$e_id'";
 
+                        $result_set = mysqli_query($connection, $query);
+                        $total_amount = 0;
 
-             if($result_set){
-                 while ($record = mysqli_fetch_assoc($result_set)){
-                     $t_price = $record ['ticket_price'];
-                     $quantity = $record ['quantity'];
-                     $issue_ticket = $record ['issue_tickets'];
-                     $ava_tick = $quantity - $issue_ticket;
-                     $amount = $t_price * $issue_ticket;
-                     $total_amount = $total_amount + $amount;
-                      
-                     echo '<tr>';
-                     
-                        echo '<td>';
-                            echo $t_price;
-                        echo '</td>';
-                        echo '<td >';
-                            echo $quantity;
-                        echo '</td>';
-                        echo '<td>';
-                            echo $issue_ticket;
-                        echo '</td>';
-                        echo '<td>';
-                            echo $ava_tick;
-                        echo '</td>';
-                        echo '<td>';
-                            echo $amount;
-                        echo '</td>';
-                    echo '</tr>';
-                }
-            }
-            ?>
-            </table> 
+                        if ($result_set) {
+                            while ($record = mysqli_fetch_assoc($result_set)) {
+                                $t_price = $record['ticket_price'];
+                                $quantity = $record['quantity'];
+                                $issue_ticket = $record['issue_tickets'];
+                                $ava_tick = $quantity - $issue_ticket;
+                                $amount = $t_price * $issue_ticket;
+                                $total_amount = $total_amount + $amount;
 
-            <div class="total">
-                <?php
-                    // $total = $issue_ticket * $t_price;
-                    echo '<h1>Total: '.$total_amount.' </h1>';
-                ?>
-            </div>  
+                                echo '<tr>';
 
-                <div class="pdf">
-                    <form action="pdf_gen.php" method="POST">
-                        <button trpe="submit" name="bt_pdf" class="btn_pdf">PDF</button>
-                    </form>
-                </div>       
+                                echo '<td>';
+                                echo $t_price;
+                                echo '</td>';
+                                echo '<td >';
+                                echo $quantity;
+                                echo '</td>';
+                                echo '<td>';
+                                echo $issue_ticket;
+                                echo '</td>';
+                                echo '<td>';
+                                echo $ava_tick;
+                                echo '</td>';
+                                echo '<td>';
+                                echo $amount;
+                                echo '</td>';
+
+                                echo '</tr>';
+                            }
+                        }
+                        ?>
+                    </table>
+                    <div class="total">
+                        <?php
+                        // $total = $issue_ticket * $t_price;
+                        echo '<h1>Total: ' . $total_amount . ' </h1>';
+                        ?>
+                    </div>
+                    <div class="pdf">
+                        <form action="pdf_gen.php?id=<?php echo $e_id; ?>" method="POST">
+                            <button type="submit" name="bt_pdf" class="btn_pdf">PDF</button>
+                        </form>
+                    </div>
                 </div>
-
-               
             </div>
         </div>
     </div>
-    
 </body>
+
 </html>
 <!-- end document-->
 
 <?php
-    mysqli_close($connection);
+mysqli_close($connection);
 ?>

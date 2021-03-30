@@ -14,7 +14,6 @@
 </head>
 <body>
 
-    
     <div class="suc">
         <h1 style="font-size:400%;">Payment successfull</h1>
         <?php
@@ -32,7 +31,7 @@
 
 <script type="text/javascript">
     document.getElementById("redirect_button").onclick = function () {
-        location.href = "../../../home/index.php";
+        location.href = "../../../home/view.php";
     };
 </script>
     
