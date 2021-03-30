@@ -1,0 +1,94 @@
+custom font
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+        /*basic reset*/
+        * {margin: 0; padding: 0;}
+
+        html {
+            height: 100%;
+            /*Image only BG fallback*/
+    
+            /*background = gradient + image pattern combo*/
+            /* background-color: lightblue; */
+            background: url("bg.png"), -webkit-linear-gradient(bottom, #0250c5, black);
+        }
+
+        body {
+            font-family: montserrat, arial, verdana;
+        }
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+        /* .frame {
+          position: absolute;
+        top: 50px; right: 0; bottom: 0; left: 0;
+        background: lightblue;
+        } */
+
+.suc{
+    width:1000px;
+  height: 600px;
+  background-color: white;
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  left:27%;
+  margin-top:5%;
+  margin-left:-9%;
+/*   margin-right:%; */
+}
+
+.redirect {
+    width: 150px;
+    height: 50px;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: inherit;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px;
+    border: darkgray;
+  }
+
+  #admin_date_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  #admin_date_table td,
+  #admin_date_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    content: horizontal;
+    text-align: left;
+  }
+  
+  #admin_date_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+/*     text-align: left; */
+  }
+  
+  #admin_date_table tr:hover {
+    background-color: #ddd;
+/*     text-align: left; */
+  }
+  
+  #admin_date_table th {
+    padding-top: 17px;
+    padding-bottom: 12px;
+    padding-right:150px;
+    text-align: left;
+    background-color: lightsteelblue;
+    color: black;
+    content: horizontal;
+    font-size: 12px;
+  }
