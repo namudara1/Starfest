@@ -106,9 +106,9 @@ echo"<tr>";
                 <div class="form-group form-input"> 
                     <label for="phone" class="form-label">TYPE-  <?php echo $row["type"]; ?> </label>
                 </div>
-                <div class="form-group form-input"> 
-                    <label for="phone" class="form-label">PARTICIPANT AMOUNT-  <?php echo $row["participant_amt"]; ?> </label>
-                </div>
+                <!-- <div class="form-group form-input"> 
+                    
+                </div> -->
                 <div class="form-group form-input"> 
                     <label for="phone" class="form-label">VENUE-  <?php echo $row["venue"]; ?> </label>
                 </div>
