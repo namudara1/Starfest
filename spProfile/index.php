@@ -57,10 +57,10 @@ if(isset($_GET["id"])){
             </div>
             <div class="profile-nav-info">
                 <h3 class="user-name">Starfest Inc</h3>
-                <div class="address">
+                <!-- <div class="address">
                     <p class="state">London,</p>
                     <span class="country">United Kingdom</span>
-                </div>
+                </div> -->
             </div>
          
         </div>
@@ -121,7 +121,7 @@ $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event W
                         </ul>
                     </div>
                     <div class="user-rating">
-                        <h3 class="rating"><?php //echo $row['star_count']; ?>4.5</h3>
+                        <!-- <h3 class="rating">4.5</h3> -->
                             <div class="rate">
                                 <div class="stars">
                                     <?php
@@ -133,13 +133,13 @@ $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event W
                                 //         echo '<i class="fr fa-star"></i><!--Empty star-->';
                                 //     }
                                 ?>
+                                <!-- <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> -->
                             </div>
-                            <span class="no-user"><span>123</span>&nbsp;&nbsp; reviews     
-                            </span>
+                            <!-- <span class="no-user"><span>123</span>&nbsp;&nbsp; reviews     
+                            </span> -->
                         </div>
                     </div>
                 </div>
@@ -226,21 +226,7 @@ $sql_getevents = mysqli_query($con,"SELECT event_name,date,event_id FROM event W
 
         </section>
                     </div>
-                    <!-- <div class="profile-posts tab">
-                        <h1>Your Posts</h1>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga perferendis nisi aliquid quas cum incidunt dignissimos quos laboriosam iusto quam!</p>
-                        <div class="gallery">
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1485766410122-1b403edb53db?dpr=1&auto=format&fit=crop&w=1500&h=846&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1485793997698-baba81bf21ab?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1485871800663-71856dc09ec4?dpr=1&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1485871882310-4ecdab8a6f94?dpr=1&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1485872304698-0537e003288d?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1485872325464-50f17b82075a?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1470171119584-533105644520?dpr=1&auto=format&fit=crop&w=1500&h=886&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1485881787686-9314a2bc8f9b?dpr=1&auto=format&fit=crop&w=1500&h=969&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                            <div class="img-w"><img src="https://images.unsplash.com/photo-1485889397316-8393dd065127?dpr=1&auto=format&fit=crop&w=1500&h=843&q=80&cs=tinysrgb&crop=" alt="" /></div>
-                        </div>
-                    </div> -->
+                   
                     
                 </div>
             </div>

@@ -144,12 +144,15 @@
           // }
           
           echo '<div class="dashboard-bar-item dashboard-button" style="background-color: lightblue;text-align: center;">Upcoming Events</div>';
-          $sql_getEventDate=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
-          $flag1 = 0;
+          if($usertype["type"] == "eo"){
+            $sql_getEventDate=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+            $flag1 = 0;
           while ($row = $sql_getEventDate->fetch_assoc())
           {
             $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
+            
             $todate = date('Y-m-d');
+            
             if(($todate > $oneweekbefore) && $todate < strtotime($row["date"])){
               $flag1 = 1;
               echo '<a class="dashboard-bar-item dashboard-button" href="#">You have an upcoming event on '.$row["date"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
@@ -157,7 +160,24 @@
           }
           if($flag1 == 0)
             echo '<a class="dashboard-bar-item dashboard-button" href="#">No new upcoming events!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
-          
+          }
+          if($usertype["type"] == "sp"){
+            $sql_getEventDate=mysqli_query($con,"SELECT date FROM event WHERE event_id IN (SELECT event_id from event_request where sp_userid = '".$_SESSION['user_id']."')");
+          $flag1 = 0;
+          while ($row = $sql_getEventDate->fetch_assoc())
+          {
+            $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
+            
+            $todate = date('Y-m-d');
+            
+            if(($todate > $oneweekbefore) && $todate < strtotime($row["date"])){
+              $flag1 = 1;
+              echo '<a class="dashboard-bar-item dashboard-button" href="#">You have an upcoming event on '.$row["date"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+            }
+          }
+          if($flag1 == 0)
+            echo '<a class="dashboard-bar-item dashboard-button" href="#">No new upcoming events!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+        }
           if($usertype["type"] == "ep")
           {
             echo '<div class="dashboard-bar-item dashboard-button" style="background-color: lightblue;text-align: center;">Rate Events</div>';
