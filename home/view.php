@@ -124,7 +124,6 @@ Licence URI: https://www.os-templates.com/template-terms
                                 } else {
                                     if ($is_free == 'yes') {
                                         echo '<input type="submit" value="REGISTER" class="submit" id="submit" name="submit" onclick="return register()" />';
-                                        $_SESSION['free_event_chk'] = 60;
                                     } else {
                                         echo '<input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" onclick="return book()" />';
                                     }
@@ -144,7 +143,7 @@ Licence URI: https://www.os-templates.com/template-terms
         
         <script>
         function register(){
-            document.getElementById("booking-form").action = "../public_event_paypage/testt.php";
+            document.getElementById("booking-form").action = "../public_event_paypage/register/index.php";
         }
 
         function book(){

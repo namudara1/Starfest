@@ -42,11 +42,11 @@ if (isset($_POST['submit'])) {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_type'] = 'ep';
             header('Location: ../../public_event_paypage/index.php');
-        }else {
+        } else {
             $_SESSION['login_error'] = "Invalid username or password";
             header('Location: index.php');
         }
-    } 
+    }
 }
 
 mysqli_close($connection);

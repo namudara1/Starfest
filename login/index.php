@@ -3,12 +3,6 @@ session_start();
 
 if (isset($_SESSION['user_id']) && $_SESSION['user_type']) {
     $user_type = $_SESSION['user_type'];
-    // if(isset($_SESSION['event_id'] )){
-    //     //event participant login
-    //     if($user_type == 'ep'){
-    //         header('Location: ../public_event_paypage/index.php');
-    //     }
-    // }
 
     //event participant login
     if ($user_type == 'ep') {
@@ -71,19 +65,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type']) {
                         </legend>
 
                         <?php
-                        if (isset($_SESSION['tempery_id'])) {
-                            echo '<div class="book_ticket">';
-                            echo '<h4>Please signup or login before booking..</h4>';
-                            echo '</div>';
-                            $_SESSION['tempery_id'] = NULL;
-                            $_SESSION['tempery_another_log_id'] = 1;
-                        }
-                        ?>
-
-                        <?php
                         echo '<div class="book_ticket">';
                         if (isset($_SESSION['login_error'])) {
                             echo '<p class="error">' . $_SESSION['login_error'] . '</p>';
+                            $_SESSION['login_error'] = NULL;
                         }
                         echo '</div>';
                         ?>

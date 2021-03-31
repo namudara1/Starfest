@@ -20,7 +20,7 @@
        $eo_id = $_SESSION['user_id'];
        if(isset($_SESSION['redirect_pay'])){
         echo '<div class="cart_btn">';
-        echo '<button id="redirect_button" class="redirect">HOME</button>';
+        echo '<button id="redirect_button" class="redirect">BACK TO HOME</button>';
         echo '</div>'; 
        } 
 
@@ -31,7 +31,7 @@
 
 <script type="text/javascript">
     document.getElementById("redirect_button").onclick = function () {
-        location.href = "../../../home/view.php";
+        location.href = "../../../home/index.php";
     };
 </script>
     

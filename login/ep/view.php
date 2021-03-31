@@ -7,9 +7,20 @@ if (isset($_GET["search_event_id"])) {
 
 if (isset($_GET["id"])) {
     $event_id = $_GET["id"];
+    $_SESSION['event_id'] = $event_id;
+}
+else{
+    $event_id = $_SESSION['event_id'];
 }
 
-$_SESSION['event_id'] = $event_id;
+
+
+//redirec pay page 
+
+$_SESSION['tempery_id'] = 1;
+
+// session id generate for the block to the go to sp and eo account
+$_SESSION['tempery_b_id'] = 1;
 
 //redirect homepage when payment 
 $re = 10;
@@ -78,9 +89,9 @@ Licence URI: https://www.os-templates.com/template-terms
                         <img class="booking-img" src="images/form-img.jpg" alt="Booking Image">
                     </div>
                     <div class="booking-form">
-                        <form id="booking-form" action="../../public_event_paypage/index.php">
+                        <form id="booking-form" method="post">
                             <h1><?php echo $row["event_name"]; ?></h1>
-                            <?php echo "<li><img src='../../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
+                            <?php echo "<li><img src='../create_event/upload/{$row['image']}' alt='{$row['event_name']}' class='gallery'></li>"; ?>
                             <div class="form-group form-input">
                                 <label for="name" class="form-label"><u><b>Description </u></b></label>
                             </div>
@@ -104,18 +115,17 @@ Licence URI: https://www.os-templates.com/template-terms
                                 if (isset($_SESSION['user_type'])) {
                                     if (($_SESSION['user_type'] == 'ep' || $_SESSION['user_type'] == NULL)) {
                                         if ($is_free == 'yes') {
-                                            echo '<input type="submit" value="REGISTER" class="submit" id="submit" name="submit" />';
-                                            $_SESSION['free_event_chk'] = 60;
+                                            echo '<input type="submit" value="REGISTER" class="submit" id="submit" name="submit" onclick="return register()"/>';
+                                            
                                         } else {
-                                            echo '<input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" />';
+                                            echo '<input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" onclick="return book()" />';
                                         }
                                     }
                                 } else {
                                     if ($is_free == 'yes') {
-                                        echo '<input type="submit" value="REGISTER" class="submit" id="submit" name="submit" />';
-                                        $_SESSION['free_event_chk'] = 60;
+                                        echo '<input type="submit" value="REGISTER" class="submit" id="submit" name="submit" onclick="return register()" />';
                                     } else {
-                                        echo '<input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" />';
+                                        echo '<input type="submit" value="BOOK NOW" class="submit" id="submit" name="submit" onclick="return book()" />';
                                     }
                                 }
                                 ?>
@@ -126,10 +136,21 @@ Licence URI: https://www.os-templates.com/template-terms
             </div>
 
         </div>
-        
+
         <!-- JS -->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="js/main.js"></script>
+        
+        <script>
+        function register(){
+            document.getElementById("booking-form").action = "../../public_event_paypage/register/index.php";
+        }
+
+        function book(){
+            document.getElementById("booking-form").action = "../../public_event_paypage/index.php";
+        }
+        
+        </script>
 
     <?php
         if ($i == 0) {

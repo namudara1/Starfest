@@ -6,7 +6,7 @@ $user_type = $_SESSION['user_type'];
 
 if (!isset($user_id)) {
     $_SESSION['check_viewed_id'] = 1;
-    // $_SESSION['event_idd'] = $event_id;
+    $_SESSION['id40'] = 40;
     header('Location: ../login/login2/index.php');
 }
 

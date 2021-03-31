@@ -46,12 +46,12 @@ session_start();
                         </legend>
 
                         <?php
-                        if (isset($_SESSION['tempery_id'])) {
+                        if (isset($_SESSION['id40']) == 40) {
+                            $_SESSION['id40'] = NULL;
                             echo '<div class="book_ticket">';
                             echo '<h4>Please signup or login before booking..</h4>';
                             echo '</div>';
-                            $_SESSION['tempery_id'] = NULL;
-                            $_SESSION['tempery_another_log_id'] = 1;
+                            $_SESSION['id40'] = NULL;
                         }
                         ?>
 

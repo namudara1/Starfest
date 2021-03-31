@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         $password = mysqli_real_escape_string($connection, $_POST['password']);
         $hashed_password = sha1($password);
 
-        $query = "SELECT * FROM user where email='{$email}' AND password = '{$hashed_password}'";
+        $query = "SELECT * FROM user where email='{$email}' AND password = '{$hashed_password}' AND type='ep'";
 
         $result_set = mysqli_query($connection, $query);
         $record = mysqli_fetch_assoc($result_set);
@@ -37,26 +37,15 @@ if (isset($_POST['submit'])) {
         // $num3 = 0;
 
         if (mysqli_num_rows($result_set) == 1) {
-            $user_type = $record['type'];
             $user_id = $record['id'];
             $_SESSION['user_email'] = $email;
             $_SESSION['user_id'] = $user_id;
-            $_SESSION['user_type'] = $user_type;
-
-            if ($user_type == 'ad') {
-                header('Location: admin/index.php');
-            } elseif ($user_type == 'ep') {
-                header('Location: ep/index.php');
-            } elseif ($user_type == 'sp') {
-                header('Location: sp/index.php');
-            } elseif ($user_type == 'eo') {
-                header('Location: eo/index.php');
-            }
-        }
-        else {
+            $_SESSION['user_type'] = 'ep';
+            header('Location: ../../public_event_paypage/register/index.php');
+        } else {
             $_SESSION['login_error'] = "Invalid username or password";
             header('Location: index.php');
-    } 
+        }
     }
 }
 
