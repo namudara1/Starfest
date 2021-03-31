@@ -6,15 +6,17 @@
  // Connect to MySQL
  
  $id=$_SESSION['user_id'];
+
+
  
- $sql = "SELECT e.event_id,e.event_name,e.date,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
+ $sql6 = "SELECT e.event_id,e.event_name,e.date,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
          join event e on er.event_id=e.event_id 
          join service_provider s on er.sp_userid=s.id 
-         where er.status='accepted' && er.sp_userid=$id";
+         where er.status='accepted' && er.sp_userid='$id'";
  
  
  
- $result = mysqli_query($conn,$sql) ;
+ $result6 = mysqli_query($conn,$sql6) ;
  
 
 
@@ -89,7 +91,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           if(mysqli_num_rows($sql_getuser)>0){
             while($result1=mysqli_fetch_assoc($sql_getuser)){
               echo '<p><i class="fa fa-user fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
-              echo '<p><i class="fa fa-pencil fa-fw dashboard-margin-right dashboard-text-theme"></i>Event Participant</p>';
+              echo '<p><i class="fa fa-pencil fa-fw dashboard-margin-right dashboard-text-theme"></i>Service Provider</p>';
               echo '<p><i class="fa fa-home fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["address"].'</p>';
               echo '<p><i class="fa fa-envelope fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["email"].'</p>';
             }
@@ -102,30 +104,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <!-- Accordion -->
       <div class="dashboard-card dashboard-round">
         <div class="dashboard-white">
-          <button onclick="myFunction('Demo3')" class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-users fa-fw dashboard-margin-right"></i> My Photos</button>
-          <div id="Demo3" class="dashboard-hide dashboard-container">
-         <div class="dashboard-row-padding">
-         <br>
-           <div class="dashboard-half">
-             <img src="../../img/lights.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/nature.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/mountains.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/forest.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/nature.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/snow.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-         </div>
-          </div>
+          
           <a href="../../fileupload/index.php" style="text-decoration: none;">
           <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-file fa-fw dashboard-margin-right"></i>My Files</button>
         </a>
@@ -150,9 +129,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           <div class="dashboard-card dashboard-round dashboard-white">
             <div class="dashboard-container dashboard-padding">
             <header class="showcase">
-            <h1>Manage Documents</h1>
+            <h1>Manage Documents </h1>
                     <p>Simply manage with your connected events</p>
-                    <a href="../../message/index.php" class="btn" >Events Connected</a>
+                    <a href="../../message/index.php" class="btn" >Message</a>
             </header>
             </div>
           </div>
@@ -173,10 +152,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
           <?php 
 $i=0;
-if($result){
-while($row=mysqli_fetch_assoc($result)){
+if($result6){
+while($row6=mysqli_fetch_assoc($result6)){
 
-  if(date("Y-m-d") < $row['date']){
+  if(date("Y-m-d") < $row6['date']){
   
    
 
@@ -189,9 +168,9 @@ while($row=mysqli_fetch_assoc($result)){
             <li class="one_third"> 
  <figure>
      <figcaption>
-       <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
+       <h6 class="heading"><?php echo $row6["event_name"]; ?></h6>
 
-       <a href="event_details.php?data1=<?php echo $row["event_id"]?> ?>"><button type="button"> Event details</button></a><br><br>
+       <a href="event_details.php?data1=<?php echo $row6["event_id"]?> ?>"><button type="button"> Event details</button></a><br><br>
 
            
      </figcaption>
