@@ -3,13 +3,7 @@ require 'db_conn.php';
 
 session_start();
 
-echo $_SESSION['firstMessage'];
-
-
 $message1 = $_SESSION['firstMessage'];
-
-
-
 
 
 ?>

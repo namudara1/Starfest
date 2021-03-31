@@ -9,7 +9,6 @@ $preid = $row['max'];
 
 $currentId = $preid + 1;
 
-// $_SESSION['e_id'] = $currentId;
 
 
 ?>
@@ -42,35 +41,7 @@ $currentId = $preid + 1;
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
 
-    <!-- <script>
-
-// function check2(x){
-
-// if(x==0)
-// document.getElementById('c2_check').style.display='block';
-
-// else
-// document.getElementById('c2_check').style.display='none';
-// return;
-
-// }
-
-function check1(x){
-
-if(x==0)
-document.getElementById('isBox').style.display='block.c1_check';
-//document.getElementById('c2_check').style.display='none';
-// else
-//document.getElementById('c1_check').style.display='none';
-else
-document.getElementById('isBox').style.display='block.c2_check';
-
-return;
-
-}
-
-
-</script> -->
+   
     <style>
         #ifYes,
         #ifNo {
@@ -226,21 +197,9 @@ return;
 
                                 <div class="form-row p-t-20">
 
-                                    <!-- 
-                                <a href="javascript: void(0);" onClick="toggle('q1')">
-                                <label class="label label--block">
-                                Do you want to ask some questions from the event participants
-                                </label>
-                                </a>
-                                <div id="q1" style="display:none;">
-                                TEXT WHAT U WILL SEE WHEN CLICKED HERE
-                                </div>
-                     
-                                 -->
 
 
-                                    <!-- <br><br>
-                            Yes<input type="radio" name="qselection"  value="yes" checked >  No<input type="radio" name="qselection"  value="no"> -->
+                    
 
                                     <!-- <a href="index2.php?data1=<?php echo $currentId ?>> Add ticket prices</a> -->
                                     <div class="form-check-inline">
@@ -298,7 +257,6 @@ return;
 
 
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
-<!-- end document-->

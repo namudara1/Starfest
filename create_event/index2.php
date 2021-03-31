@@ -5,10 +5,6 @@ require_once 'publicevent_db.php';
 session_start();
 
 $e_id = $_GET['data1'];
-echo $e_id;
-
-
-
 
 $message1 = $e_id;
 $_SESSION['firstMessage'] = $message1;
@@ -116,16 +112,7 @@ window.history.back();
           </form>
        </div>
        <?php
-
-
-
-            
-            // while($todo1 = $empty1->fetch(PDO::FETCH_ASSOC)) { 
-                
-            //     echo $todo1['count(empty)']; 
-
-                             
-             
+     
     
           $todos = $conn->query("SELECT * FROM public_ticket_price where event_id= $e_id  ORDER BY ticket_price");
        ?>

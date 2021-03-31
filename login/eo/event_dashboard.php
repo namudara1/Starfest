@@ -115,38 +115,7 @@ button {
       <!-- Accordion -->
       <div class="dashboard-card dashboard-round">
         <div class="dashboard-white">
-          <!-- <button onclick="myFunction('Demo1')" class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-circle-o-notch fa-fw dashboard-margin-right"></i> To-do list</button>
-          <div id="Demo1" class="dashboard-hide dashboard-container">
-            <p>Some text..</p>
-          </div>-->
-          <!-- <button onclick="myFunction('Demo2')" class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-calendar-check-o fa-fw dashboard-margin-right"></i> My Events</button>
-          <div id="Demo2" class="dashboard-hide dashboard-container">
-            <p>Some other text..</p>
-          </div>  -->
-          <!-- <button onclick="myFunction('Demo3')" class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-users fa-fw dashboard-margin-right"></i> My Photos</button>
-          <div id="Demo3" class="dashboard-hide dashboard-container">
-         <div class="dashboard-row-padding">
-         <br>
-           <div class="dashboard-half">
-             <img src="../../img/lights.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/nature.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/mountains.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/forest.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/nature.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-           <div class="dashboard-half">
-             <img src="../../img/snow.jpg" style="width:100%" class="dashboard-margin-bottom">
-           </div>
-         </div>
-          </div> -->
+      
           <a href="../../fileupload/index.php" style="text-decoration: none;">
           <button class="dashboard-button dashboard-button-border dashboard-block dashboard-theme-l1 dashboard-left-align"><i class="fa fa-file fa-fw dashboard-margin-right"></i>My Files</button>
         </a>
