@@ -55,13 +55,13 @@ return;
 
 </script> -->
 
-<script type="text/javascript">
-function toggle(obj) {
-          var obj=document.getElementById(obj);
-          if (obj.style.display == "block") obj.style.display = "none";
-          else obj.style.display = "block";
-}
-</script>
+    <script type="text/javascript">
+        function toggle(obj) {
+            var obj = document.getElementById(obj);
+            if (obj.style.display == "block") obj.style.display = "none";
+            else obj.style.display = "block";
+        }
+    </script>
 
 </head>
 
@@ -75,7 +75,7 @@ function toggle(obj) {
                 </div>
                 <div class="card-body">
                     <form method="POST" action="signup_db.php">
-                    
+
                         <div class="form-row">
                             <div class="name">First Name</div>
                             <div class="value">
@@ -102,12 +102,12 @@ function toggle(obj) {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="name">Email</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"   required>
+                                    <input class="input--style-5" type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@ function toggle(obj) {
                             <div class="name">Tel No</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="telno" pattern="[0-9]{10}"required>
+                                    <input class="input--style-5" type="text" name="telno" pattern="[0-9]{10}" required>
                                 </div>
                             </div>
                         </div>
@@ -139,49 +139,49 @@ function toggle(obj) {
                             </div>
                         </div>
 
-                        <b> <h3>Select the role:</h3></b>
+                        <b>
+                            <h3>Select the role:</h3>
+                        </b>
                         <div class="card-body">
-                    
-                        <div class="form-row">
-                            <div class="name">Event Organizer</div>
+
+                            <div class="form-row">
+                                <div class="name">Event Organizer</div>
 
 
-                            <div class="value">
-                                <div class="input-group">
-                                    <input type="radio"  name="role" value="eventorganizer" > 
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input type="radio" name="role" value="eventorganizer">
+                                    </div>
                                 </div>
+
                             </div>
-                            
+
+
+                            <div class="form-row">
+                                <div class="name">Event participant</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input type="radio" name="role" value="eventparticipant">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+
+                                <div class="name">Service provider</div></a>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input type="radio" name="role" value="serviceprovider">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <button class="btn btn--radius-2 btn--red" type="submit">Signup</button>
                         </div>
-                       
-
-                        <div class="form-row">
-                            <div class="name">Event participant</div>
-                            <div class="value"> 
-                                <div class="input-group">
-                                    <input type="radio"  name="role" value="eventparticipant" >
-                                </div>
-                            </div>
-                            
-                        </div>
-                       
-                        <div class="form-row">
-                            <a href="javascript: void(0);" onClick="toggle('q1')">
-                            <div class="name">Service provider</div></a>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input type="radio"  name="role" value="serviceprovider" >
-                                </div>
-                            </div>
-                                <div id="q1" style="display:none;">
-                                TEXT WHAT U WILL SEE WHEN CLICKED HERE
-                                </div>
-
-
-</div>
-          
-                        <button class="btn btn--radius-2 btn--red" type="submit" >Signup</button>
-                        </div> 
                     </form>
                 </div>
             </div>
@@ -197,8 +197,8 @@ function toggle(obj) {
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
-    
-   
+
+
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 

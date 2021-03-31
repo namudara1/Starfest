@@ -14,14 +14,13 @@
 </head>
 <body>
 
-    
     <div class="suc">
         <h1 style="font-size:400%;">Payment successfull</h1>
         <?php
        $eo_id = $_SESSION['user_id'];
        if(isset($_SESSION['redirect_pay'])){
         echo '<div class="cart_btn">';
-        echo '<button id="redirect_button" class="redirect">HOME</button>';
+        echo '<button id="redirect_button" class="redirect">BACK TO HOME</button>';
         echo '</div>'; 
        } 
 

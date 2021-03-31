@@ -22,7 +22,7 @@
             //save username and password into varible
             $email = mysqli_real_escape_string($connection, $_POST['email']);
             $password = mysqli_real_escape_string($connection, $_POST['password']);
-            // $hashed_password = sha1($password);
+            $hashed_password = sha1($password);
        
             $query = "SELECT * FROM user";
 
@@ -36,7 +36,7 @@
                     $num1 = 2;
                     $num2 = 3;
                     $num3 = 0;
-                        if($email == $ema && $password == $pass){
+                        if($email == $ema && $hashed_password == $pass){
                            $num3 = $num1 + $num2;
                            $user_id = $record ['id'];
                            $_SESSION['user_id'] = $user_id;

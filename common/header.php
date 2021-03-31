@@ -49,7 +49,14 @@ if($usertype["type"] == "sp"){
 <div class="dashboard-top">
  <div class="dashboard-bar dashboard-theme-d2 dashboard-left-align dashboard-large">
   <a class="dashboard-bar-item dashboard-button dashboard-hide-medium dashboard-hide-large dashboard-right dashboard-padding-large dashboard-hover-white dashboard-large dashboard-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="../login/eo/index.php" class="dashboard-bar-item dashboard-button dashboard-padding-large dashboard-theme-d4"><i class="fa fa-home dashboard-margin-right"></i>Starfest</a>
+  <?php
+  if($usertype["type"] == "eo")
+    echo '<a href="../login/eo/index.php" class="dashboard-bar-item dashboard-button dashboard-padding-large dashboard-theme-d4"><i class="fa fa-home dashboard-margin-right"></i>Starfest</a>';
+  if($usertype["type"] == "sp")
+    echo '<a href="../login/sp/index.php" class="dashboard-bar-item dashboard-button dashboard-padding-large dashboard-theme-d4"><i class="fa fa-home dashboard-margin-right"></i>Starfest</a>';
+  if($usertype["type"] == "ep")
+    echo '<a href="../login/ep/index.php" class="dashboard-bar-item dashboard-button dashboard-padding-large dashboard-theme-d4"><i class="fa fa-home dashboard-margin-right"></i>Starfest</a>';
+  ?>
   <!-- <a href="#" class="dashboard-bar-item dashboard-button dashboard-hide-small dashboard-padding-large dashboard-hover-white" title="News"><i class="fa fa-globe"></i></a> -->
   <a href="#" class="dashboard-bar-item dashboard-button dashboard-hide-small dashboard-right dashboard-padding-large dashboard-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
   <div class="dashboard-dropdown-hover dashboard-hide-small dashboard-right">
@@ -89,7 +96,7 @@ if($usertype["type"] == "sp"){
   <div class="dashboard-dropdown-hover dashboard-hide-small dashboard-right">
   <?php
   if($usertype["type"] != "ad")
-    echo '<button class="dashboard-button dashboard-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="dashboard-badge dashboard-right dashboard-small dashboard-green">'.$not_count.'</span></button>';
+    {echo '<button class="dashboard-button dashboard-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="dashboard-badge dashboard-right dashboard-small dashboard-green">'.$not_count.'</span></button>';}
 
     ?>
     <div class="dashboard-dropdown-content dashboard-card-4 dashboard-bar-block" style="width:300px;height:500px;overflow:auto;">
@@ -121,7 +128,7 @@ if($usertype["type"] == "sp"){
           echo '<div class="dashboard-bar-item dashboard-button" style="background-color: lightblue;text-align: center;">Messages</div>';
           $sql_getmsg=mysqli_query($con,"SELECT * FROM message WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
           if(mysqli_num_rows($sql_getmsg)>0){
-            echo '<a class="dashboard-bar-item dashboard-button" href="../../message/index.php">You have '.$msgcount.' new messages</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+            echo '<a class="dashboard-bar-item dashboard-button" href="../message/index.php">You have '.$msgcount.' new messages</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
           }
           else{
             echo '<a class="dashboard-bar-item dashboard-button" href="#">No new messages!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
@@ -129,7 +136,7 @@ if($usertype["type"] == "sp"){
           echo '<div class="dashboard-bar-item dashboard-button" style="background-color: lightblue;text-align: center;">Documents</div>';
           $sql_getmsg=mysqli_query($con,"SELECT * FROM document WHERE status=1 and reciever_userid = '".$_SESSION['user_id']."'");
           if(mysqli_num_rows($sql_getmsg)>0){
-            echo '<a class="dashboard-bar-item dashboard-button" href="../../fileupload/index.php">You have '.$doccount.' new documents</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+            echo '<a class="dashboard-bar-item dashboard-button" href="../fileupload/index.php">You have '.$doccount.' new documents</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
           }
           else{
             echo '<a class="dashboard-bar-item dashboard-button" href="#">No new documents!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
@@ -140,7 +147,25 @@ if($usertype["type"] == "sp"){
           // }
           
           echo '<div class="dashboard-bar-item dashboard-button" style="background-color: lightblue;text-align: center;">Upcoming Events</div>';
-          $sql_getEventDate=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+          if($usertype["type"] == "eo"){
+            $sql_getEventDate=mysqli_query($con,"SELECT date FROM event WHERE eo_id IN (SELECT eo_id from event_organizer where id = '".$_SESSION['user_id']."')");
+            $flag1 = 0;
+          while ($row = $sql_getEventDate->fetch_assoc())
+          {
+            $oneweekbefore = date('Y-m-d', strtotime('-1 week', strtotime($row["date"])));
+            
+            $todate = date('Y-m-d');
+            
+            if(($todate > $oneweekbefore) && $todate < strtotime($row["date"])){
+              $flag1 = 1;
+              echo '<a class="dashboard-bar-item dashboard-button" href="#">You have an upcoming event on '.$row["date"].'</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+            }
+          }
+          if($flag1 == 0)
+            echo '<a class="dashboard-bar-item dashboard-button" href="#">No new upcoming events!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
+          }
+          if($usertype["type"] == "sp"){
+            $sql_getEventDate=mysqli_query($con,"SELECT date FROM event WHERE event_id IN (SELECT event_id from event_request where sp_userid = '".$_SESSION['user_id']."')");
           $flag1 = 0;
           while ($row = $sql_getEventDate->fetch_assoc())
           {
@@ -155,7 +180,7 @@ if($usertype["type"] == "sp"){
           }
           if($flag1 == 0)
             echo '<a class="dashboard-bar-item dashboard-button" href="#">No new upcoming events!</a><hr style="height:2px;border-width:0;color:gray;background-color:gray;margin:0;">';
-          
+        }
             if($usertype["type"] == "ep")
             {
           echo '<div class="dashboard-bar-item dashboard-button" style="background-color: lightblue;text-align: center;">Rate Events</div>';

@@ -75,4 +75,3 @@ if(isset($_GET['q'])){
   }
 
     mysqli_close($connection);
-?>
