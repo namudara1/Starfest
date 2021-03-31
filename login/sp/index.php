@@ -6,15 +6,17 @@
  // Connect to MySQL
  
  $id=$_SESSION['user_id'];
+
+
  
- $sql = "SELECT e.event_id,e.event_name,e.date,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
+ $sql6 = "SELECT e.event_id,e.event_name,e.date,s.firstname,s.lastname,er.sp_userid,er.eo_userid FROM event_request er 
          join event e on er.event_id=e.event_id 
          join service_provider s on er.sp_userid=s.id 
-         where er.status='accepted' && er.sp_userid=$id";
+         where er.status='accepted' && er.sp_userid='$id'";
  
  
  
- $result = mysqli_query($conn,$sql) ;
+ $result6 = mysqli_query($conn,$sql6) ;
  
 
 
@@ -127,9 +129,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           <div class="dashboard-card dashboard-round dashboard-white">
             <div class="dashboard-container dashboard-padding">
             <header class="showcase">
-            <h1>Manage Documents</h1>
+            <h1>Manage Documents </h1>
                     <p>Simply manage with your connected events</p>
-                    <a href="../../message/index.php" class="btn" >Events Connected</a>
+                    <a href="../../message/index.php" class="btn" >Message</a>
             </header>
             </div>
           </div>
@@ -150,10 +152,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
           <?php 
 $i=0;
-if($result){
-while($row=mysqli_fetch_assoc($result)){
+if($result6){
+while($row6=mysqli_fetch_assoc($result6)){
 
-  if(date("Y-m-d") < $row['date']){
+  if(date("Y-m-d") < $row6['date']){
   
    
 
@@ -166,9 +168,9 @@ while($row=mysqli_fetch_assoc($result)){
             <li class="one_third"> 
  <figure>
      <figcaption>
-       <h6 class="heading"><?php echo $row["event_name"]; ?></h6>
+       <h6 class="heading"><?php echo $row6["event_name"]; ?></h6>
 
-       <a href="event_details.php?data1=<?php echo $row["event_id"]?> ?>"><button type="button"> Event details</button></a><br><br>
+       <a href="event_details.php?data1=<?php echo $row6["event_id"]?> ?>"><button type="button"> Event details</button></a><br><br>
 
            
      </figcaption>
