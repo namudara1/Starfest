@@ -25,7 +25,7 @@ else{
 
 if ($conn->query($sql)){
 echo "<script> alert('Thank you for your feedback')</script>";
-echo"<script>window.open('../../home/index.php?','_self')</script>";
+echo"<script>window.open('../../login/eo/index.php?','_self')</script>";
 }
 else{
 echo "Error: ". $sql ."
