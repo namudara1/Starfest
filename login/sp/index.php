@@ -89,7 +89,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
           if(mysqli_num_rows($sql_getuser)>0){
             while($result1=mysqli_fetch_assoc($sql_getuser)){
               echo '<p><i class="fa fa-user fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["firstname"].' '.$result1["lastname"].'</p>';
-              echo '<p><i class="fa fa-pencil fa-fw dashboard-margin-right dashboard-text-theme"></i>Event Participant</p>';
+              echo '<p><i class="fa fa-pencil fa-fw dashboard-margin-right dashboard-text-theme"></i>Service Provider</p>';
               echo '<p><i class="fa fa-home fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["address"].'</p>';
               echo '<p><i class="fa fa-envelope fa-fw dashboard-margin-right dashboard-text-theme"></i>'.$result1["email"].'</p>';
             }
